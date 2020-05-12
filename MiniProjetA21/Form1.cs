@@ -37,14 +37,19 @@ namespace MiniProjetA21
 
                 string requete = @"select [pnUtil],[nomUtil] from Utilisateurs";
 
+                //Paramètrage de l'objet commande
                 OleDbCommand cmd = new OleDbCommand();
                 cmd.Connection = connec;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = requete;
 
+                //Execution de la requète
                 OleDbDataReader dr = cmd.ExecuteReader();
+
+                //Tant que le résultat n'est pas vide
                 while (dr.Read())
                 {
+                    //On ajoute le prénom et nom à cbUser
                     cbUser.Items.Add(dr.GetString(0) + " " + dr.GetString(1));
                 }
             }
@@ -66,6 +71,12 @@ namespace MiniProjetA21
                 //Exception inconnue
                 MessageBox.Show("Autre erreur : " + erreur.GetType().ToString());
             }
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            //Fermeture du formulaire
+            Application.Exit();
         }
     }
 }
