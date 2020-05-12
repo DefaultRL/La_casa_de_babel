@@ -16,5 +16,10 @@ namespace MiniProjetA21
         {
             InitializeComponent();
         }
+
+        private void frmStart_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
