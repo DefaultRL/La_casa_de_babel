@@ -28,30 +28,43 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
+            this.gpbConnec = new System.Windows.Forms.GroupBox();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(420, 75);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(373, 39);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "LA CASA DE BABBEL";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(420, 66);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(373, 39);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "LA CASA DE BABBEL";
+            // 
+            // gpbConnec
+            // 
+            this.gpbConnec.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpbConnec.Location = new System.Drawing.Point(12, 195);
+            this.gpbConnec.Name = "gpbConnec";
+            this.gpbConnec.Size = new System.Drawing.Size(1199, 405);
+            this.gpbConnec.TabIndex = 1;
+            this.gpbConnec.TabStop = false;
+            this.gpbConnec.Text = "Bienvenue";
             // 
             // frmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1924, 1055);
-            this.Controls.Add(this.label1);
+            this.ClientSize = new System.Drawing.Size(1223, 612);
+            this.Controls.Add(this.gpbConnec);
+            this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "frmStart";
             this.Text = "LA CASA DE BABBEL";
+            this.Load += new System.EventHandler(this.frmStart_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -59,7 +72,8 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
+        private System.Windows.Forms.GroupBox gpbConnec;
     }
 }
 
