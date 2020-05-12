@@ -42,10 +42,10 @@ namespace MiniProjetA21
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = requete;
 
-                OleDbDataReader dr = new OleDbDataReader();
+                OleDbDataReader dr = cmd.ExecuteReader();
                 while (dr.Read())
                 {
-                    
+                    cbUser.Items.Add(dr.GetString(0) + " " + dr.GetString(1));
                 }
             }
 
