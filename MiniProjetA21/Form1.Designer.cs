@@ -30,10 +30,14 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.gpbConnec = new System.Windows.Forms.GroupBox();
-            this.lblConnec = new System.Windows.Forms.Label();
-            this.cbUser = new System.Windows.Forms.ComboBox();
-            this.btnNext = new System.Windows.Forms.Button();
             this.btnExit = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.cbUser = new System.Windows.Forms.ComboBox();
+            this.lblConnec = new System.Windows.Forms.Label();
+            this.lblCoursActuel = new System.Windows.Forms.Label();
+            this.lblUserCours = new System.Windows.Forms.Label();
+            this.lblLeconActuelle = new System.Windows.Forms.Label();
+            this.lblUserLecon = new System.Windows.Forms.Label();
             this.gpbConnec.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -43,12 +47,16 @@
             this.lblTitle.Location = new System.Drawing.Point(420, 66);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(373, 39);
+            this.lblTitle.Size = new System.Drawing.Size(363, 38);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "LA CASA DE BABBEL";
             // 
             // gpbConnec
             // 
+            this.gpbConnec.Controls.Add(this.lblUserLecon);
+            this.gpbConnec.Controls.Add(this.lblLeconActuelle);
+            this.gpbConnec.Controls.Add(this.lblUserCours);
+            this.gpbConnec.Controls.Add(this.lblCoursActuel);
             this.gpbConnec.Controls.Add(this.btnExit);
             this.gpbConnec.Controls.Add(this.btnNext);
             this.gpbConnec.Controls.Add(this.cbUser);
@@ -61,32 +69,6 @@
             this.gpbConnec.TabStop = false;
             this.gpbConnec.Text = "Bienvenue";
             // 
-            // lblConnec
-            // 
-            this.lblConnec.AutoSize = true;
-            this.lblConnec.Location = new System.Drawing.Point(111, 75);
-            this.lblConnec.Name = "lblConnec";
-            this.lblConnec.Size = new System.Drawing.Size(161, 23);
-            this.lblConnec.TabIndex = 0;
-            this.lblConnec.Text = "Connectez-vous :";
-            // 
-            // cbUser
-            // 
-            this.cbUser.FormattingEnabled = true;
-            this.cbUser.Location = new System.Drawing.Point(314, 72);
-            this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(313, 31);
-            this.cbUser.TabIndex = 1;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(966, 350);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(185, 52);
-            this.btnNext.TabIndex = 2;
-            this.btnNext.Text = "Exercice Suivant";
-            this.btnNext.UseVisualStyleBackColor = true;
-            // 
             // btnExit
             // 
             this.btnExit.Location = new System.Drawing.Point(734, 350);
@@ -97,12 +79,75 @@
             this.btnExit.UseVisualStyleBackColor = true;
             this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(966, 350);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(185, 52);
+            this.btnNext.TabIndex = 2;
+            this.btnNext.Text = "Exercice Suivant";
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // cbUser
+            // 
+            this.cbUser.FormattingEnabled = true;
+            this.cbUser.Location = new System.Drawing.Point(314, 72);
+            this.cbUser.Name = "cbUser";
+            this.cbUser.Size = new System.Drawing.Size(313, 31);
+            this.cbUser.TabIndex = 1;
+            this.cbUser.SelectedIndexChanged += new System.EventHandler(this.cbUser_SelectedIndexChanged);
+            // 
+            // lblConnec
+            // 
+            this.lblConnec.AutoSize = true;
+            this.lblConnec.Location = new System.Drawing.Point(111, 75);
+            this.lblConnec.Name = "lblConnec";
+            this.lblConnec.Size = new System.Drawing.Size(161, 23);
+            this.lblConnec.TabIndex = 0;
+            this.lblConnec.Text = "Connectez-vous :";
+            // 
+            // lblCoursActuel
+            // 
+            this.lblCoursActuel.AutoSize = true;
+            this.lblCoursActuel.Location = new System.Drawing.Point(111, 177);
+            this.lblCoursActuel.Name = "lblCoursActuel";
+            this.lblCoursActuel.Size = new System.Drawing.Size(132, 23);
+            this.lblCoursActuel.TabIndex = 4;
+            this.lblCoursActuel.Text = "Cours actuel :";
+            // 
+            // lblUserCours
+            // 
+            this.lblUserCours.AutoSize = true;
+            this.lblUserCours.Location = new System.Drawing.Point(310, 177);
+            this.lblUserCours.Name = "lblUserCours";
+            this.lblUserCours.Size = new System.Drawing.Size(42, 23);
+            this.lblUserCours.TabIndex = 5;
+            this.lblUserCours.Text = "N/A";
+            // 
+            // lblLeconActuelle
+            // 
+            this.lblLeconActuelle.AutoSize = true;
+            this.lblLeconActuelle.Location = new System.Drawing.Point(111, 232);
+            this.lblLeconActuelle.Name = "lblLeconActuelle";
+            this.lblLeconActuelle.Size = new System.Drawing.Size(148, 23);
+            this.lblLeconActuelle.TabIndex = 6;
+            this.lblLeconActuelle.Text = "Leçon actuelle :";
+            // 
+            // lblUserLecon
+            // 
+            this.lblUserLecon.AutoSize = true;
+            this.lblUserLecon.Location = new System.Drawing.Point(310, 232);
+            this.lblUserLecon.Name = "lblUserLecon";
+            this.lblUserLecon.Size = new System.Drawing.Size(42, 23);
+            this.lblUserLecon.TabIndex = 7;
+            this.lblUserLecon.Text = "N/A";
+            // 
             // frmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1181, 615);
+            this.ClientSize = new System.Drawing.Size(1182, 606);
             this.Controls.Add(this.gpbConnec);
             this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -125,6 +170,10 @@
         private System.Windows.Forms.Label lblConnec;
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Button btnExit;
+        private System.Windows.Forms.Label lblCoursActuel;
+        private System.Windows.Forms.Label lblUserCours;
+        private System.Windows.Forms.Label lblLeconActuelle;
+        private System.Windows.Forms.Label lblUserLecon;
     }
 }
 

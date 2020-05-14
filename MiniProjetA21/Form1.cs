@@ -71,12 +71,24 @@ namespace MiniProjetA21
                 //Exception inconnue
                 MessageBox.Show("Autre erreur : " + erreur.GetType().ToString());
             }
+
+            //Setup d'affichage de l'interface du Form1
+            lblCoursActuel.Visible = false;
+            lblLeconActuelle.Visible = false;
+            lblUserCours.Visible = false;
+            lblUserLecon.Visible = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
         {
             //Fermeture du formulaire
             Application.Exit();
+        }
+
+        private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            lblCoursActuel.Visible = true;
+            lblLeconActuelle.Visible = true;
         }
     }
 }
