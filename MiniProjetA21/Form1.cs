@@ -35,7 +35,7 @@ namespace MiniProjetA21
                 //Ouverture de la connection
                 connec.Open();
 
-                string requete = @"select [pnUtil],[nomUtil] from Utilisateurs";
+                string requete = @"select [pnUtil],[nomUtil],[codeUtil] from Utilisateurs";
 
                 //Paramètrage de l'objet commande
                 OleDbCommand cmd = new OleDbCommand();
@@ -57,19 +57,28 @@ namespace MiniProjetA21
             catch (InvalidOperationException)
             {
                 //Erreur de connection à la base
-                MessageBox.Show("Erreur de connection à la base de données");
+                MessageBox.Show("Erreur de connection à la base de données (ComboBox)");
             }
 
             catch (OleDbException)
             {
                 //Erreur requète SQL
-                MessageBox.Show("Erreur dans la requète SQL");
+                MessageBox.Show("Erreur dans la requète SQL (ComboBox)");
             }
 
             catch (Exception erreur)
             {
                 //Exception inconnue
-                MessageBox.Show("Autre erreur : " + erreur.GetType().ToString());
+                MessageBox.Show("Autre erreur : " + erreur.GetType().ToString() + "(ComboBox)");
+            }
+
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                {
+                    //Si tout s'est bien passé on ferme la connection
+                    connec.Close(); 
+                }
             }
 
             //Setup d'affichage de l'interface du Form1
@@ -87,8 +96,78 @@ namespace MiniProjetA21
 
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblCoursActuel.Visible = true;
-            lblLeconActuelle.Visible = true;
+            try
+            { 
+                lblCoursActuel.Visible = true;
+                lblLeconActuelle.Visible = true;
+
+                connec.Open();
+
+                string recupInfos = @"select [codeCours], [codeLeçon] from Utilisateurs 
+                            where [codeUtil]=" + cbUser.SelectedIndex;
+
+                //Paramètrage de l'objet commande
+                OleDbCommand cmd = new OleDbCommand();
+                cmd.Connection = connec;
+                cmd.CommandType = CommandType.Text;
+                cmd.CommandText = recupInfos;
+
+                //Execution de la requète
+                OleDbDataReader dr = cmd.ExecuteReader();
+
+                while (dr.Read())
+                {
+                    string cours = @"select [titreCours] from Cours where ucase([numCours])='"
+                                    + dr.GetString(0) + "'";
+                    OleDbCommand cmdCours = new OleDbCommand();
+                    cmdCours.Connection = connec;
+                    cmdCours.CommandType = CommandType.Text;
+                    cmdCours.CommandText = cours;
+
+                    string coursUser = cmdCours.ExecuteScalar().ToString();
+                    lblUserCours.Text = coursUser;
+
+                    string lecon = @"select [titreLecon] from Lecons where [numLecon] = "
+                                    + dr.GetInt32(1);
+                    OleDbCommand cmdLecon = new OleDbCommand();
+                    cmdLecon.Connection = connec;
+                    cmdLecon.CommandType = CommandType.Text;
+                    cmdLecon.CommandText = lecon;
+
+                    string leconUser = cmdLecon.ExecuteScalar().ToString();
+                    lblUserLecon.Text = leconUser;
+                }
+
+                lblUserCours.Visible = true;
+                lblUserLecon.Visible = true;
+            }
+
+            catch (InvalidOperationException)
+            {
+                //Erreur de connection à la base
+                MessageBox.Show("Erreur de connection à la base de données (Lecon/Cours)");
+            }
+
+            catch (OleDbException)
+            {
+                //Erreur requète SQL
+                MessageBox.Show("Erreur dans la requète SQL (Lecon/Cours)");
+            }
+
+            catch (Exception erreur)
+            {
+                //Exception inconnue
+                MessageBox.Show("Autre erreur : " + erreur.GetType().ToString() + "(Lecon/Cours)");
+            }
+
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                {
+                    //Si tout s'est bien passé on ferme la connection
+                    connec.Close();
+                }
+            }
         }
     }
 }
