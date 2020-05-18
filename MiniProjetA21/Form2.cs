@@ -34,7 +34,6 @@ namespace MiniProjetA21
 
         private void Form2_Load(object sender, EventArgs e)
         {
-            string enonceExo = string.Empty;
             int codePhrase = -1;
             string numMots = string.Empty;
             string textePhrase = string.Empty;
@@ -59,7 +58,7 @@ namespace MiniProjetA21
                 if (a && b && c)
                 {
                     // on recupere ici l'enonce, le code de la phrase et les mots a completer
-                    enonceExo = dr["enonceExo"].ToString();
+                    lblEnonce.Text = dr["enonceExo"].ToString();
                     codePhrase = int.Parse(dr["codePhrase"].ToString());
                     numMots = dr["listeMots"].ToString();
                 }
@@ -84,13 +83,22 @@ namespace MiniProjetA21
             }
 
             // generation de la phrase a afficher dans le label, sans les mots a completer
+            string temp = string.Empty;
             foreach(string str in textePhrase.Split(' '))
             {
                 if ( listeMots.Contains(str))
                 {
-
+                    for (int i = 0; i < str.Length; i++)
+                    {
+                        temp += ' ';
+                    }
                 }
-            }
+                else
+                {
+                    temp += str;
+                }
+            } // fin foreach textePhrase
+            lblPhrase.Text = temp;
 
 
         }

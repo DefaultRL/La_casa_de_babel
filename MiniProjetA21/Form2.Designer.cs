@@ -30,10 +30,10 @@
         {
             this.lblTitlePhrases_Trous = new System.Windows.Forms.Label();
             this.gpbPhrases_Trous = new System.Windows.Forms.GroupBox();
+            this.lblEnonce = new System.Windows.Forms.Label();
+            this.lblPhrase = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
-            this.lblPhrase = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.gpbPhrases_Trous.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -49,7 +49,7 @@
             // 
             // gpbPhrases_Trous
             // 
-            this.gpbPhrases_Trous.Controls.Add(this.label1);
+            this.gpbPhrases_Trous.Controls.Add(this.lblEnonce);
             this.gpbPhrases_Trous.Controls.Add(this.lblPhrase);
             this.gpbPhrases_Trous.Controls.Add(this.btnExit);
             this.gpbPhrases_Trous.Controls.Add(this.btnNext);
@@ -60,6 +60,24 @@
             this.gpbPhrases_Trous.TabIndex = 2;
             this.gpbPhrases_Trous.TabStop = false;
             this.gpbPhrases_Trous.Text = "Phrase à trous";
+            // 
+            // lblEnonce
+            // 
+            this.lblEnonce.AutoSize = true;
+            this.lblEnonce.Location = new System.Drawing.Point(52, 70);
+            this.lblEnonce.Name = "lblEnonce";
+            this.lblEnonce.Size = new System.Drawing.Size(233, 18);
+            this.lblEnonce.TabIndex = 5;
+            this.lblEnonce.Text = "Complétez les mots manquants :";
+            // 
+            // lblPhrase
+            // 
+            this.lblPhrase.AutoSize = true;
+            this.lblPhrase.Location = new System.Drawing.Point(120, 165);
+            this.lblPhrase.Name = "lblPhrase";
+            this.lblPhrase.Size = new System.Drawing.Size(65, 18);
+            this.lblPhrase.TabIndex = 4;
+            this.lblPhrase.Text = "_phrase";
             // 
             // btnExit
             // 
@@ -78,24 +96,6 @@
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Exercice Suivant";
             this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // lblPhrase
-            // 
-            this.lblPhrase.AutoSize = true;
-            this.lblPhrase.Location = new System.Drawing.Point(120, 165);
-            this.lblPhrase.Name = "lblPhrase";
-            this.lblPhrase.Size = new System.Drawing.Size(65, 18);
-            this.lblPhrase.TabIndex = 4;
-            this.lblPhrase.Text = "_phrase";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(52, 70);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(233, 18);
-            this.label1.TabIndex = 5;
-            this.label1.Text = "Complétez les mots manquants :";
             // 
             // frmPhrases_a_trous
             // 
@@ -122,7 +122,7 @@
         private System.Windows.Forms.GroupBox gpbPhrases_Trous;
         private System.Windows.Forms.Button btnExit;
         private System.Windows.Forms.Button btnNext;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblEnonce;
         private System.Windows.Forms.Label lblPhrase;
     }
 }
