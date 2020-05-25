@@ -24,34 +24,36 @@ namespace MiniProjetA21
 
         //Initialisation de la connection
         OleDbConnection connec = new OleDbConnection();
+        DataSet ds = new DataSet();
 
         private void frmStart_Load(object sender, EventArgs e)
         {
             try
             {
-
                 //Connection avec la chaine
                 connec.ConnectionString = chaine;
-                //Ouverture de la connection
+
+                //Mise à jour du codeUtil de Toregrossa pour simplification
                 connec.Open();
+                string update = "update Utilisateurs set codeUtil = 0 where codeUtil = 6";
+                OleDbCommand cmdUp = new OleDbCommand(update,connec);
+                cmdUp.ExecuteNonQuery();
+                
+                //Récupération de la table en local avec le DataSet
+                string requete = @"select * from Utilisateurs";
+                OleDbCommand cmd = new OleDbCommand(requete,connec);
+                OleDbDataAdapter da = new OleDbDataAdapter();
+                da.SelectCommand = cmd;
+                da.Fill(ds, "Users");
 
-                string requete = @"select [pnUtil],[nomUtil],[codeUtil] from Utilisateurs";
-
-                //Paramètrage de l'objet commande
-                OleDbCommand cmd = new OleDbCommand();
-                cmd.Connection = connec;
-                cmd.CommandType = CommandType.Text;
-                cmd.CommandText = requete;
-
-                //Execution de la requète
-                OleDbDataReader dr = cmd.ExecuteReader();
-
-                //Tant que le résultat n'est pas vide
-                while (dr.Read())
+                //Remplissage de la combobox
+                string name;
+                foreach(DataRow ligne in ds.Tables["Users"].Rows)
                 {
-                    //On ajoute le prénom et nom à cbUser
-                    cbUser.Items.Add(dr.GetString(0) + " " + dr.GetString(1));
+                    name = ligne["pnUtil"].ToString() + " " + ligne["nomUtil"].ToString();
+                    cbUser.Items.Add(name);
                 }
+
             }
 
             catch (InvalidOperationException)
