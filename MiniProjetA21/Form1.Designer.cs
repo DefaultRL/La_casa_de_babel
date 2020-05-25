@@ -41,6 +41,7 @@
             this.lblFleche = new System.Windows.Forms.Label();
             this.lblUserComment = new System.Windows.Forms.Label();
             this.lblUserProg = new System.Windows.Forms.Label();
+            this.lblUserExo = new System.Windows.Forms.Label();
             this.gpbConnec.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -56,6 +57,7 @@
             // 
             // gpbConnec
             // 
+            this.gpbConnec.Controls.Add(this.lblUserExo);
             this.gpbConnec.Controls.Add(this.lblUserProg);
             this.gpbConnec.Controls.Add(this.lblUserComment);
             this.gpbConnec.Controls.Add(this.lblFleche);
@@ -129,6 +131,7 @@
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Exercice Suivant";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // cbUser
             // 
@@ -175,6 +178,15 @@
             this.lblUserProg.TabIndex = 10;
             this.lblUserProg.Text = "Progression actuelle :";
             // 
+            // lblUserExo
+            // 
+            this.lblUserExo.AutoSize = true;
+            this.lblUserExo.Location = new System.Drawing.Point(962, 80);
+            this.lblUserExo.Name = "lblUserExo";
+            this.lblUserExo.Size = new System.Drawing.Size(42, 23);
+            this.lblUserExo.TabIndex = 11;
+            this.lblUserExo.Text = "N/A";
+            // 
             // frmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
@@ -210,6 +222,7 @@
         private System.Windows.Forms.Label lblUserComment;
         private System.Windows.Forms.Label lblFleche;
         private System.Windows.Forms.Label lblUserProg;
+        private System.Windows.Forms.Label lblUserExo;
     }
 }
 

@@ -90,6 +90,8 @@ namespace MiniProjetA21
             lblUserLecon.Visible = false;
             lblUserComment.Visible = false;
             lblFleche.Visible = false;
+            lblUserProg.Visible = false;
+            lblUserExo.Visible = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -158,7 +160,15 @@ namespace MiniProjetA21
                     string commentUser = cmdComment.ExecuteScalar().ToString();
                     lblUserComment.Text = commentUser;
 
-                    string progression = @"select "
+                    string progression = @"select [numExo] from Exercices where [numLecon] = "
+                                        + dr.GetInt32(1);
+                    OleDbCommand cmdExo = new OleDbCommand();
+                    cmdExo.Connection = connec;
+                    cmdExo.CommandType = CommandType.Text;
+                    cmdExo.CommandText = progression;
+
+                    string exoUser = cmdExo.ExecuteScalar().ToString();
+                    lblUserExo.Text = exoUser;
                 }
 
                 //On met à jour l'interface
@@ -166,6 +176,8 @@ namespace MiniProjetA21
                 lblUserLecon.Visible = true;
                 lblUserComment.Visible = true;
                 lblFleche.Visible = true;
+                lblUserProg.Visible = true;
+                lblUserExo.Visible = true;
             }
 
             catch (InvalidOperationException)
@@ -194,6 +206,15 @@ namespace MiniProjetA21
                     connec.Close();
                 }
             }
+        }
+
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            //Genere une exception !!
+            int codeLecon = Int32.Parse(lblUserLecon.Text);
+            int codeExo = Int32.Parse(lblUserExo.Text);
+            frmPhrases_a_trous test = new frmPhrases_a_trous(ds, lblUserCours.Text, codeLecon, codeExo);
+            test.ShowDialog();
         }
     }
 }
