@@ -30,14 +30,16 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.gpbConnec = new System.Windows.Forms.GroupBox();
+            this.lblUserLecon = new System.Windows.Forms.Label();
+            this.lblLeconActuelle = new System.Windows.Forms.Label();
+            this.lblUserCours = new System.Windows.Forms.Label();
+            this.lblCoursActuel = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.lblConnec = new System.Windows.Forms.Label();
-            this.lblCoursActuel = new System.Windows.Forms.Label();
-            this.lblUserCours = new System.Windows.Forms.Label();
-            this.lblLeconActuelle = new System.Windows.Forms.Label();
-            this.lblUserLecon = new System.Windows.Forms.Label();
+            this.lblFleche = new System.Windows.Forms.Label();
+            this.lblUserComment = new System.Windows.Forms.Label();
             this.gpbConnec.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -53,6 +55,8 @@
             // 
             // gpbConnec
             // 
+            this.gpbConnec.Controls.Add(this.lblUserComment);
+            this.gpbConnec.Controls.Add(this.lblFleche);
             this.gpbConnec.Controls.Add(this.lblUserLecon);
             this.gpbConnec.Controls.Add(this.lblLeconActuelle);
             this.gpbConnec.Controls.Add(this.lblUserCours);
@@ -68,6 +72,42 @@
             this.gpbConnec.TabIndex = 1;
             this.gpbConnec.TabStop = false;
             this.gpbConnec.Text = "Bienvenue";
+            // 
+            // lblUserLecon
+            // 
+            this.lblUserLecon.AutoSize = true;
+            this.lblUserLecon.Location = new System.Drawing.Point(310, 232);
+            this.lblUserLecon.Name = "lblUserLecon";
+            this.lblUserLecon.Size = new System.Drawing.Size(42, 23);
+            this.lblUserLecon.TabIndex = 7;
+            this.lblUserLecon.Text = "N/A";
+            // 
+            // lblLeconActuelle
+            // 
+            this.lblLeconActuelle.AutoSize = true;
+            this.lblLeconActuelle.Location = new System.Drawing.Point(111, 232);
+            this.lblLeconActuelle.Name = "lblLeconActuelle";
+            this.lblLeconActuelle.Size = new System.Drawing.Size(148, 23);
+            this.lblLeconActuelle.TabIndex = 6;
+            this.lblLeconActuelle.Text = "Leçon actuelle :";
+            // 
+            // lblUserCours
+            // 
+            this.lblUserCours.AutoSize = true;
+            this.lblUserCours.Location = new System.Drawing.Point(310, 177);
+            this.lblUserCours.Name = "lblUserCours";
+            this.lblUserCours.Size = new System.Drawing.Size(42, 23);
+            this.lblUserCours.TabIndex = 5;
+            this.lblUserCours.Text = "N/A";
+            // 
+            // lblCoursActuel
+            // 
+            this.lblCoursActuel.AutoSize = true;
+            this.lblCoursActuel.Location = new System.Drawing.Point(111, 177);
+            this.lblCoursActuel.Name = "lblCoursActuel";
+            this.lblCoursActuel.Size = new System.Drawing.Size(132, 23);
+            this.lblCoursActuel.TabIndex = 4;
+            this.lblCoursActuel.Text = "Cours actuel :";
             // 
             // btnExit
             // 
@@ -106,41 +146,23 @@
             this.lblConnec.TabIndex = 0;
             this.lblConnec.Text = "Connectez-vous :";
             // 
-            // lblCoursActuel
+            // lblFleche
             // 
-            this.lblCoursActuel.AutoSize = true;
-            this.lblCoursActuel.Location = new System.Drawing.Point(111, 177);
-            this.lblCoursActuel.Name = "lblCoursActuel";
-            this.lblCoursActuel.Size = new System.Drawing.Size(132, 23);
-            this.lblCoursActuel.TabIndex = 4;
-            this.lblCoursActuel.Text = "Cours actuel :";
+            this.lblFleche.AutoSize = true;
+            this.lblFleche.Location = new System.Drawing.Point(197, 289);
+            this.lblFleche.Name = "lblFleche";
+            this.lblFleche.Size = new System.Drawing.Size(46, 23);
+            this.lblFleche.TabIndex = 8;
+            this.lblFleche.Text = ">>>";
             // 
-            // lblUserCours
+            // lblUserComment
             // 
-            this.lblUserCours.AutoSize = true;
-            this.lblUserCours.Location = new System.Drawing.Point(310, 177);
-            this.lblUserCours.Name = "lblUserCours";
-            this.lblUserCours.Size = new System.Drawing.Size(42, 23);
-            this.lblUserCours.TabIndex = 5;
-            this.lblUserCours.Text = "N/A";
-            // 
-            // lblLeconActuelle
-            // 
-            this.lblLeconActuelle.AutoSize = true;
-            this.lblLeconActuelle.Location = new System.Drawing.Point(111, 232);
-            this.lblLeconActuelle.Name = "lblLeconActuelle";
-            this.lblLeconActuelle.Size = new System.Drawing.Size(148, 23);
-            this.lblLeconActuelle.TabIndex = 6;
-            this.lblLeconActuelle.Text = "Leçon actuelle :";
-            // 
-            // lblUserLecon
-            // 
-            this.lblUserLecon.AutoSize = true;
-            this.lblUserLecon.Location = new System.Drawing.Point(310, 232);
-            this.lblUserLecon.Name = "lblUserLecon";
-            this.lblUserLecon.Size = new System.Drawing.Size(42, 23);
-            this.lblUserLecon.TabIndex = 7;
-            this.lblUserLecon.Text = "N/A";
+            this.lblUserComment.AutoSize = true;
+            this.lblUserComment.Location = new System.Drawing.Point(310, 289);
+            this.lblUserComment.Name = "lblUserComment";
+            this.lblUserComment.Size = new System.Drawing.Size(42, 23);
+            this.lblUserComment.TabIndex = 9;
+            this.lblUserComment.Text = "N/A";
             // 
             // frmStart
             // 
@@ -174,6 +196,8 @@
         private System.Windows.Forms.Label lblUserCours;
         private System.Windows.Forms.Label lblLeconActuelle;
         private System.Windows.Forms.Label lblUserLecon;
+        private System.Windows.Forms.Label lblUserComment;
+        private System.Windows.Forms.Label lblFleche;
     }
 }
 

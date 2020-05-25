@@ -88,6 +88,8 @@ namespace MiniProjetA21
             lblLeconActuelle.Visible = false;
             lblUserCours.Visible = false;
             lblUserLecon.Visible = false;
+            lblUserComment.Visible = false;
+            lblFleche.Visible = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -138,10 +140,22 @@ namespace MiniProjetA21
 
                     string leconUser = cmdLecon.ExecuteScalar().ToString();
                     lblUserLecon.Text = leconUser;
+
+                    string comment = @"select [commentLecon] from Lecons where [numLecon] = "
+                                    + dr.GetInt32(1);
+                    OleDbCommand cmdComment = new OleDbCommand();
+                    cmdComment.Connection = connec;
+                    cmdComment.CommandType = CommandType.Text;
+                    cmdComment.CommandText = comment;
+
+                    string commentUser = cmdComment.ExecuteScalar().ToString();
+                    lblUserComment.Text = commentUser;
                 }
 
                 lblUserCours.Visible = true;
                 lblUserLecon.Visible = true;
+                lblUserComment.Visible = true;
+                lblFleche.Visible = true;
             }
 
             catch (InvalidOperationException)
