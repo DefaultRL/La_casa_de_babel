@@ -119,18 +119,22 @@ namespace MiniProjetA21
                 //Execution de la requète
                 OleDbDataReader dr = cmd.ExecuteReader();
 
+                //Tant que le DataReader n'est pas null
                 while (dr.Read())
                 {
+                    //On recupere le titreCours correspond au numCours
                     string cours = @"select [titreCours] from Cours where ucase([numCours])='"
                                     + dr.GetString(0) + "'";
                     OleDbCommand cmdCours = new OleDbCommand();
                     cmdCours.Connection = connec;
                     cmdCours.CommandType = CommandType.Text;
                     cmdCours.CommandText = cours;
-
+                    
+                    //On l'ajoute au GroupBox
                     string coursUser = cmdCours.ExecuteScalar().ToString();
                     lblUserCours.Text = coursUser;
 
+                    //On recupere le titreLecon correspondant au nomLecon
                     string lecon = @"select [titreLecon] from Lecons where [numLecon] = "
                                     + dr.GetInt32(1);
                     OleDbCommand cmdLecon = new OleDbCommand();
@@ -138,9 +142,11 @@ namespace MiniProjetA21
                     cmdLecon.CommandType = CommandType.Text;
                     cmdLecon.CommandText = lecon;
 
+                    //On l'ajoute au GroupBox
                     string leconUser = cmdLecon.ExecuteScalar().ToString();
                     lblUserLecon.Text = leconUser;
 
+                    //On recupere le commentLecon correspondant au numLecon
                     string comment = @"select [commentLecon] from Lecons where [numLecon] = "
                                     + dr.GetInt32(1);
                     OleDbCommand cmdComment = new OleDbCommand();
@@ -148,10 +154,14 @@ namespace MiniProjetA21
                     cmdComment.CommandType = CommandType.Text;
                     cmdComment.CommandText = comment;
 
+                    //On l'ajoute au GroupBox
                     string commentUser = cmdComment.ExecuteScalar().ToString();
                     lblUserComment.Text = commentUser;
+
+                    string progression = @"select "
                 }
 
+                //On met à jour l'interface
                 lblUserCours.Visible = true;
                 lblUserLecon.Visible = true;
                 lblUserComment.Visible = true;

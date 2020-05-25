@@ -40,6 +40,7 @@
             this.lblConnec = new System.Windows.Forms.Label();
             this.lblFleche = new System.Windows.Forms.Label();
             this.lblUserComment = new System.Windows.Forms.Label();
+            this.lblUserProg = new System.Windows.Forms.Label();
             this.gpbConnec.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -55,6 +56,7 @@
             // 
             // gpbConnec
             // 
+            this.gpbConnec.Controls.Add(this.lblUserProg);
             this.gpbConnec.Controls.Add(this.lblUserComment);
             this.gpbConnec.Controls.Add(this.lblFleche);
             this.gpbConnec.Controls.Add(this.lblUserLecon);
@@ -164,6 +166,15 @@
             this.lblUserComment.TabIndex = 9;
             this.lblUserComment.Text = "N/A";
             // 
+            // lblUserProg
+            // 
+            this.lblUserProg.AutoSize = true;
+            this.lblUserProg.Location = new System.Drawing.Point(730, 80);
+            this.lblUserProg.Name = "lblUserProg";
+            this.lblUserProg.Size = new System.Drawing.Size(200, 23);
+            this.lblUserProg.TabIndex = 10;
+            this.lblUserProg.Text = "Progression actuelle :";
+            // 
             // frmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
@@ -198,6 +209,7 @@
         private System.Windows.Forms.Label lblUserLecon;
         private System.Windows.Forms.Label lblUserComment;
         private System.Windows.Forms.Label lblFleche;
+        private System.Windows.Forms.Label lblUserProg;
     }
 }
 
