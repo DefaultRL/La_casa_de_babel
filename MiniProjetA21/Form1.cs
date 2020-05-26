@@ -215,8 +215,8 @@ namespace MiniProjetA21
         private void btnNext_Click(object sender, EventArgs e)
         {
             //Genere une exception !!
-            int codeLecon = Int32.Parse(lblUserLecon.Text);
-            int codeExo = Int32.Parse(lblUserExo.Text);
+            int codeLecon = int.Parse(lblUserLecon.Text);
+            int codeExo = int.Parse(lblUserExo.Text);
             frmPhrases_a_trous test = new frmPhrases_a_trous(ds, lblUserCours.Text, codeLecon, codeExo);
             test.ShowDialog();
         }
