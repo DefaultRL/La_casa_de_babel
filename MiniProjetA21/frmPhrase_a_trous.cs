@@ -39,7 +39,9 @@ namespace MiniProjetA21
             string textePhrase = string.Empty;
             string traducPhrase = string.Empty;
             List<int> liste_numMots = new List<int>();
-            List<string> listeMots = new List<string>();
+            List<string> liste_motsManquants = new List<string>();
+
+
 
             // parcours de la table <Cours> afin de trouver son titre et de l'afficher en en-tete de fenetre
             foreach (DataRow dr in tables.Tables["Cours"].Rows)
@@ -74,33 +76,69 @@ namespace MiniProjetA21
                 }
             } // fin foreach <Phrases>
 
+
+
             // on recupere la liste de mots a completer
             liste_numMots = numMots.Split('/').Select(int.Parse).ToList();
             
             foreach(int i in liste_numMots)
             {
-                listeMots.Add( textePhrase.Split(' ')[i] );
+                liste_motsManquants.Add( textePhrase.Split(' ')[i] );
             }
 
+
+
             // generation de la phrase a afficher dans le label, sans les mots a completer
+            // generation dynamique des textBox
+            // 110 165 location label
+            // dimensions label : 10 pxl par charactere + 4 pxl
             string temp = string.Empty;
+            int location_txb = 114;
             foreach(string str in textePhrase.Split(' '))
             {
-                if ( listeMots.Contains(str))
+                if ( liste_motsManquants.Contains(str))
                 {
+                    temp += ' ';
+                    location_txb += 10;
+
+                    TextBox txbMot = new TextBox();
+
+                    txbMot.BackColor = System.Drawing.Color.White;
+                    txbMot.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+                    txbMot.Location = new System.Drawing.Point(location_txb, 162);
+                    txbMot.Name = "txbMot_" + str;
+                    txbMot.AutoSize = true;
+                    txbMot.TabIndex = 6;
+
+                    gpbPhrases_Trous.Controls.Add(txbMot);
+
+                    // on remplace les mots manquants par des espaces
                     for (int i = 0; i < str.Length; i++)
                     {
                         temp += ' ';
+                        location_txb += 10;
                     }
+                    
+                    temp += ' ';
+                    location_txb += 10;
                 }
                 else
                 {
                     temp += str;
+                    // 1 charactere = 10 pxl
+                    location_txb += str.Length*10;
                 }
+                temp += ' ';
             } // fin foreach textePhrase
             lblPhrase.Text = temp;
+        }
 
+        private void btnVerif_Click(object sender, EventArgs e)
+        {
+            foreach(Control ctrl in gpbPhrases_Trous.Controls)
+            {
 
+            }
         }
     }
 }
