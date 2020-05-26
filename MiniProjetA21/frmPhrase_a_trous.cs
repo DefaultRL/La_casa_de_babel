@@ -18,6 +18,7 @@ namespace MiniProjetA21
         public string numCours;
         public int numLecon;
         public int numExo;
+        List<string> liste_motsManquants = new List<string>();
 
         /* Phrases_a_trous  :   constructeur du formulaire
          *      ds              :   DataSet :   dataset local de l'ensemble des tables
@@ -39,7 +40,7 @@ namespace MiniProjetA21
             string textePhrase = string.Empty;
             string traducPhrase = string.Empty;
             List<int> liste_numMots = new List<int>();
-            List<string> liste_motsManquants = new List<string>();
+            
 
 
 
@@ -135,9 +136,34 @@ namespace MiniProjetA21
 
         private void btnVerif_Click(object sender, EventArgs e)
         {
+            int i = 0;
             foreach(Control ctrl in gpbPhrases_Trous.Controls)
             {
+                if(ctrl is TextBox)
+                {
+                    if(ctrl.Text == liste_motsManquants[i])
+                    {
+                        ctrl.BackColor = System.Drawing.Color.Green;
+                    }
+                    else
+                    {
+                        ctrl.BackColor = System.Drawing.Color.Red;
+                    }
+                    i++;
+                }
+            }
+        }
 
+        private void button2_Click(object sender, EventArgs e)
+        {
+            int i = 0;
+            foreach (Control ctrl in gpbPhrases_Trous.Controls)
+            {
+                if (ctrl is TextBox)
+                {
+                    ctrl.Text = liste_motsManquants[i];
+                    i++;
+                }
             }
         }
     }

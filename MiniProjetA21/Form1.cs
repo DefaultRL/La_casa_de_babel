@@ -212,6 +212,7 @@ namespace MiniProjetA21
             }
         }
 
+        
         private void btnNext_Click(object sender, EventArgs e)
         {
             //Genere une exception !!

@@ -30,13 +30,13 @@
         {
             this.lblTitlePhrases_Trous = new System.Windows.Forms.Label();
             this.gpbPhrases_Trous = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.btnVerif = new System.Windows.Forms.Button();
             this.txbMot1 = new System.Windows.Forms.TextBox();
             this.lblEnonce = new System.Windows.Forms.Label();
             this.lblPhrase = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
-            this.btnVerif = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
             this.gpbPhrases_Trous.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -66,6 +66,26 @@
             this.gpbPhrases_Trous.TabIndex = 2;
             this.gpbPhrases_Trous.TabStop = false;
             this.gpbPhrases_Trous.Text = "Phrase à trous";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(978, 334);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(173, 34);
+            this.button2.TabIndex = 8;
+            this.button2.Text = "Afficher Solution";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // btnVerif
+            // 
+            this.btnVerif.Location = new System.Drawing.Point(978, 374);
+            this.btnVerif.Name = "btnVerif";
+            this.btnVerif.Size = new System.Drawing.Size(173, 34);
+            this.btnVerif.TabIndex = 7;
+            this.btnVerif.Text = "Vérifier";
+            this.btnVerif.UseVisualStyleBackColor = true;
+            this.btnVerif.Click += new System.EventHandler(this.btnVerif_Click);
             // 
             // txbMot1
             // 
@@ -114,25 +134,6 @@
             this.btnNext.TabIndex = 2;
             this.btnNext.Text = "Exercice Suivant";
             this.btnNext.UseVisualStyleBackColor = true;
-            // 
-            // btnVerif
-            // 
-            this.btnVerif.Location = new System.Drawing.Point(978, 374);
-            this.btnVerif.Name = "btnVerif";
-            this.btnVerif.Size = new System.Drawing.Size(173, 34);
-            this.btnVerif.TabIndex = 7;
-            this.btnVerif.Text = "Vérifier";
-            this.btnVerif.UseVisualStyleBackColor = true;
-            this.btnVerif.Click += new System.EventHandler(this.btnVerif_Click);
-            // 
-            // button2
-            // 
-            this.button2.Location = new System.Drawing.Point(978, 334);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(173, 34);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Afficher Solution";
-            this.button2.UseVisualStyleBackColor = true;
             // 
             // frmPhrases_a_trous
             // 
