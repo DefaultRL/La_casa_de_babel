@@ -233,7 +233,7 @@ namespace MiniProjetA21
             }
             
 
-            frmPhrases_a_trous test = new frmPhrases_a_trous(ds, codeCours, codeLecon, codeExo);
+            frmPhrases_a_trous test = new frmPhrases_a_trous(chaine, codeCours, codeLecon, codeExo);
             test.ShowDialog();
         }
     }
