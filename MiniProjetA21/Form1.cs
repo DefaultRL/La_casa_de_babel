@@ -29,6 +29,7 @@ namespace MiniProjetA21
         //Initialisation de la connection
         OleDbConnection connec = new OleDbConnection();
         DataSet ds = new DataSet();
+        string nomUtil;
 
         private void frmStart_Load(object sender, EventArgs e)
         {
@@ -107,14 +108,17 @@ namespace MiniProjetA21
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
             try
-            { 
+            {
+                //Récup 
+                nomUtil = cbUser.SelectedItem.ToString();
+
                 lblCoursActuel.Visible = true;
                 lblLeconActuelle.Visible = true;
 
                 connec.Open();
 
                 string recupInfos = @"select [codeCours], [codeLeçon] from Utilisateurs 
-                            where [codeUtil]=" + cbUser.SelectedIndex;
+                            where [codeUtil]= " + cbUser.SelectedIndex;
 
                 //Paramètrage de l'objet commande
                 OleDbCommand cmd = new OleDbCommand();
@@ -215,10 +219,21 @@ namespace MiniProjetA21
         
         private void btnNext_Click(object sender, EventArgs e)
         {
-            //Genere une exception !!
-            int codeLecon = int.Parse(lblUserLecon.Text);
-            int codeExo = int.Parse(lblUserExo.Text);
-            frmPhrases_a_trous test = new frmPhrases_a_trous(ds, lblUserCours.Text, codeLecon, codeExo);
+            int codeLecon = -1;
+            int codeExo = -1;
+            string codeCours = "";
+            foreach (DataRow ligne in ds.Tables["Users"].Rows)
+            {
+                 if(ligne[1].ToString() == nomUtil)
+                {
+                    codeLecon = (int)ligne[5];
+                    codeExo = (int)ligne[4];
+                    codeCours = ligne[6].ToString();
+                }
+            }
+            
+
+            frmPhrases_a_trous test = new frmPhrases_a_trous(ds, codeCours, codeLecon, codeExo);
             test.ShowDialog();
         }
     }
