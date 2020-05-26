@@ -30,6 +30,10 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.gpbConnec = new System.Windows.Forms.GroupBox();
+            this.lblUserExo = new System.Windows.Forms.Label();
+            this.lblUserProg = new System.Windows.Forms.Label();
+            this.lblUserComment = new System.Windows.Forms.Label();
+            this.lblFleche = new System.Windows.Forms.Label();
             this.lblUserLecon = new System.Windows.Forms.Label();
             this.lblLeconActuelle = new System.Windows.Forms.Label();
             this.lblUserCours = new System.Windows.Forms.Label();
@@ -38,17 +42,13 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.lblConnec = new System.Windows.Forms.Label();
-            this.lblFleche = new System.Windows.Forms.Label();
-            this.lblUserComment = new System.Windows.Forms.Label();
-            this.lblUserProg = new System.Windows.Forms.Label();
-            this.lblUserExo = new System.Windows.Forms.Label();
             this.gpbConnec.SuspendLayout();
             this.SuspendLayout();
             // 
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(420, 66);
+            this.lblTitle.Location = new System.Drawing.Point(402, 65);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(363, 38);
@@ -76,6 +76,42 @@
             this.gpbConnec.TabIndex = 1;
             this.gpbConnec.TabStop = false;
             this.gpbConnec.Text = "Bienvenue";
+            // 
+            // lblUserExo
+            // 
+            this.lblUserExo.AutoSize = true;
+            this.lblUserExo.Location = new System.Drawing.Point(962, 80);
+            this.lblUserExo.Name = "lblUserExo";
+            this.lblUserExo.Size = new System.Drawing.Size(42, 23);
+            this.lblUserExo.TabIndex = 11;
+            this.lblUserExo.Text = "N/A";
+            // 
+            // lblUserProg
+            // 
+            this.lblUserProg.AutoSize = true;
+            this.lblUserProg.Location = new System.Drawing.Point(730, 80);
+            this.lblUserProg.Name = "lblUserProg";
+            this.lblUserProg.Size = new System.Drawing.Size(200, 23);
+            this.lblUserProg.TabIndex = 10;
+            this.lblUserProg.Text = "Progression actuelle :";
+            // 
+            // lblUserComment
+            // 
+            this.lblUserComment.AutoSize = true;
+            this.lblUserComment.Location = new System.Drawing.Point(310, 289);
+            this.lblUserComment.Name = "lblUserComment";
+            this.lblUserComment.Size = new System.Drawing.Size(42, 23);
+            this.lblUserComment.TabIndex = 9;
+            this.lblUserComment.Text = "N/A";
+            // 
+            // lblFleche
+            // 
+            this.lblFleche.AutoSize = true;
+            this.lblFleche.Location = new System.Drawing.Point(197, 289);
+            this.lblFleche.Name = "lblFleche";
+            this.lblFleche.Size = new System.Drawing.Size(46, 23);
+            this.lblFleche.TabIndex = 8;
+            this.lblFleche.Text = ">>>";
             // 
             // lblUserLecon
             // 
@@ -150,42 +186,6 @@
             this.lblConnec.Size = new System.Drawing.Size(161, 23);
             this.lblConnec.TabIndex = 0;
             this.lblConnec.Text = "Connectez-vous :";
-            // 
-            // lblFleche
-            // 
-            this.lblFleche.AutoSize = true;
-            this.lblFleche.Location = new System.Drawing.Point(197, 289);
-            this.lblFleche.Name = "lblFleche";
-            this.lblFleche.Size = new System.Drawing.Size(46, 23);
-            this.lblFleche.TabIndex = 8;
-            this.lblFleche.Text = ">>>";
-            // 
-            // lblUserComment
-            // 
-            this.lblUserComment.AutoSize = true;
-            this.lblUserComment.Location = new System.Drawing.Point(310, 289);
-            this.lblUserComment.Name = "lblUserComment";
-            this.lblUserComment.Size = new System.Drawing.Size(42, 23);
-            this.lblUserComment.TabIndex = 9;
-            this.lblUserComment.Text = "N/A";
-            // 
-            // lblUserProg
-            // 
-            this.lblUserProg.AutoSize = true;
-            this.lblUserProg.Location = new System.Drawing.Point(730, 80);
-            this.lblUserProg.Name = "lblUserProg";
-            this.lblUserProg.Size = new System.Drawing.Size(200, 23);
-            this.lblUserProg.TabIndex = 10;
-            this.lblUserProg.Text = "Progression actuelle :";
-            // 
-            // lblUserExo
-            // 
-            this.lblUserExo.AutoSize = true;
-            this.lblUserExo.Location = new System.Drawing.Point(962, 80);
-            this.lblUserExo.Name = "lblUserExo";
-            this.lblUserExo.Size = new System.Drawing.Size(42, 23);
-            this.lblUserExo.TabIndex = 11;
-            this.lblUserExo.Text = "N/A";
             // 
             // frmStart
             // 
