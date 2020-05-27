@@ -18,28 +18,30 @@ namespace MiniProjetA21
             InitializeComponent();
         }
 
-        string infos;
-        List<string> mots = new List<string>();
+        DataSet tables = new DataSet();
+        string numCours;
+        int numLecon;
+        int numExo;
 
-        public frmPhraseDesordre(string infos)
+        public frmPhraseDesordre(DataSet ds, string cours, int lecon, int exo)
         {
-            MessageBox.Show("Récupérations des infos frmStart :" + infos);
+            MessageBox.Show("User : " + numCours + numLecon + numExo);
+            tables = ds;
+            numCours = cours;
+            numLecon = lecon;
+            numExo = exo;
         }
 
         private void frmPhraseDesordre_Load(object sender, EventArgs e)
         {
-            /*string phrase = "";
-            foreach(string phrase in ds.Tables["Tables"].Rows.Count)
+            List<string> mots = new List<string>();
+
+            string requete = @"select [codePhrase] from Exercices where [codeExo] =" + numExo;
+
+            foreach(DataRow dr in tables.Tables["Phrases"].Rows)
             {
 
-            }*/
+            }
         }
-
-        public string message
-        {
-            get { return infos; }
-            set { }
-        }
-      
     }
 }
