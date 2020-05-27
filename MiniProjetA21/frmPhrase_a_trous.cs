@@ -23,11 +23,79 @@ namespace MiniProjetA21
         List<string> liste_motsManquants = new List<string>();
 
 
-        public frmPhrases_a_trous(string cours, int lecon, int exo)
+        public frmPhrases_a_trous(string chaineco, string cours, int lecon, int exo)
         {
             numCours = cours;
             numLecon = lecon;
             numExo = exo;
+            chaine_connexion = chaineco;
+
+            OleDbConnection connec = new OleDbConnection();
+            connec.ConnectionString = chaine_connexion;
+            DataTable schemaTable = new DataTable();
+
+            try
+            {
+                connec.Open();
+                schemaTable = connec.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+                connec.Close();
+            }
+            catch (InvalidOperationException) // InvalidOperationException erreur de connexion à la base - OleDbException erreur dans la requete sql
+            {
+                MessageBox.Show("ERREUR : Connexion à la base");
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("ERREUR : Requete");
+            }
+            catch (Exception erreur)
+            {
+                MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
+            }
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                    connec.Close();
+            }
+
+            DataSet nomTables = new DataSet();
+            nomTables.Tables.Add(schemaTable);
+
+            foreach (DataRow row in nomTables.Tables[0].Rows)
+            {
+                try
+                {
+                    string temp = row[2].ToString();
+
+                    string requete = "SELECT * FROM " + temp;
+                    MessageBox.Show(temp);
+
+                    connec.ConnectionString = chaine_connexion;
+
+                    OleDbDataAdapter da = new OleDbDataAdapter(requete, connec);
+                    da.Fill(tables, temp);
+                    
+                }
+                catch (InvalidOperationException) // InvalidOperationException erreur de connexion à la base - OleDbException erreur dans la requete sql
+                {
+                    MessageBox.Show("ERREUR : Connexion à la base");
+                }
+                catch (OleDbException)
+                {
+                    MessageBox.Show("ERREUR : Requete");
+                }
+                catch (Exception erreur)
+                {
+                    MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
+                }
+                finally
+                {
+                    if(connec.State == ConnectionState.Open)
+                    {
+                        connec.Close();
+                    }
+                }
+            }
 
             InitializeComponent();
         }
