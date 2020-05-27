@@ -30,9 +30,8 @@
         {
             this.lblTitlePhrases_Trous = new System.Windows.Forms.Label();
             this.gpbPhrases_Trous = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
+            this.btnAffichSolut = new System.Windows.Forms.Button();
             this.btnVerif = new System.Windows.Forms.Button();
-            this.txbMot1 = new System.Windows.Forms.TextBox();
             this.lblEnonce = new System.Windows.Forms.Label();
             this.lblPhrase = new System.Windows.Forms.Label();
             this.btnExit = new System.Windows.Forms.Button();
@@ -52,9 +51,8 @@
             // 
             // gpbPhrases_Trous
             // 
-            this.gpbPhrases_Trous.Controls.Add(this.button2);
+            this.gpbPhrases_Trous.Controls.Add(this.btnAffichSolut);
             this.gpbPhrases_Trous.Controls.Add(this.btnVerif);
-            this.gpbPhrases_Trous.Controls.Add(this.txbMot1);
             this.gpbPhrases_Trous.Controls.Add(this.lblEnonce);
             this.gpbPhrases_Trous.Controls.Add(this.lblPhrase);
             this.gpbPhrases_Trous.Controls.Add(this.btnExit);
@@ -67,15 +65,15 @@
             this.gpbPhrases_Trous.TabStop = false;
             this.gpbPhrases_Trous.Text = "Phrase à trous";
             // 
-            // button2
+            // btnAffichSolut
             // 
-            this.button2.Location = new System.Drawing.Point(978, 334);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(173, 34);
-            this.button2.TabIndex = 8;
-            this.button2.Text = "Afficher Solution";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.btnAffichSolut.Location = new System.Drawing.Point(978, 334);
+            this.btnAffichSolut.Name = "btnAffichSolut";
+            this.btnAffichSolut.Size = new System.Drawing.Size(173, 34);
+            this.btnAffichSolut.TabIndex = 8;
+            this.btnAffichSolut.Text = "Afficher Solution";
+            this.btnAffichSolut.UseVisualStyleBackColor = true;
+            this.btnAffichSolut.Click += new System.EventHandler(this.btnAffichSolut_Click);
             // 
             // btnVerif
             // 
@@ -86,16 +84,6 @@
             this.btnVerif.Text = "Vérifier";
             this.btnVerif.UseVisualStyleBackColor = true;
             this.btnVerif.Click += new System.EventHandler(this.btnVerif_Click);
-            // 
-            // txbMot1
-            // 
-            this.txbMot1.BackColor = System.Drawing.Color.White;
-            this.txbMot1.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbMot1.ForeColor = System.Drawing.SystemColors.WindowText;
-            this.txbMot1.Location = new System.Drawing.Point(194, 162);
-            this.txbMot1.Name = "txbMot1";
-            this.txbMot1.Size = new System.Drawing.Size(100, 23);
-            this.txbMot1.TabIndex = 6;
             // 
             // lblEnonce
             // 
@@ -114,7 +102,7 @@
             this.lblPhrase.Location = new System.Drawing.Point(110, 165);
             this.lblPhrase.Name = "lblPhrase";
             this.lblPhrase.Size = new System.Drawing.Size(78, 16);
-            this.lblPhrase.TabIndex = 4;
+            this.lblPhrase.TabIndex = 6;
             this.lblPhrase.Text = "phrases";
             // 
             // btnExit
@@ -125,6 +113,7 @@
             this.btnExit.TabIndex = 3;
             this.btnExit.Text = "Quitter";
             this.btnExit.UseVisualStyleBackColor = true;
+            this.btnExit.Click += new System.EventHandler(this.btnExit_Click);
             // 
             // btnNext
             // 
@@ -162,8 +151,7 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblEnonce;
         private System.Windows.Forms.Label lblPhrase;
-        private System.Windows.Forms.TextBox txbMot1;
-        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button btnAffichSolut;
         private System.Windows.Forms.Button btnVerif;
     }
 }
