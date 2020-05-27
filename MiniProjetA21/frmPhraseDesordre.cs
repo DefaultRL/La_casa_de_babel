@@ -19,6 +19,7 @@ namespace MiniProjetA21
         }
 
         string infos;
+        List<string> mots = new List<string>();
 
         public frmPhraseDesordre(string infos)
         {
@@ -27,7 +28,11 @@ namespace MiniProjetA21
 
         private void frmPhraseDesordre_Load(object sender, EventArgs e)
         {
-            
+            string phrase = "";
+            foreach(string phrase in ds.Tables["Tables"].Rows.Count)
+            {
+
+            }
         }
 
         public string message
