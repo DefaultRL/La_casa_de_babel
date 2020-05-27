@@ -26,7 +26,7 @@ namespace MiniProjetA21
         //Initialisation de la connection
         OleDbConnection connec = new OleDbConnection();
         DataSet ds = new DataSet();
-        string nomUtil;
+        string prenomNomUtil;
 
         private void frmStart_Load(object sender, EventArgs e)
         {
@@ -107,7 +107,7 @@ namespace MiniProjetA21
             try
             {
                 //Récup 
-                nomUtil = cbUser.SelectedItem.ToString();
+                prenomNomUtil = cbUser.SelectedItem.ToString();
 
                 lblCoursActuel.Visible = true;
                 lblLeconActuelle.Visible = true;
@@ -214,24 +214,120 @@ namespace MiniProjetA21
         }
 
         
+        // bouton Exercice Suivant
         private void btnNext_Click(object sender, EventArgs e)
         {
+            // on récupère en local toutes les tables de la base et on les stocke dans le DataSet tables
+            DataSet tables = new DataSet();
+            OleDbConnection connec = new OleDbConnection();
+            connec.ConnectionString = chaine;
+            DataTable schemaTable = new DataTable();
+
+            // try-catch pour recuperer le schema des tables de la base de donnee
+            try
+            {
+                connec.Open();
+                schemaTable = connec.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+                connec.Close();
+            }
+            catch (InvalidOperationException) // InvalidOperationException erreur de connexion à la base - OleDbException erreur dans la requete sql
+            {
+                MessageBox.Show("ERREUR : Connexion à la base");
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("ERREUR : Requete");
+            }
+            catch (Exception erreur)
+            {
+                MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
+            }
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                    connec.Close();
+            }
+
+            DataSet nomTables = new DataSet();
+            nomTables.Tables.Add(schemaTable);
+
+            // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
+            try
+            {
+                foreach (DataRow row in nomTables.Tables[0].Rows)
+                {
+                    string temp = row[2].ToString();
+
+                    string requete = "SELECT * FROM " + temp;
+
+                    connec.ConnectionString = chaine;
+
+                    OleDbDataAdapter da = new OleDbDataAdapter(requete, connec);
+                    da.Fill(tables, temp);
+                }
+            }
+            catch (InvalidOperationException) // InvalidOperationException erreur de connexion à la base - OleDbException erreur dans la requete sql
+            {
+                MessageBox.Show("ERREUR : Connexion à la base");
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("ERREUR : Requete");
+            }
+            catch (Exception erreur)
+            {
+                MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
+            }
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                {
+                    connec.Close();
+                }
+            }
+
+
+            // on recupere les informations courantes sur l'utilisateur
             int codeLecon = -1;
             int codeExo = -1;
             string codeCours = "";
-            foreach (DataRow ligne in ds.Tables["Users"].Rows)
+            string nomUtil = prenomNomUtil.Split(' ')[1];
+
+            foreach (DataRow ligne in tables.Tables["Utilisateurs"].Rows)
             {
-                 if(ligne[1].ToString() == nomUtil)
+                if(ligne[1].ToString() == nomUtil)
                 {
                     codeLecon = (int)ligne[5];
                     codeExo = (int)ligne[4];
                     codeCours = ligne[6].ToString();
                 }
             }
-            
+            MessageBox.Show("fin users : " + codeLecon + " " + codeExo + " " + codeCours);
 
-            frmPhrases_a_trous test = new frmPhrases_a_trous(chaine, codeCours, codeLecon, codeExo);
-            test.ShowDialog();
-        }
+            // on cherche les informations concernant l'exercice courant de l'utilisateur
+            foreach (DataRow ligne in tables.Tables["Exercices"].Rows)
+            {
+                if((int)ligne[0] == codeExo && ligne[1].ToString() == codeCours && (int)ligne[2] == codeLecon)
+                {
+                    bool completeON = (bool)ligne[6];
+                    object listeMot = ligne[7];
+
+                    // on regarde si listeMot est de type null
+                    if(listeMot.GetType() == typeof(System.DBNull))
+                    {
+
+                    }
+                    else
+                    {
+                        if (!completeON) // si listeMot n'est pas nul est completeON false alors c'est une phrase a trous
+                        {
+                            frmPhrases_a_trous test = new frmPhrases_a_trous(codeCours, codeLecon, codeExo);
+                            test.ShowDialog();
+                        }
+                    }
+                }
+            }
+
+        }// fin btnNext_Click
     }
 }
