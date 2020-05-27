@@ -230,7 +230,7 @@ namespace MiniProjetA21
                 schemaTable = connec.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
                 connec.Close();
             }
-            catch (InvalidOperationException) // InvalidOperationException erreur de connexion à la base - OleDbException erreur dans la requete sql
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("ERREUR : Connexion à la base");
             }
@@ -247,9 +247,9 @@ namespace MiniProjetA21
                 if (connec.State == ConnectionState.Open)
                     connec.Close();
             }
-
             DataSet nomTables = new DataSet();
             nomTables.Tables.Add(schemaTable);
+
 
             // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
             try
@@ -259,14 +259,13 @@ namespace MiniProjetA21
                     string temp = row[2].ToString();
 
                     string requete = "SELECT * FROM " + temp;
-
                     connec.ConnectionString = chaine;
 
                     OleDbDataAdapter da = new OleDbDataAdapter(requete, connec);
                     da.Fill(tables, temp);
                 }
             }
-            catch (InvalidOperationException) // InvalidOperationException erreur de connexion à la base - OleDbException erreur dans la requete sql
+            catch (InvalidOperationException)
             {
                 MessageBox.Show("ERREUR : Connexion à la base");
             }
@@ -281,9 +280,7 @@ namespace MiniProjetA21
             finally
             {
                 if (connec.State == ConnectionState.Open)
-                {
                     connec.Close();
-                }
             }
 
 
@@ -302,7 +299,7 @@ namespace MiniProjetA21
                     codeCours = ligne[6].ToString();
                 }
             }
-            MessageBox.Show("fin users : " + codeLecon + " " + codeExo + " " + codeCours);
+
 
             // on cherche les informations concernant l'exercice courant de l'utilisateur
             foreach (DataRow ligne in tables.Tables["Exercices"].Rows)
@@ -321,7 +318,7 @@ namespace MiniProjetA21
                     {
                         if (!completeON) // si listeMot n'est pas nul est completeON false alors c'est une phrase a trous
                         {
-                            frmPhrases_a_trous test = new frmPhrases_a_trous(codeCours, codeLecon, codeExo);
+                            frmPhrases_a_trous test = new frmPhrases_a_trous(tables, codeCours, codeLecon, codeExo);
                             test.ShowDialog();
                         }
                     }
