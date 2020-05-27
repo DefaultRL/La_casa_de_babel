@@ -30,9 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.gbDesordre = new System.Windows.Forms.GroupBox();
-            this.lblTradcPhrase = new System.Windows.Forms.Label();
-            this.btnReset = new System.Windows.Forms.Button();
             this.btnSoluc = new System.Windows.Forms.Button();
+            this.btnReset = new System.Windows.Forms.Button();
+            this.lblTradcPhrase = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.gbDesordre.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -42,12 +43,13 @@
             this.label1.Location = new System.Drawing.Point(395, 82);
             this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(349, 39);
+            this.label1.Size = new System.Drawing.Size(339, 38);
             this.label1.TabIndex = 0;
             this.label1.Text = "LA CASA DE BABEL";
             // 
             // gbDesordre
             // 
+            this.gbDesordre.Controls.Add(this.textBox1);
             this.gbDesordre.Controls.Add(this.btnSoluc);
             this.gbDesordre.Controls.Add(this.btnReset);
             this.gbDesordre.Controls.Add(this.lblTradcPhrase);
@@ -59,14 +61,14 @@
             this.gbDesordre.TabStop = false;
             this.gbDesordre.Text = "Remettez les éléments dans l\'ordre";
             // 
-            // lblTradcPhrase
+            // btnSoluc
             // 
-            this.lblTradcPhrase.AutoSize = true;
-            this.lblTradcPhrase.Location = new System.Drawing.Point(74, 69);
-            this.lblTradcPhrase.Name = "lblTradcPhrase";
-            this.lblTradcPhrase.Size = new System.Drawing.Size(42, 23);
-            this.lblTradcPhrase.TabIndex = 0;
-            this.lblTradcPhrase.Text = "N/A";
+            this.btnSoluc.Location = new System.Drawing.Point(6, 322);
+            this.btnSoluc.Name = "btnSoluc";
+            this.btnSoluc.Size = new System.Drawing.Size(161, 47);
+            this.btnSoluc.TabIndex = 2;
+            this.btnSoluc.Text = "Solution";
+            this.btnSoluc.UseVisualStyleBackColor = true;
             // 
             // btnReset
             // 
@@ -77,14 +79,21 @@
             this.btnReset.Text = "Rétablir";
             this.btnReset.UseVisualStyleBackColor = true;
             // 
-            // btnSoluc
+            // lblTradcPhrase
             // 
-            this.btnSoluc.Location = new System.Drawing.Point(6, 322);
-            this.btnSoluc.Name = "btnSoluc";
-            this.btnSoluc.Size = new System.Drawing.Size(161, 47);
-            this.btnSoluc.TabIndex = 2;
-            this.btnSoluc.Text = "Solution";
-            this.btnSoluc.UseVisualStyleBackColor = true;
+            this.lblTradcPhrase.AutoSize = true;
+            this.lblTradcPhrase.Location = new System.Drawing.Point(74, 69);
+            this.lblTradcPhrase.Name = "lblTradcPhrase";
+            this.lblTradcPhrase.Size = new System.Drawing.Size(42, 23);
+            this.lblTradcPhrase.TabIndex = 0;
+            this.lblTradcPhrase.Text = "N/A";
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(27, 138);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(140, 30);
+            this.textBox1.TabIndex = 3;
             // 
             // frmPhraseDesordre
             // 
@@ -95,7 +104,7 @@
             this.Controls.Add(this.gbDesordre);
             this.Controls.Add(this.label1);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.Margin = new System.Windows.Forms.Padding(8);
             this.Name = "frmPhraseDesordre";
             this.Text = "Exercice : Phrases dans le désordre";
             this.Load += new System.EventHandler(this.frmPhraseDesordre_Load);
@@ -113,5 +122,6 @@
         private System.Windows.Forms.GroupBox gbDesordre;
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSoluc;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }
