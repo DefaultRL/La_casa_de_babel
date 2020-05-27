@@ -68,6 +68,7 @@ namespace MiniProjetA21
                     string temp = row[2].ToString();
 
                     string requete = "SELECT * FROM " + temp;
+                    MessageBox.Show(temp);
 
                     connec.ConnectionString = chaine_connexion;
 
