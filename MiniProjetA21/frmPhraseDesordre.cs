@@ -28,11 +28,11 @@ namespace MiniProjetA21
 
         private void frmPhraseDesordre_Load(object sender, EventArgs e)
         {
-            string phrase = "";
+            /*string phrase = "";
             foreach(string phrase in ds.Tables["Tables"].Rows.Count)
             {
 
-            }
+            }*/
         }
 
         public string message
