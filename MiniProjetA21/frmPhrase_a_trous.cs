@@ -23,8 +23,9 @@ namespace MiniProjetA21
         List<string> liste_motsManquants = new List<string>();
 
 
-        public frmPhrases_a_trous(string cours, int lecon, int exo)
+        public frmPhrases_a_trous(DataSet ds, string cours, int lecon, int exo)
         {
+            tables = ds;
             numCours = cours;
             numLecon = lecon;
             numExo = exo;
