@@ -19,8 +19,9 @@ namespace MiniProjetA21
         }
 
         //Definition chaine de connection à la base
-        string chaine = @"Provider=Microsoft.Jet.OLEDB.4.0;
-            Data Source = F:\Documents\Visual Studio 2019\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb";
+        // Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Documents\DEV\GitHub\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb
+        // Provider=Microsoft.Jet.OLEDB.4.0;Data Source = F:\Documents\Visual Studio 2019\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb
+        string chaine = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Documents\DEV\GitHub\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb";
         
         //Initialisation de la connection
         OleDbConnection connec = new OleDbConnection();
@@ -33,7 +34,7 @@ namespace MiniProjetA21
             {
                 //Connection avec la chaine
                 connec.ConnectionString = chaine;
-
+                
                 //Mise à jour du codeUtil de Toregrossa pour simplification
                 connec.Open();
                 string update = "update Utilisateurs set codeUtil = 0 where codeUtil = 6";
@@ -46,7 +47,7 @@ namespace MiniProjetA21
                 OleDbDataAdapter da = new OleDbDataAdapter();
                 da.SelectCommand = cmd;
                 da.Fill(ds, "Users");
-
+                
                 //Remplissage de la combobox
                 string name;
                 foreach(DataRow ligne in ds.Tables["Users"].Rows)
@@ -56,7 +57,7 @@ namespace MiniProjetA21
                 }
 
             }
-
+            
             catch (InvalidOperationException)
             {
                 //Erreur de connection à la base
@@ -68,7 +69,7 @@ namespace MiniProjetA21
                 //Erreur requète SQL
                 MessageBox.Show("Erreur dans la requète SQL (ComboBox)");
             }
-
+            
             catch (Exception erreur)
             {
                 //Exception inconnue
