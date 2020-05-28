@@ -310,16 +310,17 @@ namespace MiniProjetA21
                     object listeMot = ligne[7];
 
                     // on regarde si listeMot est de type null
-                    if(listeMot.GetType() == typeof(System.DBNull))
+                    if(listeMot.GetType() == typeof(System.DBNull) && completeON == true)
                     {
-
+                        frmPhraseDesordre exoPhrasesDesorde = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
+                        exoPhrasesDesorde.ShowDialog();
                     }
                     else
                     {
-                        if (!completeON) // si listeMot n'est pas nul est completeON false alors c'est une phrase a trous
+                        if (!completeON) // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
                         {
-                            frmPhrases_a_trous test = new frmPhrases_a_trous(tables, codeCours, codeLecon, codeExo);
-                            test.ShowDialog();
+                            frmPhrases_a_trous exoPhraseTours = new frmPhrases_a_trous(tables, codeCours, codeLecon, codeExo);
+                            exoPhraseTours.ShowDialog();
                         }
                     }
                 }

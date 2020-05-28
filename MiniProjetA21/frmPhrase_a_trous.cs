@@ -163,9 +163,6 @@ namespace MiniProjetA21
             }
         }
 
-
-
-
         private void btnExit_Click(object sender, EventArgs e)
         {
             Application.Exit();
