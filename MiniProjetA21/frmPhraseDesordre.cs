@@ -33,20 +33,20 @@ namespace MiniProjetA21
         private void frmPhraseDesordre_Load(object sender, EventArgs e)
         {
             List<string> mots = new List<string>();
-            int codeP = 0;
 
-            string filtre = @"[numCours] = '" + numCours + "and [numLecon] = '" + numLecon + 
-                             "and [numExo] = '" + numExo + "'";
-            DataRow[] tabRes = ds.Tables["Exercices"].Select(filtre);
+            string filtreExo = @"[numCours] = '" + numCours + "' and [numLecon] = " + numLecon + 
+                             " and [numExo] = " + numExo;
+            DataRow[] tabRes = ds.Tables["Exercices"].Select(filtreExo);
 
-            string phrase = "Test : ";
-            foreach (DataRow ligne in ds.Tables["Phrases"].Rows)
+            string phrase = "";
+            string filtreP = ""; 
+            /*foreach (DataRow ligne in ds.Tables["Phrases"].Rows)
             {
-                if (ligne["codePhrase"] == tabRes[0])
+                if (ligne["codePhrase"] == tabRes[0]["codePhrase"])
                 {
                     phrase = ligne["traducPhrase"].ToString();
                 }
-            }
+            }*/
             MessageBox.Show(phrase);
         }
     }
