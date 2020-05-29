@@ -23,10 +23,9 @@ namespace MiniProjetA21
         int numLecon;
         int numExo;
 
-        string phrase = "";
-
         public frmPhraseDesordre(DataSet dataset, string cours, int lecon, int exo)
         {
+            InitializeComponent();
             ds = dataset;
             numCours = cours;
             numLecon = lecon;
@@ -36,21 +35,22 @@ namespace MiniProjetA21
 
         private void frmPhraseDesordre_Load(object sender, EventArgs e)
         {
-            //List<string> mots = new List<string>();
+            List<string> mots = new List<string>();
+            int codeP = 0;
 
-            string filtre = @"[codeExo] =" + numExo;
-            MessageBox.Show(filtre);
-            /*DataRow[] tabLigne = ds.Tables["Exercices"].Select(filtre);
-           
+            string filtre = @"[numCours] = '" + numCours + "and [numLecon] = '" + numLecon + 
+                             "and [numExo] = '" + numExo + "'";
+            DataRow[] tabRes = ds.Tables["Exercices"].Select(filtre);
 
-            foreach(DataRow dr in ds.Tables["Phrases"].Rows)
+            string phrase = "Test : ";
+            foreach (DataRow ligne in ds.Tables["Phrases"].Rows)
             {
-                if(dr[0] == tabLigne[5])
+                if (ligne["codePhrase"] == tabRes[0])
                 {
-                    phrase = dr[1].ToString();
+                    phrase = ligne["traducPhrase"].ToString();
                 }
             }
-            MessageBox.Show(phrase);*/
+            MessageBox.Show(phrase);
         }
     }
        
