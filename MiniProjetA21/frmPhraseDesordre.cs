@@ -13,11 +13,6 @@ namespace MiniProjetA21
 {
     public partial class frmPhraseDesordre : Form
     {
-        public frmPhraseDesordre()
-        {
-            InitializeComponent();
-        }
-
         DataSet ds = new DataSet();
         string numCours;
         int numLecon;
@@ -32,6 +27,8 @@ namespace MiniProjetA21
             numLecon = lecon;
             numExo = exo;
             MessageBox.Show("User : " + numCours + " " + numLecon + " " + numExo);
+
+            InitializeComponent();
         }
 
         private void frmPhraseDesordre_Load(object sender, EventArgs e)
