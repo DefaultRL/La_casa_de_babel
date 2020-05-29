@@ -21,7 +21,7 @@ namespace MiniProjetA21
         //Definition chaine de connection à la base
         // Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Documents\DEV\GitHub\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb
         // Provider=Microsoft.Jet.OLEDB.4.0;Data Source = F:\Documents\Visual Studio 2019\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb
-        string chaine = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source = F:\Documents\Visual Studio 2019\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb";
+        string chaine = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Documents\DEV\GitHub\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb";
         
         //Initialisation de la connection
         OleDbConnection connec = new OleDbConnection();
@@ -247,14 +247,12 @@ namespace MiniProjetA21
                 if (connec.State == ConnectionState.Open)
                     connec.Close();
             }
-            DataSet nomTables = new DataSet();
-            nomTables.Tables.Add(schemaTable);
 
 
             // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
             try
             {
-                foreach (DataRow row in nomTables.Tables[0].Rows)
+                foreach (DataRow row in schemaTable.Rows)
                 {
                     string temp = row[2].ToString();
 
