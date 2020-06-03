@@ -267,9 +267,9 @@ namespace MiniProjetA21
                 // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
                 try
                 {
-                    foreach (DataRow row in schemaTable.Rows)
+                    foreach (DataRow rw in schemaTable.Rows)
                     {
-                        string temp = row[2].ToString();
+                        string temp = rw[2].ToString();
 
                         string requete = "SELECT * FROM " + temp;
                         connec.ConnectionString = chaine;
@@ -303,41 +303,33 @@ namespace MiniProjetA21
                 string codeCours = "";
                 string nomUtil = prenomNomUtil.Split(' ')[1];
 
-                foreach (DataRow ligne in tables.Tables["Utilisateurs"].Rows)
-                {
-                    if (ligne[1].ToString() == nomUtil)
-                    {
-                        codeLecon = (int)ligne[5];
-                        codeExo = (int)ligne[4];
-                        codeCours = ligne[6].ToString();
-                    }
-                }
-
+                DataRow row = tables.Tables["Utilisateurs"].Select("nomUtil = '" + nomUtil + "'").FirstOrDefault();
+                codeLecon = (int)row["codeLeçon"];
+                codeExo = (int)row["codeExo"];
+                codeCours = row["codeCours"].ToString();
 
                 // on cherche les informations concernant l'exercice courant de l'utilisateur
-                foreach (DataRow ligne in tables.Tables["Exercices"].Rows)
-                {
-                    if ((int)ligne[0] == codeExo && ligne[1].ToString() == codeCours && (int)ligne[2] == codeLecon)
-                    {
-                        bool completeON = (bool)ligne[6];
-                        object listeMot = ligne[7];
+                row = tables.Tables["Exercices"].Select("numExo = '" + codeExo + "' and numCours = '" + codeCours + "' and numLecon = '" + codeLecon + "'").FirstOrDefault();
 
-                        // on regarde si listeMot est de type null
-                        if (listeMot.GetType() == typeof(System.DBNull) && completeON == true)
-                        {
-                            frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
-                            form3.ShowDialog();
-                        }
-                        else
-                        {
-                            if (!completeON) // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
-                            {
-                                frmPhrases_a_trous form2 = new frmPhrases_a_trous(tables, tableRecap, codeCours, codeLecon, codeExo);
-                                form2.ShowDialog();
-                            }
-                        }
+                bool completeON = (bool)row["completeON"];
+                object listeMot = row["listeMots"];
+
+                // on regarde si listeMot est de type null
+                if (listeMot.GetType() == typeof(System.DBNull) && completeON == true)
+                {
+                    frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
+                    form3.ShowDialog();
+                }
+                else
+                {
+                    if (!completeON) // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
+                    {
+                        frmPhrases_a_trous form2 = new frmPhrases_a_trous(ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
+                        form2.ShowDialog();
                     }
                 }
+
+
             }
 
         }// fin btnNext_Click
