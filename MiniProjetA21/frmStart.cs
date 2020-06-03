@@ -217,108 +217,117 @@ namespace MiniProjetA21
         // bouton Exercice Suivant
         private void btnNext_Click(object sender, EventArgs e)
         {
-            // on récupère en local toutes les tables de la base et on les stocke dans le DataSet tables
-            DataSet tables = new DataSet();
-            OleDbConnection connec = new OleDbConnection();
-            connec.ConnectionString = chaine;
-            DataTable schemaTable = new DataTable();
+            if (String.IsNullOrEmpty(cbUser.Text))
+            {
+                erpErrors.SetError(cbUser, "Aucun utilisateur séléctionné");
+            }
 
-            // try-catch pour recuperer le schema des tables de la base de donnee
-            try
+            else
             {
-                connec.Open();
-                schemaTable = connec.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
-                connec.Close();
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("ERREUR : Connexion à la base");
-            }
-            catch (OleDbException)
-            {
-                MessageBox.Show("ERREUR : Requete");
-            }
-            catch (Exception erreur)
-            {
-                MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
-            }
-            finally
-            {
-                if (connec.State == ConnectionState.Open)
+
+                // on récupère en local toutes les tables de la base et on les stocke dans le DataSet tables
+                DataSet tables = new DataSet();
+                OleDbConnection connec = new OleDbConnection();
+                connec.ConnectionString = chaine;
+                DataTable schemaTable = new DataTable();
+
+                // try-catch pour recuperer le schema des tables de la base de donnee
+                try
+                {
+                    connec.Open();
+                    schemaTable = connec.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
                     connec.Close();
-            }
-
-
-            // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
-            try
-            {
-                foreach (DataRow row in schemaTable.Rows)
-                {
-                    string temp = row[2].ToString();
-
-                    string requete = "SELECT * FROM " + temp;
-                    connec.ConnectionString = chaine;
-
-                    OleDbDataAdapter da = new OleDbDataAdapter(requete, connec);
-                    da.Fill(tables, temp);
                 }
-            }
-            catch (InvalidOperationException)
-            {
-                MessageBox.Show("ERREUR : Connexion à la base");
-            }
-            catch (OleDbException)
-            {
-                MessageBox.Show("ERREUR : Requete");
-            }
-            catch (Exception erreur)
-            {
-                MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
-            }
-            finally
-            {
-                if (connec.State == ConnectionState.Open)
-                    connec.Close();
-            }
-
-
-            // on recupere les informations courantes sur l'utilisateur
-            int codeLecon = -1;
-            int codeExo = -1;
-            string codeCours = "";
-            string nomUtil = prenomNomUtil.Split(' ')[1];
-
-            foreach (DataRow ligne in tables.Tables["Utilisateurs"].Rows)
-            {
-                if(ligne[1].ToString() == nomUtil)
+                catch (InvalidOperationException)
                 {
-                    codeLecon = (int)ligne[5];
-                    codeExo = (int)ligne[4];
-                    codeCours = ligne[6].ToString();
+                    MessageBox.Show("ERREUR : Connexion à la base");
                 }
-            }
-
-
-            // on cherche les informations concernant l'exercice courant de l'utilisateur
-            foreach (DataRow ligne in tables.Tables["Exercices"].Rows)
-            {
-                if((int)ligne[0] == codeExo && ligne[1].ToString() == codeCours && (int)ligne[2] == codeLecon)
+                catch (OleDbException)
                 {
-                    bool completeON = (bool)ligne[6];
-                    object listeMot = ligne[7];
+                    MessageBox.Show("ERREUR : Requete");
+                }
+                catch (Exception erreur)
+                {
+                    MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
+                }
+                finally
+                {
+                    if (connec.State == ConnectionState.Open)
+                        connec.Close();
+                }
 
-                    // on regarde si listeMot est de type null
-                    if(listeMot.GetType() == typeof(System.DBNull) && completeON == true)
+
+                // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
+                try
+                {
+                    foreach (DataRow row in schemaTable.Rows)
                     {
-                        frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
-                        form3.ShowDialog();
+                        string temp = row[2].ToString();
+
+                        string requete = "SELECT * FROM " + temp;
+                        connec.ConnectionString = chaine;
+
+                        OleDbDataAdapter da = new OleDbDataAdapter(requete, connec);
+                        da.Fill(tables, temp);
                     }
-                    else
+                }
+                catch (InvalidOperationException)
+                {
+                    MessageBox.Show("ERREUR : Connexion à la base");
+                }
+                catch (OleDbException)
+                {
+                    MessageBox.Show("ERREUR : Requete");
+                }
+                catch (Exception erreur)
+                {
+                    MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
+                }
+                finally
+                {
+                    if (connec.State == ConnectionState.Open)
+                        connec.Close();
+                }
+
+
+                // on recupere les informations courantes sur l'utilisateur
+                int codeLecon = -1;
+                int codeExo = -1;
+                string codeCours = "";
+                string nomUtil = prenomNomUtil.Split(' ')[1];
+
+                foreach (DataRow ligne in tables.Tables["Utilisateurs"].Rows)
+                {
+                    if (ligne[1].ToString() == nomUtil)
                     {
-                        if (!completeON) // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
+                        codeLecon = (int)ligne[5];
+                        codeExo = (int)ligne[4];
+                        codeCours = ligne[6].ToString();
+                    }
+                }
+
+
+                // on cherche les informations concernant l'exercice courant de l'utilisateur
+                foreach (DataRow ligne in tables.Tables["Exercices"].Rows)
+                {
+                    if ((int)ligne[0] == codeExo && ligne[1].ToString() == codeCours && (int)ligne[2] == codeLecon)
+                    {
+                        bool completeON = (bool)ligne[6];
+                        object listeMot = ligne[7];
+
+                        // on regarde si listeMot est de type null
+                        if (listeMot.GetType() == typeof(System.DBNull) && completeON == true)
                         {
-                            frmPhrases_a_trous form2 = new frmPhrases_a_trous(tables, codeCours, codeLecon, codeExo);
-                            form2.ShowDialog();
+                            frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
+                            form3.ShowDialog();
+                        }
+                        else
+                        {
+                            if (!completeON) // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
+                            {
+                                frmPhrases_a_trous form2 = new frmPhrases_a_trous(tables, codeCours, codeLecon, codeExo);
+                                form2.ShowDialog();
+                            }
                         }
                     }
                 }
