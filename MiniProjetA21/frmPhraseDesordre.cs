@@ -58,32 +58,22 @@ namespace MiniProjetA21
             int j = 0;
             int motRand = 0;
             
-            for (int i = 0; i < listMot.Count; i++)
+            for (int i = 0; i < tabMots.Length; i++)
             {
                 //Création et paramètrages des textbox pour chaque mots
                 TextBox tb = new TextBox();
                 tb.Tag = i;
                 tb.ReadOnly = true;
                 tb.TextAlign = HorizontalAlignment.Center;
+                tb.BackColor = Color.Yellow;
                 tb.Left = gauche;
                 tb.Top = top;
                 gauche += 120;
 
                 //Ajout aléatoire de chaque mot pour chaque textbox
                 motRand = rd.Next(listMot.Count - 1);
-                if (i < 1)
-                {
-                    tb.Text = listMot[motRand];
-                }
-                
-                foreach(Control txtbox in gbDesordre.Controls.OfType<TextBox>())
-                {
-                    while(txtbox.Text == listMot[motRand])
-                    {
-                        motRand = rd.Next(listMot.Count - 1);
-                    }
-                    tb.Text = listMot[motRand];
-                }
+                tb.Text = listMot[motRand];
+                listMot.RemoveAt(motRand);
  
                 gbDesordre.Controls.Add(tb);
 
@@ -95,6 +85,10 @@ namespace MiniProjetA21
                     gauche = 30;
                     j = 0;
                 }
+            }
+            for (int i = 0; i < tabMots.Length; i++)
+            {
+                listMot.Add(tabMots[i]);
             }
         }
 
@@ -111,8 +105,13 @@ namespace MiniProjetA21
             foreach(Control txtbox in gbDesordre.Controls.OfType<TextBox>())
             {
                 txtbox.Text = listMot[(int)txtbox.Tag];
-                txtbox.BackColor = Color.Green;
+                txtbox.BackColor = Color.LightGreen;
             }
+        }
+
+        private void btnReset_Click(object sender, EventArgs e)
+        {
+
         }
     }
        

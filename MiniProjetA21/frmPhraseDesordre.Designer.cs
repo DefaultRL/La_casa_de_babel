@@ -30,10 +30,10 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.gbDesordre = new System.Windows.Forms.GroupBox();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.btnSoluc = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblTraducPhrase = new System.Windows.Forms.Label();
-            this.btnQuitter = new System.Windows.Forms.Button();
             this.gbDesordre.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -61,6 +61,16 @@
             this.gbDesordre.TabStop = false;
             this.gbDesordre.Text = "Remettez les éléments dans l\'ordre";
             // 
+            // btnQuitter
+            // 
+            this.btnQuitter.Location = new System.Drawing.Point(199, 322);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(148, 49);
+            this.btnQuitter.TabIndex = 4;
+            this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
             // btnSoluc
             // 
             this.btnSoluc.Location = new System.Drawing.Point(6, 322);
@@ -79,6 +89,7 @@
             this.btnReset.TabIndex = 1;
             this.btnReset.Text = "Rétablir";
             this.btnReset.UseVisualStyleBackColor = true;
+            this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
             // lblTraducPhrase
             // 
@@ -88,16 +99,6 @@
             this.lblTraducPhrase.Size = new System.Drawing.Size(42, 23);
             this.lblTraducPhrase.TabIndex = 0;
             this.lblTraducPhrase.Text = "N/A";
-            // 
-            // btnQuitter
-            // 
-            this.btnQuitter.Location = new System.Drawing.Point(199, 322);
-            this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(148, 49);
-            this.btnQuitter.TabIndex = 4;
-            this.btnQuitter.Text = "Quitter";
-            this.btnQuitter.UseVisualStyleBackColor = true;
-            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
             // frmPhraseDesordre
             // 
