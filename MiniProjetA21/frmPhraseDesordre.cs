@@ -46,13 +46,18 @@ namespace MiniProjetA21
 
             char separator = ' ';
             string[] tabMots = textPhrase.Split(separator);
+            List<string> listMot = new List<string>();
+            for(int i = 0; i < tabMots.Length; i++)
+            {
+                listMot.Add(tabMots[i]);
+            }
 
             Random rd = new Random();
             int gauche = 30;
             int top = 140;
             int j = 0;
 
-            for (int i = 0; i < tabMots.Length; i++)
+            for (int i = 0; i < listMot.Count; i++)
             {
                 TextBox tb = new TextBox();
                 tb.Tag = i;
@@ -62,7 +67,8 @@ namespace MiniProjetA21
                 tb.Top = top;
                 gauche += 120;
                 
-                tb.Text = tabMots[rd.Next(tabMots.Length - 1)];
+                tb.Text = listMot[i];
+                listMot.RemoveAt(i);
 
                 gbDesordre.Controls.Add(tb);
 
