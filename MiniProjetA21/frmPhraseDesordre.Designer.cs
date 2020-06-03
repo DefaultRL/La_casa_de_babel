@@ -69,6 +69,7 @@
             this.btnSoluc.TabIndex = 2;
             this.btnSoluc.Text = "Solution";
             this.btnSoluc.UseVisualStyleBackColor = true;
+            this.btnSoluc.Click += new System.EventHandler(this.btnSoluc_Click);
             // 
             // btnReset
             // 
