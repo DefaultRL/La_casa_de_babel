@@ -46,34 +46,48 @@ namespace MiniProjetA21
 
             char separator = ' ';
             string[] tabMots = textPhrase.Split(separator);
+            List<string> listMot = new List<string>();
+            for(int i = 0; i < tabMots.Length; i++)
+            {
+                listMot.Add(tabMots[i]);
+            }
 
             Random rd = new Random();
             int gauche = 30;
             int top = 140;
+            int j = 0;
 
-            for (int i = 0; i < tabMots.Length; i++)
+            for (int i = 0; i < listMot.Count; i++)
             {
                 TextBox tb = new TextBox();
                 tb.Tag = i;
                 tb.ReadOnly = true;
+                tb.TextAlign = HorizontalAlignment.Center;
                 tb.Left = gauche;
                 tb.Top = top;
                 gauche += 120;
-
-                if( i > 8)
-                {
-                    top += 50;
-                }
                 
-                tb.Text = tabMots[rd.Next(tabMots.Length - 1)];
+                tb.Text = listMot[i];
+                listMot.RemoveAt(i);
 
                 gbDesordre.Controls.Add(tb);
+
+                j++;
+                if (j > 8)
+                {
+                    top += 50;
+                    gauche = 30;
+                    j = 0;
+                }
             }
         }
 
         private void btnQuitter_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult res = MessageBox.Show("Voulez vous vraiment quitter ?\n(l'exercice actuel ne sera pas compte comme acquis)", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (res == DialogResult.Yes)
+                Close();
         }
     }
        
