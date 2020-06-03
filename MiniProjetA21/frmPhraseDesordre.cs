@@ -151,11 +151,11 @@ namespace MiniProjetA21
             {
                 if ((int)gauche.Tag == here - 1 && (int)gauche.Tag > -1)
                 {
-                    courant.Text = textTemp;
+                    textTemp = courant.Text;
                     courant.Text = gauche.Text;
                     gauche.Text = textTemp;
 
-                    courant.Tag = tagTemp;
+                    tagTemp = (int)courant.Tag;
                     courant.Tag = gauche.Tag;
                     gauche.Tag = tagTemp;
                 }
@@ -183,11 +183,11 @@ namespace MiniProjetA21
             {
                 if ((int)droite.Tag == here - 1 && (int)droite.Tag < listMot.Count - 1)
                 {
-                    droite.Text = textTemp;
+                    textTemp = courant.Text;
                     courant.Text = droite.Text;
                     droite.Text = textTemp;
 
-                    courant.Tag = tagTemp;
+                    tagTemp = (int)courant.Tag;
                     courant.Tag = droite.Tag;
                     droite.Tag = tagTemp;
                 }
