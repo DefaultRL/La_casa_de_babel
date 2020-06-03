@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Runtime.InteropServices;
 
 namespace MiniProjetA21
 {
@@ -54,7 +55,7 @@ namespace MiniProjetA21
 
             Random rd = new Random();
             int gauche = 30;
-            int top = 140;
+            int haut = 140;
             int j = 0;
             int motRand = 0;
             
@@ -67,7 +68,7 @@ namespace MiniProjetA21
                 tb.TextAlign = HorizontalAlignment.Center;
                 tb.BackColor = Color.Yellow;
                 tb.Left = gauche;
-                tb.Top = top;
+                tb.Top = haut;
                 gauche += 120;
 
                 //Ajout aléatoire de chaque mot pour chaque textbox
@@ -77,15 +78,47 @@ namespace MiniProjetA21
  
                 gbDesordre.Controls.Add(tb);
 
+                //Création et paramètrage des boutons de déplacements
+                int leftL = 30;
+                int topL = 160;
+
+                Button btnL = new Button();
+                btnL.Left = leftL;
+                btnL.Top = topL;
+                btnL.Size = new System.Drawing.Size(50, 25);
+                btnL.Name = "btnLeft";
+                btnL.Text = "<";
+                btnL.UseVisualStyleBackColor = true;
+
+                gbDesordre.Controls.Add(btnL);
+
+                int leftR = 80;
+                int topR = 160;
+
+                Button btnR = new Button();
+                btnR.Left = leftR;
+                btnR.Top = topR;
+                btnR.Size = new System.Drawing.Size(50, 25);
+                btnR.Name = "btnRight";
+                btnR.Text = ">";
+                btnR.UseVisualStyleBackColor = true;
+
+                gbDesordre.Controls.Add(btnR);
+
                 //Modification de position en bout de ligne
                 j++;
                 if (j > 8)
                 {
-                    top += 50;
+                    haut += 50;
                     gauche = 30;
+                    leftL = 30;
+                    topL += 50;
+                    leftR = 80;
+                    topR += 50;
                     j = 0;
-                }
+                }     
             }
+
             for (int i = 0; i < tabMots.Length; i++)
             {
                 listMot.Add(tabMots[i]);
@@ -111,7 +144,7 @@ namespace MiniProjetA21
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
        

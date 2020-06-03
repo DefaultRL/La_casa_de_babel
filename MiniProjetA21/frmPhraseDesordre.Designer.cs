@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.gbDesordre = new System.Windows.Forms.GroupBox();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnSoluc = new System.Windows.Forms.Button();
@@ -37,15 +37,15 @@
             this.gbDesordre.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
+            // lblTitle
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(395, 82);
-            this.label1.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(339, 38);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "LA CASA DE BABEL";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(395, 82);
+            this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(339, 38);
+            this.lblTitle.TabIndex = 0;
+            this.lblTitle.Text = "LA CASA DE BABEL";
             // 
             // gbDesordre
             // 
@@ -107,7 +107,7 @@
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1183, 609);
             this.Controls.Add(this.gbDesordre);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Margin = new System.Windows.Forms.Padding(8);
             this.Name = "frmPhraseDesordre";
@@ -122,7 +122,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Label lblTraducPhrase;
         private System.Windows.Forms.GroupBox gbDesordre;
         private System.Windows.Forms.Button btnReset;
