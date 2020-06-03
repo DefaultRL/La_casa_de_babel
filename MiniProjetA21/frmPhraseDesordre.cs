@@ -26,8 +26,6 @@ namespace MiniProjetA21
             numLecon = lecon;
             numExo = exo;
             MessageBox.Show("User : " + numCours + " " + numLecon + " " + numExo);
-
-            InitializeComponent();
         }
 
         private void frmPhraseDesordre_Load(object sender, EventArgs e)
@@ -38,16 +36,15 @@ namespace MiniProjetA21
                              " and [numExo] = " + numExo;
             DataRow[] tabRes = ds.Tables["Exercices"].Select(filtreExo);
 
-            string phrase = "";
-            string filtreP = ""; 
-            /*foreach (DataRow ligne in ds.Tables["Phrases"].Rows)
-            {
-                if (ligne["codePhrase"] == tabRes[0]["codePhrase"])
-                {
-                    phrase = ligne["traducPhrase"].ToString();
-                }
-            }*/
-            MessageBox.Show(phrase);
+            string filtrePhrase = @"[codePhrase] = " + tabRes[0][0];
+            DataRow[] tabTraduc = ds.Tables["Phrases"].Select(filtrePhrase);
+
+            MessageBox.Show(tabTraduc[0][2].ToString());
+        }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
        

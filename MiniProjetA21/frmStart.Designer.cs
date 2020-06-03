@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.gpbConnec = new System.Windows.Forms.GroupBox();
             this.lblUserExo = new System.Windows.Forms.Label();
@@ -42,7 +43,9 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.lblConnec = new System.Windows.Forms.Label();
+            this.erpErrors = new System.Windows.Forms.ErrorProvider(this.components);
             this.gpbConnec.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erpErrors)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -187,6 +190,10 @@
             this.lblConnec.TabIndex = 0;
             this.lblConnec.Text = "Connectez-vous :";
             // 
+            // erpErrors
+            // 
+            this.erpErrors.ContainerControl = this;
+            // 
             // frmStart
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
@@ -202,6 +209,7 @@
             this.Load += new System.EventHandler(this.frmStart_Load);
             this.gpbConnec.ResumeLayout(false);
             this.gpbConnec.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erpErrors)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -223,6 +231,7 @@
         private System.Windows.Forms.Label lblFleche;
         private System.Windows.Forms.Label lblUserProg;
         private System.Windows.Forms.Label lblUserExo;
+        private System.Windows.Forms.ErrorProvider erpErrors;
     }
 }
 
