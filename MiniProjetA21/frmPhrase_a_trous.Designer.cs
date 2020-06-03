@@ -79,7 +79,7 @@
             // 
             // btnAffichSolut
             // 
-            this.btnAffichSolut.Location = new System.Drawing.Point(978, 414);
+            this.btnAffichSolut.Location = new System.Drawing.Point(6, 454);
             this.btnAffichSolut.Name = "btnAffichSolut";
             this.btnAffichSolut.Size = new System.Drawing.Size(173, 34);
             this.btnAffichSolut.TabIndex = 8;
@@ -89,7 +89,7 @@
             // 
             // btnVerif
             // 
-            this.btnVerif.Location = new System.Drawing.Point(978, 374);
+            this.btnVerif.Location = new System.Drawing.Point(799, 454);
             this.btnVerif.Name = "btnVerif";
             this.btnVerif.Size = new System.Drawing.Size(173, 34);
             this.btnVerif.TabIndex = 7;
@@ -119,7 +119,7 @@
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(6, 454);
+            this.btnExit.Location = new System.Drawing.Point(185, 454);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(173, 34);
             this.btnExit.TabIndex = 3;
