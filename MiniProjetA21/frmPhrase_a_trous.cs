@@ -17,21 +17,28 @@ namespace MiniProjetA21
     public partial class frmPhrases_a_trous : Form
     {
         DataSet tables = new DataSet();
+        DataTable recap = new DataTable();
         string numCours;
         int numLecon;
         int numExo;
+
         List<string> liste_motsManquants = new List<string>();
-        bool exerciceRate = false;
+        bool affichSolution = false;
+        string baseReponse = string.Empty;
+        string reponse;
+        string corrige = string.Empty;
 
 
 
         // constructeur
-        public frmPhrases_a_trous(DataSet ds, string cours, int lecon, int exo)
+        public frmPhrases_a_trous(DataSet ds, DataTable dt, string cours, int lecon, int exo)
         {
             tables = ds;
+            recap = dt;
             numCours = cours;
             numLecon = lecon;
             numExo = exo;
+
 
             InitializeComponent();
         }
@@ -46,7 +53,7 @@ namespace MiniProjetA21
             string textePhrase = string.Empty;
             string traducPhrase = string.Empty;
             List<int> liste_numMots = new List<int>();
-            
+            btnNext.Hide();
 
             // parcours de la table <Cours> afin de trouver son titre et de l'afficher en en-tete de fenetre
             foreach (DataRow dr in tables.Tables["Cours"].Rows)
@@ -79,6 +86,7 @@ namespace MiniProjetA21
                 if (int.Parse(dr[0].ToString()) == codePhrase)
                 {
                     textePhrase = dr["textePhrase"].ToString();
+                    corrige = textePhrase;
                     traducPhrase = dr["traducPhrase"].ToString();
                 }
             } // fin foreach <Phrases>
@@ -88,7 +96,7 @@ namespace MiniProjetA21
             liste_numMots = numMots.Split('/').Select(int.Parse).ToList();
             foreach(int i in liste_numMots)
             {
-                liste_motsManquants.Add( textePhrase.Split(' ')[i-1] ); // i-1 car on commence l'indexation a 1 et non 0
+                liste_motsManquants.Add( textePhrase.Split(' ')[i-1] ); // i-1 car on commence l'indexation a 1 et non 0 dans la phrase
             }
 
 
@@ -104,6 +112,8 @@ namespace MiniProjetA21
 
                 if (liste_motsManquants.Contains(str)) // si le mot courant str de la phrase est contenu dans la liste de mots manquants
                 {
+                    baseReponse += "* ";
+
                     temp += ' ';
                     location_txb += 10;
 
@@ -132,6 +142,8 @@ namespace MiniProjetA21
 
                 else // si le mot courant str n'est pas dans la liste des mots manquants
                 {
+                    baseReponse += str + ' ';
+
                     temp += str;
                     location_txb += str.Length*10;
                 }
@@ -152,6 +164,10 @@ namespace MiniProjetA21
 
         private void btnVerif_Click(object sender, EventArgs e)
         {
+            int i = 0;
+            string[] tab = baseReponse.Split('*');
+            reponse = tab[i];
+
             bool toutJuste = true;
             foreach(Control ctrl in gpbPhrases_Trous.Controls)
             {
@@ -173,17 +189,26 @@ namespace MiniProjetA21
                         toutJuste = false;
                         ctrl.BackColor = System.Drawing.Color.Red;
                     }
+
+                    i++;
+                    reponse += " " + ctrl.Text + " " + tab[i];
                 }
             } // fin foreach ctrl in gpb
 
             if (toutJuste)
             {
-                // ajout exercice reussi ============================================================================================
-            }   // une table Locale a add et passer au contructeur, cacher le formStart pendant l'exercice
-            else
-            {
-                // ajout exercice rate ==============================================================================================
+                // ajout exercice reussi
+                DataRow row = recap.NewRow();
+                row["Reussite"] = true;
+                row["numCours"] = numCours;
+                row["numLecon"] = numLecon;
+                row["numExo"] = numExo;
+                row["Reponse"] = null;
+                row["Corrige"] = null;
+                row["AffichSolution"] = affichSolution;
+                recap.Rows.Add(row);
             }
+            btnNext.Show();
         }
 
 
@@ -202,7 +227,7 @@ namespace MiniProjetA21
 
         private void btnAffichSolut_Click(object sender, EventArgs e)
         {
-            exerciceRate = true;
+            affichSolution = true;
             foreach (Control ctrl in gpbPhrases_Trous.Controls)
             {
                 if (ctrl is TextBox)
@@ -210,7 +235,19 @@ namespace MiniProjetA21
             }
         }
 
+        private void btnNext_Click(object sender, EventArgs e)
+        {
+            DataRow row = recap.NewRow();
+            row["Reussite"] = false;
+            row["numCours"] = numCours;
+            row["numLecon"] = numLecon;
+            row["numExo"] = numExo;
+            row["Reponse"] = reponse;
+            row["Corrige"] = corrige;
+            row["AffichSolution"] = affichSolution;
+            recap.Rows.Add(row);
 
 
+        }
     }
 }
