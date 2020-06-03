@@ -17,6 +17,7 @@ namespace MiniProjetA21
         string numCours;
         int numLecon;
         int numExo;
+        List<string> listMot = new List<string>();
 
         public frmPhraseDesordre(DataSet dataset, string cours, int lecon, int exo)
         {
@@ -29,24 +30,23 @@ namespace MiniProjetA21
 
         private void frmPhraseDesordre_Load(object sender, EventArgs e)
         {
-            List<string> mots = new List<string>();
-
             //Récupération du codePhrase dans la table Exercices
             string filtreExo = @"[numCours] = '" + numCours + "' and [numLecon] = " + numLecon + 
                              " and [numExo] = " + numExo;
             DataRow[] tabRes = ds.Tables["Exercices"].Select(filtreExo);
 
-            //Récupération de traducPhrase dans la table Phrase
             string filtrePhrase = @"[codePhrase] = " + tabRes[0][0];
             DataRow[] tabTraduc = ds.Tables["Phrases"].Select(filtrePhrase);
-
+            
+            //Récupération de traducPhrase dans la table Phrase
             lblTraducPhrase.Text = tabTraduc[0][2].ToString();
-
+            //Récupération de la phrase en espagnol
             string textPhrase = tabTraduc[0][1].ToString();
 
+            //Récupération des mots da la phrase dans une list
             char separator = ' ';
             string[] tabMots = textPhrase.Split(separator);
-            List<string> listMot = new List<string>();
+            //Ajout des mots dans la listMot initialisée en globale
             for(int i = 0; i < tabMots.Length; i++)
             {
                 listMot.Add(tabMots[i]);
@@ -56,9 +56,11 @@ namespace MiniProjetA21
             int gauche = 30;
             int top = 140;
             int j = 0;
-
+            int motRand = 0;
+            
             for (int i = 0; i < listMot.Count; i++)
             {
+                //Création et paramètrages des textbox pour chaque mots
                 TextBox tb = new TextBox();
                 tb.Tag = i;
                 tb.ReadOnly = true;
@@ -66,12 +68,26 @@ namespace MiniProjetA21
                 tb.Left = gauche;
                 tb.Top = top;
                 gauche += 120;
-                
-                tb.Text = listMot[i];
-                listMot.RemoveAt(i);
 
+                //Ajout aléatoire de chaque mot pour chaque textbox
+                motRand = rd.Next(listMot.Count - 1);
+                if (i < 1)
+                {
+                    tb.Text = listMot[motRand];
+                }
+                
+                foreach(Control txtbox in gbDesordre.Controls.OfType<TextBox>())
+                {
+                    while(txtbox.Text == listMot[motRand])
+                    {
+                        motRand = rd.Next(listMot.Count - 1);
+                    }
+                    tb.Text = listMot[motRand];
+                }
+ 
                 gbDesordre.Controls.Add(tb);
 
+                //Modification de position en bout de ligne
                 j++;
                 if (j > 8)
                 {
@@ -88,6 +104,15 @@ namespace MiniProjetA21
 
             if (res == DialogResult.Yes)
                 Close();
+        }
+
+        private void btnSoluc_Click(object sender, EventArgs e)
+        {
+            foreach(Control txtbox in gbDesordre.Controls.OfType<TextBox>())
+            {
+                txtbox.Text = listMot[(int)txtbox.Tag];
+                txtbox.BackColor = Color.Green;
+            }
         }
     }
        
