@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
 using System.Runtime.InteropServices;
+using System.Net.NetworkInformation;
+using System.CodeDom.Compiler;
 
 namespace MiniProjetA21
 {
@@ -58,7 +60,12 @@ namespace MiniProjetA21
             int haut = 140;
             int j = 0;
             int motRand = 0;
-            
+
+            int leftL = 30;
+            int topL = 160;
+            int leftR = 80;
+            int topR = 160;
+
             for (int i = 0; i < tabMots.Length; i++)
             {
                 //Création et paramètrages des textbox pour chaque mots
@@ -79,30 +86,28 @@ namespace MiniProjetA21
                 gbDesordre.Controls.Add(tb);
 
                 //Création et paramètrage des boutons de déplacements
-                int leftL = 30;
-                int topL = 160;
-
+                
                 Button btnL = new Button();
+                btnL.Tag = i;
                 btnL.Left = leftL;
                 btnL.Top = topL;
                 btnL.Size = new System.Drawing.Size(50, 25);
-                btnL.Name = "btnLeft";
                 btnL.Text = "<";
                 btnL.UseVisualStyleBackColor = true;
-
-                gbDesordre.Controls.Add(btnL);
-
-                int leftR = 80;
-                int topR = 160;
+                leftL += 120;
+                btnL.Click += new EventHandler(clickGauche);             
 
                 Button btnR = new Button();
+                btnR.Tag = i;
                 btnR.Left = leftR;
                 btnR.Top = topR;
                 btnR.Size = new System.Drawing.Size(50, 25);
-                btnR.Name = "btnRight";
                 btnR.Text = ">";
                 btnR.UseVisualStyleBackColor = true;
-
+                leftR += 120;
+                btnR.Click += new EventHandler(clickDroit);
+                
+                gbDesordre.Controls.Add(btnL);
                 gbDesordre.Controls.Add(btnR);
 
                 //Modification de position en bout de ligne
@@ -122,6 +127,70 @@ namespace MiniProjetA21
             for (int i = 0; i < tabMots.Length; i++)
             {
                 listMot.Add(tabMots[i]);
+            }
+        }
+
+        private void clickGauche(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int here = (int)btn.Tag;
+
+            string textTemp = "";
+            int tagTemp = -1;
+            TextBox courant = new TextBox();
+
+            foreach (Control whereiam in gbDesordre.Controls.OfType<TextBox>())
+            {
+                if((int)whereiam.Tag == here)
+                {
+                    courant = (TextBox)whereiam;
+                }    
+            }
+
+            foreach(Control gauche in gbDesordre.Controls.OfType<TextBox>())
+            {
+                if ((int)gauche.Tag == here - 1 && (int)gauche.Tag > -1)
+                {
+                    courant.Text = textTemp;
+                    courant.Text = gauche.Text;
+                    gauche.Text = textTemp;
+
+                    courant.Tag = tagTemp;
+                    courant.Tag = gauche.Tag;
+                    gauche.Tag = tagTemp;
+                }
+            }
+        }
+
+        private void clickDroit(object sender, EventArgs e)
+        {
+            Button btn = (Button)sender;
+            int here = (int)btn.Tag;
+
+            string textTemp = "";
+            int tagTemp = -1;
+            TextBox courant = new TextBox();
+
+            foreach (Control whereiam in gbDesordre.Controls.OfType<TextBox>())
+            {
+                if ((int)whereiam.Tag == here)
+                {
+                    courant = (TextBox)whereiam;
+                }
+            }
+
+            foreach (Control droite in gbDesordre.Controls.OfType<TextBox>())
+            {
+                if ((int)droite.Tag == here - 1 && (int)droite.Tag < listMot.Count - 1)
+                {
+                    droite.Text = textTemp;
+                    courant.Text = droite.Text;
+                    droite.Text = textTemp;
+
+                    courant.Tag = tagTemp;
+                    courant.Tag = droite.Tag;
+                    droite.Tag = tagTemp;
+                }
             }
         }
 
