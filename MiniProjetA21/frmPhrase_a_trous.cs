@@ -21,6 +21,7 @@ namespace MiniProjetA21
         string numCours;
         int numLecon;
         int numExo;
+        string nomUtil;
 
         List<string> liste_motsManquants = new List<string>();
         bool affichSolution = false;
@@ -31,14 +32,14 @@ namespace MiniProjetA21
 
 
         // constructeur
-        public frmPhrases_a_trous(DataSet ds, DataTable dt, string cours, int lecon, int exo)
+        public frmPhrases_a_trous(ref DataSet ds, ref DataTable dt, string cours, int lecon, int exo, string util)
         {
             tables = ds;
             recap = dt;
             numCours = cours;
             numLecon = lecon;
             numExo = exo;
-
+            nomUtil = util;
 
             InitializeComponent();
         }
@@ -55,41 +56,23 @@ namespace MiniProjetA21
             List<int> liste_numMots = new List<int>();
             btnNext.Hide();
 
+
             // parcours de la table <Cours> afin de trouver son titre et de l'afficher en en-tete de fenetre
-            foreach (DataRow dr in tables.Tables["Cours"].Rows)
-            {
-                if (dr[0].ToString() == numCours)
-                    this.Text = dr[1].ToString();
-            }
+            this.Text = tables.Tables["Cours"].Select("numCours = '" + numCours + "'").FirstOrDefault()[1].ToString();
 
 
             // parcours de la table <Exercices> afin de trouver les informations necessaires
-            foreach(DataRow dr in tables.Tables["Exercices"].Rows)
-            {
-                bool a = int.Parse(dr["numExo"].ToString()) == numExo;
-                bool b = dr["numCours"].ToString() == numCours;
-                bool c = int.Parse(dr["numLecon"].ToString()) == numLecon;
-
-                if (a && b && c)
-                {
-                    // on recupere ici l'enonce, le code de la phrase et les mots a completer
-                    lblEnonce.Text = dr["enonceExo"].ToString();
-                    codePhrase = int.Parse(dr["codePhrase"].ToString());
-                    numMots = dr["listeMots"].ToString();
-                }
-            } // fin foreach <Exercices>
+            DataRow row = tables.Tables["Exercices"].Select("numExo = '" + numExo + "' and numCours = '" + numCours + "' and numLecon = '" + numLecon + "'").FirstOrDefault();
+            lblEnonce.Text = row["ennonceExo"].ToString();
+            codePhrase = int.Parse(row["codePhrase"].ToString());
+            numMots = row["listeMots"].ToString();
 
 
             // parcours de la table <Phrases> afin de trouver les informations necessaires
-            foreach(DataRow dr in tables.Tables["Phrases"].Rows)
-            {
-                if (int.Parse(dr[0].ToString()) == codePhrase)
-                {
-                    textePhrase = dr["textePhrase"].ToString();
-                    corrige = textePhrase;
-                    traducPhrase = dr["traducPhrase"].ToString();
-                }
-            } // fin foreach <Phrases>
+            row = tables.Tables["Phrases"].Select("codePhrase = '" + codePhrase + "'").FirstOrDefault();
+            textePhrase = row["textePhrase"].ToString();
+            corrige = textePhrase;
+            traducPhrase = row["traducPhrase"].ToString();
 
 
             // on recupere la liste de mots a completer
@@ -246,8 +229,28 @@ namespace MiniProjetA21
             row["Corrige"] = corrige;
             row["AffichSolution"] = affichSolution;
             recap.Rows.Add(row);
+            tables.Tables["Exercices"].Select("[numLecon] = '" + numLecon.ToString() + "' and [numCours] = '" + numCours + "' and [numExo] = '" + (numExo + 1).ToString() + "'");
 
-
+            DataRow ligneUtil = tables.Tables["Utilisateurs"].Select("[nomUtil] = '" + nomUtil + "'").FirstOrDefault();
+            // on cherche si il existe un exercice apres celui ci dans ce cours et cette lecon
+            DataRow[] tabRow = tables.Tables["Exercices"].Select("[numLecon] = '" + numLecon.ToString() + "' and [numCours] = '" + numCours + "' and [numExo] = '" + (numExo + 1).ToString() + "'");
+            if(tabRow.Length == 0) // si l'exercice suivant n'existe pas
+            {
+                tabRow = tables.Tables["Exercices"].Select("[numLecon] = '" + (numLecon + 1).ToString() + "' and [numCours] = '" + numCours + "' and [numExo] = '1'");
+                if (tabRow.Length == 0)
+                {
+                    // fin du cours
+                }
+                else
+                {
+                    ligneUtil["codeLecon"] = numLecon + 1;
+                    ligneUtil["codeExo"] = 1;
+                }
+            }
+            else
+            {
+                ligneUtil["codeExo"] = numExo + 1;
+            }
         }
     }
 }
