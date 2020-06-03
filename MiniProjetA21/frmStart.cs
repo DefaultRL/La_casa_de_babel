@@ -267,9 +267,9 @@ namespace MiniProjetA21
                 // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
                 try
                 {
-                    foreach (DataRow row in schemaTable.Rows)
+                    foreach (DataRow rw in schemaTable.Rows)
                     {
-                        string temp = row[2].ToString();
+                        string temp = rw[2].ToString();
 
                         string requete = "SELECT * FROM " + temp;
                         connec.ConnectionString = chaine;

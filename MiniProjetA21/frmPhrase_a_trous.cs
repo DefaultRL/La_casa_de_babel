@@ -63,7 +63,7 @@ namespace MiniProjetA21
 
             // parcours de la table <Exercices> afin de trouver les informations necessaires
             DataRow row = tables.Tables["Exercices"].Select("numExo = '" + numExo + "' and numCours = '" + numCours + "' and numLecon = '" + numLecon + "'").FirstOrDefault();
-            lblEnonce.Text = row["ennonceExo"].ToString();
+            lblEnonce.Text = row["enonceExo"].ToString();
             codePhrase = int.Parse(row["codePhrase"].ToString());
             numMots = row["listeMots"].ToString();
 
