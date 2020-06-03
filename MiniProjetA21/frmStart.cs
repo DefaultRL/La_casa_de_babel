@@ -24,10 +24,19 @@ namespace MiniProjetA21
         //Initialisation de la connection
         OleDbConnection connec = new OleDbConnection();
         DataSet ds = new DataSet();
+        DataTable tableRecap = new DataTable();
         string prenomNomUtil;
 
         private void frmStart_Load(object sender, EventArgs e)
         {
+            tableRecap.Columns.Add("Reussite", typeof(bool));
+            tableRecap.Columns.Add("numCours", typeof(string));
+            tableRecap.Columns.Add("numLecon", typeof(int));
+            tableRecap.Columns.Add("numExo", typeof(int));
+            tableRecap.Columns.Add("Reponse", typeof(string));
+            tableRecap.Columns.Add("Corrige", typeof(string));
+            tableRecap.Columns.Add("AffichSolution", typeof(bool));
+
             try
             {
                 //Connection avec la chaine
@@ -323,7 +332,7 @@ namespace MiniProjetA21
                         {
                             if (!completeON) // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
                             {
-                                frmPhrases_a_trous form2 = new frmPhrases_a_trous(tables, codeCours, codeLecon, codeExo);
+                                frmPhrases_a_trous form2 = new frmPhrases_a_trous(tables, tableRecap, codeCours, codeLecon, codeExo);
                                 form2.ShowDialog();
                             }
                         }
