@@ -21,7 +21,7 @@ namespace MiniProjetA21
         //Definition chaine de connection à la base
         // Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Documents\DEV\GitHub\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb
         // Provider=Microsoft.Jet.OLEDB.4.0;Data Source = F:\Documents\Visual Studio 2019\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb
-        string chaine = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source = F:\Documents\Visual Studio 2019\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb";
+        string chaine = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source=D:\Documents\DEV\GitHub\MiniProjet_HugoKellian\MiniProjetA21\baseLangue.mdb";
         
         //Initialisation de la connection
         OleDbConnection connec = new OleDbConnection();

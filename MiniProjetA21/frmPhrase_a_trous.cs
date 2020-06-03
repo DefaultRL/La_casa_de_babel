@@ -6,6 +6,7 @@ using System.Data;
 using System.Data.OleDb;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
@@ -15,16 +16,16 @@ namespace MiniProjetA21
 {
     public partial class frmPhrases_a_trous : Form
     {
-        public DataSet tables = new DataSet();
-        public string numCours;
-        public int numLecon;
-        public int numExo;
-        public string chaine_connexion;
+        DataSet tables = new DataSet();
+        string numCours;
+        int numLecon;
+        int numExo;
         List<string> liste_motsManquants = new List<string>();
+        bool exerciceRate = false;
 
 
 
-
+        // constructeur
         public frmPhrases_a_trous(DataSet ds, string cours, int lecon, int exo)
         {
             tables = ds;
@@ -97,75 +98,103 @@ namespace MiniProjetA21
             // dimensions label : 12 pxl par charactere + 4 pxl de margin
             // dimensions textbox : 10 pxl par charactere
             string temp = string.Empty;
-            int location_txb = 114;
+            int location_txb = 110;
             foreach(string str in textePhrase.Split(' '))
             {
-                if ( liste_motsManquants.Contains(str)) // si le mot courant str de la phrase est contenu dans la lsite de mots manquants
+
+                if (liste_motsManquants.Contains(str)) // si le mot courant str de la phrase est contenu dans la liste de mots manquants
                 {
                     temp += ' ';
-                    location_txb += 12;
+                    location_txb += 10;
 
+                    // on cree dynamiquement le textbox
                     TextBox txbMot = new TextBox();
 
                     txbMot.BackColor = System.Drawing.Color.White;
                     txbMot.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     txbMot.Location = new System.Drawing.Point(location_txb, 162);
                     txbMot.Name = "txbMot_" + str;
-                    txbMot.Width = str.Length * 10;
-                    txbMot.TabIndex = 0;
+                    txbMot.Width = str.Length * 12;
+                    txbMot.Tag = liste_motsManquants.IndexOf(str);
 
                     gpbPhrases_Trous.Controls.Add(txbMot);
+                    location_txb = txbMot.Width;
 
-                    // on remplace les mots manquants par des espaces
+                    // on remplace le mot manquant par des espaces dans le label
                     for (int i = 0; i < str.Length; i++)
                     {
                         temp += ' ';
-                        location_txb += 12;
                     }
                     
                     temp += ' ';
-                    location_txb += 12;
+                    location_txb += 10;
                 }
+
                 else // si le mot courant str n'est pas dans la liste des mots manquants
                 {
                     temp += str;
-                    // 1 charactere = 10 pxl
-                    location_txb += str.Length*12;
+                    location_txb += str.Length*10;
                 }
 
                 temp += ' ';
+                location_txb += 10;
+
             } // fin foreach textePhrase
 
+            lblTrad.Text = traducPhrase;
             lblPhrase.Text = temp;
+            lblPhrase.SendToBack();
             MessageBox.Show(temp + "\n" + textePhrase);
-        }
+        } // fin Form2_Loas
 
 
 
 
         private void btnVerif_Click(object sender, EventArgs e)
         {
-            int i = 0;
+            bool toutJuste = true;
             foreach(Control ctrl in gpbPhrases_Trous.Controls)
             {
                 if(ctrl is TextBox)
                 {
-                    if(ctrl.Text == liste_motsManquants[i])
-                    {
+                    byte[] tempBytes;
+
+                    tempBytes = System.Text.Encoding.GetEncoding("ISO-8859-8").GetBytes(ctrl.Text);
+                    string txbNonAccentuee = System.Text.Encoding.UTF8.GetString(tempBytes);
+
+                    tempBytes = Encoding.GetEncoding("ISO-8859-8").GetBytes(liste_motsManquants[(int)ctrl.Tag]);
+                    string reponseNonAccentuee = System.Text.Encoding.UTF8.GetString(tempBytes);
+
+                    if (txbNonAccentuee == reponseNonAccentuee)
                         ctrl.BackColor = System.Drawing.Color.Green;
-                    }
+
                     else
                     {
+                        toutJuste = false;
                         ctrl.BackColor = System.Drawing.Color.Red;
                     }
-                    i++;
                 }
+            } // fin foreach ctrl in gpb
+
+            if (toutJuste)
+            {
+                // ajout exercice reussi ============================================================================================
+            }   // une table Locale a add et passer au contructeur, cacher le formStart pendant l'exercice
+            else
+            {
+                // ajout exercice rate ==============================================================================================
             }
         }
 
+
+
+
         private void btnExit_Click(object sender, EventArgs e)
         {
-            Application.Exit();
+            DialogResult res = MessageBox.Show("Voulez vous vraiment quitter ?\n(l'exercice actuel ne sera pas compte comme acquis)", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (res == DialogResult.Yes)
+                Close();
         }
 
 
@@ -173,14 +202,11 @@ namespace MiniProjetA21
 
         private void btnAffichSolut_Click(object sender, EventArgs e)
         {
-            int i = 0;
+            exerciceRate = true;
             foreach (Control ctrl in gpbPhrases_Trous.Controls)
             {
                 if (ctrl is TextBox)
-                {
-                    ctrl.Text = liste_motsManquants[i];
-                    i++;
-                }
+                    ctrl.Text = liste_motsManquants[(int)ctrl.Tag];
             }
         }
 

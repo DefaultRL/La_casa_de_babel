@@ -30,6 +30,7 @@
         {
             this.lblTitlePhrases_Trous = new System.Windows.Forms.Label();
             this.gpbPhrases_Trous = new System.Windows.Forms.GroupBox();
+            this.lblTrad = new System.Windows.Forms.Label();
             this.btnAffichSolut = new System.Windows.Forms.Button();
             this.btnVerif = new System.Windows.Forms.Button();
             this.lblEnonce = new System.Windows.Forms.Label();
@@ -51,6 +52,7 @@
             // 
             // gpbPhrases_Trous
             // 
+            this.gpbPhrases_Trous.Controls.Add(this.lblTrad);
             this.gpbPhrases_Trous.Controls.Add(this.btnAffichSolut);
             this.gpbPhrases_Trous.Controls.Add(this.btnVerif);
             this.gpbPhrases_Trous.Controls.Add(this.lblEnonce);
@@ -65,9 +67,19 @@
             this.gpbPhrases_Trous.TabStop = false;
             this.gpbPhrases_Trous.Text = "Phrase à trous";
             // 
+            // lblTrad
+            // 
+            this.lblTrad.AutoSize = true;
+            this.lblTrad.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblTrad.Location = new System.Drawing.Point(131, 211);
+            this.lblTrad.Name = "lblTrad";
+            this.lblTrad.Size = new System.Drawing.Size(39, 13);
+            this.lblTrad.TabIndex = 9;
+            this.lblTrad.Text = "trad";
+            // 
             // btnAffichSolut
             // 
-            this.btnAffichSolut.Location = new System.Drawing.Point(978, 334);
+            this.btnAffichSolut.Location = new System.Drawing.Point(978, 414);
             this.btnAffichSolut.Name = "btnAffichSolut";
             this.btnAffichSolut.Size = new System.Drawing.Size(173, 34);
             this.btnAffichSolut.TabIndex = 8;
@@ -101,13 +113,13 @@
             this.lblPhrase.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhrase.Location = new System.Drawing.Point(110, 165);
             this.lblPhrase.Name = "lblPhrase";
-            this.lblPhrase.Size = new System.Drawing.Size(78, 16);
+            this.lblPhrase.Size = new System.Drawing.Size(68, 16);
             this.lblPhrase.TabIndex = 6;
-            this.lblPhrase.Text = "phrases";
+            this.lblPhrase.Text = "phrase";
             // 
             // btnExit
             // 
-            this.btnExit.Location = new System.Drawing.Point(978, 454);
+            this.btnExit.Location = new System.Drawing.Point(6, 454);
             this.btnExit.Name = "btnExit";
             this.btnExit.Size = new System.Drawing.Size(173, 34);
             this.btnExit.TabIndex = 3;
@@ -117,7 +129,7 @@
             // 
             // btnNext
             // 
-            this.btnNext.Location = new System.Drawing.Point(978, 414);
+            this.btnNext.Location = new System.Drawing.Point(978, 454);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(173, 34);
             this.btnNext.TabIndex = 2;
@@ -153,5 +165,6 @@
         private System.Windows.Forms.Label lblPhrase;
         private System.Windows.Forms.Button btnAffichSolut;
         private System.Windows.Forms.Button btnVerif;
+        private System.Windows.Forms.Label lblTrad;
     }
 }
