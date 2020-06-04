@@ -21,6 +21,8 @@ namespace MiniProjetA21
         int numLecon;
         int numExo;
         List<string> listMot = new List<string>();
+        string textTemp = "";
+        int tagTemp = -1;
 
         public frmPhraseDesordre(DataSet dataset, string cours, int lecon, int exo)
         {
@@ -124,6 +126,7 @@ namespace MiniProjetA21
                 }     
             }
 
+            //On replace les mots supprimés dans la list global pour la validation
             for (int i = 0; i < tabMots.Length; i++)
             {
                 listMot.Add(tabMots[i]);
@@ -195,7 +198,9 @@ namespace MiniProjetA21
 
         private void btnSoluc_Click(object sender, EventArgs e)
         {
-            foreach(Control txtbox in gbDesordre.Controls.OfType<TextBox>())
+            erpValide.Clear();
+
+            foreach (Control txtbox in gbDesordre.Controls.OfType<TextBox>())
             {
                 txtbox.Text = listMot[(int)txtbox.Tag];
                 txtbox.BackColor = Color.LightGreen;
@@ -204,7 +209,59 @@ namespace MiniProjetA21
 
         private void btnReset_Click(object sender, EventArgs e)
         {
-            
+            melange();
+        }
+
+        private void btnValide_Click(object sender, EventArgs e)
+        {
+            erpValide.Clear();
+
+            //On récupère ce que l'utilisateur à choisis
+            List<string> listCheck = new List<string>();
+            foreach(Control tb in gbDesordre.Controls.OfType<TextBox>())
+            {
+                listCheck.Add(tb.Text);
+            }
+
+            bool res = true;
+            int i = 0;
+            while (i < listMot.Count && res != false) 
+            {
+                if(listMot[i] != listCheck[i])
+                {
+                    res = false;
+                    erpValide.SetError(lblTraducPhrase, "Traduction incorrect");
+                    foreach (Control tb in gbDesordre.Controls.OfType<TextBox>())
+                    {
+                        tb.BackColor = Color.Red;
+                    }
+                }
+                i++;
+            }
+
+            if (res == true)
+            {
+                foreach (Control tb in gbDesordre.Controls.OfType<TextBox>())
+                {
+                    tb.BackColor = Color.LightGreen;
+                }
+                MessageBox.Show("Bien joué !");
+                res = false;
+            }
+            melange();      
+        }
+
+        private void melange()
+        {
+            Random rd = new Random();
+            List<string> temp = new List<string>(listMot);
+            int motRand = -1;
+            foreach(Control tb in gbDesordre.Controls.OfType<TextBox>())
+            {
+                motRand = rd.Next(temp.Count);
+                tb.Text = temp[motRand];
+                temp.RemoveAt(motRand);
+            }
         }
     }
        

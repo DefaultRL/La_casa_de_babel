@@ -28,13 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.gbDesordre = new System.Windows.Forms.GroupBox();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnSoluc = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblTraducPhrase = new System.Windows.Forms.Label();
+            this.btnValide = new System.Windows.Forms.Button();
+            this.erpValide = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbDesordre.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erpValide)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -49,6 +53,7 @@
             // 
             // gbDesordre
             // 
+            this.gbDesordre.Controls.Add(this.btnValide);
             this.gbDesordre.Controls.Add(this.btnQuitter);
             this.gbDesordre.Controls.Add(this.btnSoluc);
             this.gbDesordre.Controls.Add(this.btnReset);
@@ -83,7 +88,7 @@
             // 
             // btnReset
             // 
-            this.btnReset.Location = new System.Drawing.Point(1008, 322);
+            this.btnReset.Location = new System.Drawing.Point(849, 322);
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(145, 49);
             this.btnReset.TabIndex = 1;
@@ -100,6 +105,20 @@
             this.lblTraducPhrase.TabIndex = 0;
             this.lblTraducPhrase.Text = "N/A";
             // 
+            // btnValide
+            // 
+            this.btnValide.Location = new System.Drawing.Point(1022, 322);
+            this.btnValide.Name = "btnValide";
+            this.btnValide.Size = new System.Drawing.Size(131, 49);
+            this.btnValide.TabIndex = 5;
+            this.btnValide.Text = "Valider";
+            this.btnValide.UseVisualStyleBackColor = true;
+            this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
+            // 
+            // erpValide
+            // 
+            this.erpValide.ContainerControl = this;
+            // 
             // frmPhraseDesordre
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
@@ -115,6 +134,7 @@
             this.Load += new System.EventHandler(this.frmPhraseDesordre_Load);
             this.gbDesordre.ResumeLayout(false);
             this.gbDesordre.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erpValide)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,5 +148,7 @@
         private System.Windows.Forms.Button btnReset;
         private System.Windows.Forms.Button btnSoluc;
         private System.Windows.Forms.Button btnQuitter;
+        private System.Windows.Forms.Button btnValide;
+        private System.Windows.Forms.ErrorProvider erpValide;
     }
 }
