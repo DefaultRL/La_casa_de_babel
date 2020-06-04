@@ -130,13 +130,13 @@ namespace MiniProjetA21
             }
         }
 
+        //Evenements des boutons de déplacements gauche puis droite
         private void clickGauche(object sender, EventArgs e)
         {
             Button btn = (Button)sender;
             int here = (int)btn.Tag;
 
             string textTemp = "";
-            int tagTemp = -1;
             TextBox courant = new TextBox();
 
             foreach (Control whereiam in gbDesordre.Controls.OfType<TextBox>())
@@ -154,10 +154,6 @@ namespace MiniProjetA21
                     textTemp = courant.Text;
                     courant.Text = gauche.Text;
                     gauche.Text = textTemp;
-
-                    tagTemp = (int)courant.Tag;
-                    courant.Tag = gauche.Tag;
-                    gauche.Tag = tagTemp;
                 }
             }
         }
@@ -168,7 +164,6 @@ namespace MiniProjetA21
             int here = (int)btn.Tag;
 
             string textTemp = "";
-            int tagTemp = -1;
             TextBox courant = new TextBox();
 
             foreach (Control whereiam in gbDesordre.Controls.OfType<TextBox>())
@@ -181,15 +176,11 @@ namespace MiniProjetA21
 
             foreach (Control droite in gbDesordre.Controls.OfType<TextBox>())
             {
-                if ((int)droite.Tag == here - 1 && (int)droite.Tag < listMot.Count - 1)
+                if ((int)droite.Tag == here + 1 && (int)droite.Tag < listMot.Count - 1)
                 {
                     textTemp = courant.Text;
                     courant.Text = droite.Text;
                     droite.Text = textTemp;
-
-                    tagTemp = (int)courant.Tag;
-                    courant.Tag = droite.Tag;
-                    droite.Tag = tagTemp;
                 }
             }
         }
