@@ -21,8 +21,6 @@ namespace MiniProjetA21
         int numLecon;
         int numExo;
         List<string> listMot = new List<string>();
-        string textTemp = "";
-        int tagTemp = -1;
 
         public frmPhraseDesordre(DataSet dataset, string cours, int lecon, int exo)
         {
@@ -209,6 +207,11 @@ namespace MiniProjetA21
 
         private void btnReset_Click(object sender, EventArgs e)
         {
+            erpValide.Clear();
+            foreach(Control tb in gbDesordre.Controls.OfType<TextBox>())
+            {
+                tb.BackColor = Color.Yellow;
+            }
             melange();
         }
 
