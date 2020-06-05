@@ -139,7 +139,6 @@ namespace MiniProjetA21
             lblTrad.Text = traducPhrase;
             lblPhrase.Text = temp;
             lblPhrase.SendToBack();
-            MessageBox.Show(temp + "\n" + textePhrase);
         } // fin Form2_Loas
 
 
