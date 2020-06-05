@@ -134,6 +134,12 @@ namespace MiniProjetA21
         //Evenements des boutons de déplacements gauche puis droite
         private void clickGauche(object sender, EventArgs e)
         {
+            erpValide.Clear();
+            foreach (Control tb in gbDesordre.Controls.OfType<TextBox>())
+            {
+                tb.BackColor = Color.Yellow;
+            }
+
             Button btn = (Button)sender;
             int here = (int)btn.Tag;
 
@@ -161,6 +167,12 @@ namespace MiniProjetA21
 
         private void clickDroit(object sender, EventArgs e)
         {
+            erpValide.Clear();
+            foreach (Control tb in gbDesordre.Controls.OfType<TextBox>())
+            {
+                tb.BackColor = Color.Yellow;
+            }
+
             Button btn = (Button)sender;
             int here = (int)btn.Tag;
 
@@ -250,8 +262,7 @@ namespace MiniProjetA21
                 }
                 MessageBox.Show("Bien joué !");
                 res = false;
-            }
-            melange();      
+            }     
         }
 
         private void melange()
