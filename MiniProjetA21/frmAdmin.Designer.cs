@@ -39,12 +39,12 @@
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.grbExercice = new System.Windows.Forms.GroupBox();
-            this.lblEnonPrec = new System.Windows.Forms.Label();
-            this.lblPhrasePrec = new System.Windows.Forms.Label();
-            this.lblPhrase = new System.Windows.Forms.Label();
-            this.lblEnon = new System.Windows.Forms.Label();
             this.lblPhraseSuiv = new System.Windows.Forms.Label();
             this.lblEnonSuiv = new System.Windows.Forms.Label();
+            this.lblPhrase = new System.Windows.Forms.Label();
+            this.lblEnon = new System.Windows.Forms.Label();
+            this.lblPhrasePrec = new System.Windows.Forms.Label();
+            this.lblEnonPrec = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.grbExercice.SuspendLayout();
             this.SuspendLayout();
@@ -62,44 +62,47 @@
             // lblUtilisateur
             // 
             this.lblUtilisateur.AutoSize = true;
-            this.lblUtilisateur.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblUtilisateur.Font = new System.Drawing.Font("Arial", 14.25F);
             this.lblUtilisateur.Location = new System.Drawing.Point(12, 130);
             this.lblUtilisateur.Name = "lblUtilisateur";
-            this.lblUtilisateur.Size = new System.Drawing.Size(43, 25);
+            this.lblUtilisateur.Size = new System.Drawing.Size(33, 22);
             this.lblUtilisateur.TabIndex = 3;
             this.lblUtilisateur.Text = "util";
             // 
             // cboCours
             // 
-            this.cboCours.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboCours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.cboCours.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCours.FormattingEnabled = true;
             this.cboCours.Location = new System.Drawing.Point(272, 159);
             this.cboCours.Name = "cboCours";
-            this.cboCours.Size = new System.Drawing.Size(226, 26);
+            this.cboCours.Size = new System.Drawing.Size(226, 28);
             this.cboCours.TabIndex = 4;
+            this.cboCours.SelectionChangeCommitted += new System.EventHandler(this.cboCours_SelectionChangeCommitted);
             // 
             // lblCours
             // 
             this.lblCours.AutoSize = true;
-            this.lblCours.Font = new System.Drawing.Font("MV Boli", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblCours.Font = new System.Drawing.Font("Arial", 15.75F);
             this.lblCours.Location = new System.Drawing.Point(276, 128);
             this.lblCours.Name = "lblCours";
-            this.lblCours.Size = new System.Drawing.Size(66, 28);
+            this.lblCours.Size = new System.Drawing.Size(66, 24);
             this.lblCours.TabIndex = 5;
             this.lblCours.Text = "Cours";
             // 
             // lblLecon
             // 
             this.lblLecon.AutoSize = true;
-            this.lblLecon.Font = new System.Drawing.Font("MV Boli", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLecon.Font = new System.Drawing.Font("Arial", 15.75F);
             this.lblLecon.Location = new System.Drawing.Point(650, 128);
             this.lblLecon.Name = "lblLecon";
-            this.lblLecon.Size = new System.Drawing.Size(76, 28);
+            this.lblLecon.Size = new System.Drawing.Size(79, 24);
             this.lblLecon.TabIndex = 7;
             this.lblLecon.Text = "Leçons";
             // 
             // cboLecons
             // 
+            this.cboLecons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLecons.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLecons.FormattingEnabled = true;
             this.cboLecons.Location = new System.Drawing.Point(642, 159);
@@ -155,7 +158,7 @@
             this.grbExercice.Controls.Add(this.lblEnon);
             this.grbExercice.Controls.Add(this.lblPhrasePrec);
             this.grbExercice.Controls.Add(this.lblEnonPrec);
-            this.grbExercice.Font = new System.Drawing.Font("MV Boli", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grbExercice.Font = new System.Drawing.Font("Arial", 12F);
             this.grbExercice.Location = new System.Drawing.Point(68, 237);
             this.grbExercice.Name = "grbExercice";
             this.grbExercice.Size = new System.Drawing.Size(1061, 258);
@@ -163,69 +166,69 @@
             this.grbExercice.TabStop = false;
             this.grbExercice.Text = "Exercice";
             // 
-            // lblEnonPrec
-            // 
-            this.lblEnonPrec.AutoSize = true;
-            this.lblEnonPrec.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnonPrec.Location = new System.Drawing.Point(48, 52);
-            this.lblEnonPrec.Name = "lblEnonPrec";
-            this.lblEnonPrec.Size = new System.Drawing.Size(108, 25);
-            this.lblEnonPrec.TabIndex = 0;
-            this.lblEnonPrec.Text = "enoncePrec";
-            // 
-            // lblPhrasePrec
-            // 
-            this.lblPhrasePrec.AutoSize = true;
-            this.lblPhrasePrec.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhrasePrec.Location = new System.Drawing.Point(475, 52);
-            this.lblPhrasePrec.Name = "lblPhrasePrec";
-            this.lblPhrasePrec.Size = new System.Drawing.Size(105, 25);
-            this.lblPhrasePrec.TabIndex = 1;
-            this.lblPhrasePrec.Text = "phrasePrec";
-            // 
-            // lblPhrase
-            // 
-            this.lblPhrase.AutoSize = true;
-            this.lblPhrase.Font = new System.Drawing.Font("MV Boli", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))), System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPhrase.Location = new System.Drawing.Point(475, 123);
-            this.lblPhrase.Name = "lblPhrase";
-            this.lblPhrase.Size = new System.Drawing.Size(73, 25);
-            this.lblPhrase.TabIndex = 3;
-            this.lblPhrase.Text = "phrase";
-            // 
-            // lblEnon
-            // 
-            this.lblEnon.AutoSize = true;
-            this.lblEnon.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnon.Location = new System.Drawing.Point(48, 123);
-            this.lblEnon.Name = "lblEnon";
-            this.lblEnon.Size = new System.Drawing.Size(76, 25);
-            this.lblEnon.TabIndex = 2;
-            this.lblEnon.Text = "enonce";
-            // 
             // lblPhraseSuiv
             // 
             this.lblPhraseSuiv.AutoSize = true;
-            this.lblPhraseSuiv.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPhraseSuiv.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic);
             this.lblPhraseSuiv.Location = new System.Drawing.Point(475, 191);
             this.lblPhraseSuiv.Name = "lblPhraseSuiv";
-            this.lblPhraseSuiv.Size = new System.Drawing.Size(104, 25);
+            this.lblPhraseSuiv.Size = new System.Drawing.Size(109, 23);
             this.lblPhraseSuiv.TabIndex = 5;
             this.lblPhraseSuiv.Text = "phraseSuiv";
             // 
             // lblEnonSuiv
             // 
             this.lblEnonSuiv.AutoSize = true;
-            this.lblEnonSuiv.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnonSuiv.Font = new System.Drawing.Font("Arial", 14.25F);
             this.lblEnonSuiv.Location = new System.Drawing.Point(48, 191);
             this.lblEnonSuiv.Name = "lblEnonSuiv";
-            this.lblEnonSuiv.Size = new System.Drawing.Size(107, 25);
+            this.lblEnonSuiv.Size = new System.Drawing.Size(109, 22);
             this.lblEnonSuiv.TabIndex = 4;
             this.lblEnonSuiv.Text = "enonceSuiv";
             // 
+            // lblPhrase
+            // 
+            this.lblPhrase.AutoSize = true;
+            this.lblPhrase.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblPhrase.Location = new System.Drawing.Point(475, 123);
+            this.lblPhrase.Name = "lblPhrase";
+            this.lblPhrase.Size = new System.Drawing.Size(75, 23);
+            this.lblPhrase.TabIndex = 3;
+            this.lblPhrase.Text = "phrase";
+            // 
+            // lblEnon
+            // 
+            this.lblEnon.AutoSize = true;
+            this.lblEnon.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold);
+            this.lblEnon.Location = new System.Drawing.Point(48, 123);
+            this.lblEnon.Name = "lblEnon";
+            this.lblEnon.Size = new System.Drawing.Size(79, 22);
+            this.lblEnon.TabIndex = 2;
+            this.lblEnon.Text = "enonce";
+            // 
+            // lblPhrasePrec
+            // 
+            this.lblPhrasePrec.AutoSize = true;
+            this.lblPhrasePrec.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic);
+            this.lblPhrasePrec.Location = new System.Drawing.Point(475, 52);
+            this.lblPhrasePrec.Name = "lblPhrasePrec";
+            this.lblPhrasePrec.Size = new System.Drawing.Size(110, 23);
+            this.lblPhrasePrec.TabIndex = 1;
+            this.lblPhrasePrec.Text = "phrasePrec";
+            // 
+            // lblEnonPrec
+            // 
+            this.lblEnonPrec.AutoSize = true;
+            this.lblEnonPrec.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.lblEnonPrec.Location = new System.Drawing.Point(48, 52);
+            this.lblEnonPrec.Name = "lblEnonPrec";
+            this.lblEnonPrec.Size = new System.Drawing.Size(113, 22);
+            this.lblEnonPrec.TabIndex = 0;
+            this.lblEnonPrec.Text = "enoncePrec";
+            // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button3.Font = new System.Drawing.Font("Arial", 14.25F);
             this.button3.Location = new System.Drawing.Point(17, 561);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(106, 33);

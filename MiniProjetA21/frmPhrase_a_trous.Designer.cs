@@ -59,7 +59,7 @@
             this.gpbPhrases_Trous.Controls.Add(this.lblPhrase);
             this.gpbPhrases_Trous.Controls.Add(this.btnExit);
             this.gpbPhrases_Trous.Controls.Add(this.btnNext);
-            this.gpbPhrases_Trous.Font = new System.Drawing.Font("MV Boli", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gpbPhrases_Trous.Font = new System.Drawing.Font("Arial", 14.25F);
             this.gpbPhrases_Trous.Location = new System.Drawing.Point(12, 100);
             this.gpbPhrases_Trous.Name = "gpbPhrases_Trous";
             this.gpbPhrases_Trous.Size = new System.Drawing.Size(1157, 494);
@@ -100,10 +100,10 @@
             // lblEnonce
             // 
             this.lblEnonce.AutoSize = true;
-            this.lblEnonce.Font = new System.Drawing.Font("MV Boli", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnonce.Font = new System.Drawing.Font("Arial", 18F);
             this.lblEnonce.Location = new System.Drawing.Point(52, 70);
             this.lblEnonce.Name = "lblEnonce";
-            this.lblEnonce.Size = new System.Drawing.Size(393, 31);
+            this.lblEnonce.Size = new System.Drawing.Size(366, 27);
             this.lblEnonce.TabIndex = 5;
             this.lblEnonce.Text = "Complétez les mots manquants :";
             // 

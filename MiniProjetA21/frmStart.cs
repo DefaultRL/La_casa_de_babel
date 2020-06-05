@@ -25,6 +25,7 @@ namespace MiniProjetA21
         //Initialisation de la connection
         OleDbConnection connec = new OleDbConnection();
         DataSet ds = new DataSet();
+        DataSet tables = new DataSet();
         DataTable tableRecap = new DataTable();
         string prenomNomUtil;
         string[] administrateurs = { "Véronique Richard", "Murielle Torregrossa" };
@@ -116,6 +117,9 @@ namespace MiniProjetA21
 
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
+            OleDbConnection connexion = new OleDbConnection();
+            connexion.ConnectionString = chaine;
+
             try
             {
                 //Récup 
@@ -124,14 +128,14 @@ namespace MiniProjetA21
                 lblCoursActuel.Visible = true;
                 lblLeconActuelle.Visible = true;
 
-                connec.Open();
+                connexion.Open();
 
                 string recupInfos = @"select [codeCours], [codeLeçon] from Utilisateurs 
                             where [codeUtil]= " + cbUser.SelectedIndex;
 
                 //Paramètrage de l'objet commande
                 OleDbCommand cmd = new OleDbCommand();
-                cmd.Connection = connec;
+                cmd.Connection = connexion;
                 cmd.CommandType = CommandType.Text;
                 cmd.CommandText = recupInfos;
 
@@ -145,7 +149,7 @@ namespace MiniProjetA21
                     string cours = @"select [titreCours] from Cours where ucase([numCours])='"
                                     + dr.GetString(0) + "'";
                     OleDbCommand cmdCours = new OleDbCommand();
-                    cmdCours.Connection = connec;
+                    cmdCours.Connection = connexion;
                     cmdCours.CommandType = CommandType.Text;
                     cmdCours.CommandText = cours;
                     
@@ -157,7 +161,7 @@ namespace MiniProjetA21
                     string lecon = @"select [titreLecon] from Lecons where [numLecon] = "
                                     + dr.GetInt32(1);
                     OleDbCommand cmdLecon = new OleDbCommand();
-                    cmdLecon.Connection = connec;
+                    cmdLecon.Connection = connexion;
                     cmdLecon.CommandType = CommandType.Text;
                     cmdLecon.CommandText = lecon;
 
@@ -169,7 +173,7 @@ namespace MiniProjetA21
                     string comment = @"select [commentLecon] from Lecons where [numLecon] = "
                                     + dr.GetInt32(1);
                     OleDbCommand cmdComment = new OleDbCommand();
-                    cmdComment.Connection = connec;
+                    cmdComment.Connection = connexion;
                     cmdComment.CommandType = CommandType.Text;
                     cmdComment.CommandText = comment;
 
@@ -180,7 +184,7 @@ namespace MiniProjetA21
                     string progression = @"select [codeExo] from Utilisateurs where [codeLeçon] = "
                                         + dr.GetInt32(1);
                     OleDbCommand cmdExo = new OleDbCommand();
-                    cmdExo.Connection = connec;
+                    cmdExo.Connection = connexion;
                     cmdExo.CommandType = CommandType.Text;
                     cmdExo.CommandText = progression;
 
@@ -191,7 +195,7 @@ namespace MiniProjetA21
                     string total = @"select count(*) from Exercices where [numCours] = '"
                                         + dr.GetString(0) + "' and [numLecon] = " + dr.GetInt32(1) ;
                     OleDbCommand cmdTotal = new OleDbCommand();
-                    cmdTotal.Connection = connec;
+                    cmdTotal.Connection = connexion;
                     cmdTotal.CommandType = CommandType.Text;
                     cmdTotal.CommandText = total;
 
@@ -231,16 +235,83 @@ namespace MiniProjetA21
 
             finally
             {
-                if (connec.State == ConnectionState.Open)
+                if (connexion.State == ConnectionState.Open)
                 {
                     //Si tout s'est bien passé on ferme la connection
-                    connec.Close();
+                    connexion.Close();
                 }
+            }
+
+            // on récupère en local toutes les tables de la base et on les stocke dans le DataSet tables
+            OleDbConnection connec = new OleDbConnection();
+            connec.ConnectionString = chaine;
+            DataTable schemaTable = new DataTable();
+
+            // try-catch pour recuperer le schema des tables de la base de donnee
+            try
+            {
+                connec.Open();
+                schemaTable = connec.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
+                connec.Close();
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("ERREUR : Connexion à la base");
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("ERREUR : Requete");
+            }
+            catch (Exception erreur)
+            {
+                MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
+            }
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                    connec.Close();
+            }
+
+
+            // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
+            try
+            {
+                foreach (DataRow rw in schemaTable.Rows)
+                {
+                    string temp = rw[2].ToString();
+
+                    string requete = "SELECT * FROM " + temp;
+                    connec.ConnectionString = chaine;
+
+                    OleDbDataAdapter da = new OleDbDataAdapter(requete, connec);
+                    da.Fill(tables, temp);
+                }
+            }
+            catch (InvalidOperationException)
+            {
+                MessageBox.Show("ERREUR : Connexion à la base");
+            }
+            catch (OleDbException)
+            {
+                MessageBox.Show("ERREUR : Requete");
+            }
+            catch (Exception erreur)
+            {
+                MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
+            }
+            finally
+            {
+                if (connec.State == ConnectionState.Open)
+                    connec.Close();
             }
 
             if (administrateurs.Contains(prenomNomUtil))
             {
                 btnAdmin.Show();
+            }
+            else
+            {
+                btnAdmin.Hide();
             }
         }
 
@@ -255,72 +326,6 @@ namespace MiniProjetA21
 
             else
             {
-
-                // on récupère en local toutes les tables de la base et on les stocke dans le DataSet tables
-                DataSet tables = new DataSet();
-                OleDbConnection connec = new OleDbConnection();
-                connec.ConnectionString = chaine;
-                DataTable schemaTable = new DataTable();
-
-                // try-catch pour recuperer le schema des tables de la base de donnee
-                try
-                {
-                    connec.Open();
-                    schemaTable = connec.GetOleDbSchemaTable(OleDbSchemaGuid.Tables, new object[] { null, null, null, "TABLE" });
-                    connec.Close();
-                }
-                catch (InvalidOperationException)
-                {
-                    MessageBox.Show("ERREUR : Connexion à la base");
-                }
-                catch (OleDbException)
-                {
-                    MessageBox.Show("ERREUR : Requete");
-                }
-                catch (Exception erreur)
-                {
-                    MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
-                }
-                finally
-                {
-                    if (connec.State == ConnectionState.Open)
-                        connec.Close();
-                }
-
-
-                // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
-                try
-                {
-                    foreach (DataRow rw in schemaTable.Rows)
-                    {
-                        string temp = rw[2].ToString();
-
-                        string requete = "SELECT * FROM " + temp;
-                        connec.ConnectionString = chaine;
-
-                        OleDbDataAdapter da = new OleDbDataAdapter(requete, connec);
-                        da.Fill(tables, temp);
-                    }
-                }
-                catch (InvalidOperationException)
-                {
-                    MessageBox.Show("ERREUR : Connexion à la base");
-                }
-                catch (OleDbException)
-                {
-                    MessageBox.Show("ERREUR : Requete");
-                }
-                catch (Exception erreur)
-                {
-                    MessageBox.Show("ERREUR : " + erreur.GetType().ToString());
-                }
-                finally
-                {
-                    if (connec.State == ConnectionState.Open)
-                        connec.Close();
-                }
-
-
                 // on recupere les informations courantes sur l'utilisateur
                 int codeLecon = -1;
                 int codeExo = -1;
@@ -359,7 +364,7 @@ namespace MiniProjetA21
 
         private void btnAdmin_Click(object sender, EventArgs e)
         {
-            frmAdmin form = new frmAdmin(ds, prenomNomUtil);
+            frmAdmin form = new frmAdmin(tables, prenomNomUtil);
             form.ShowDialog();
         }
     }

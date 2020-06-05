@@ -26,7 +26,16 @@ namespace MiniProjetA21
         {
             lblUtilisateur.Text = UtilNP;
 
-
+            cboCours.DataSource = tables.Tables["Cours"];
+            cboCours.DisplayMember = "titreCours";
+            cboCours.ValueMember = "numCours";
+            cboCours.SelectedIndex = -1;
+        }
+        
+        private void cboCours_SelectionChangeCommitted(object sender, EventArgs e)
+        {
+            ComboBox cbo = (ComboBox)sender;
+            MessageBox.Show(cbo.SelectedItem.ToString());
         }
     }
 }
