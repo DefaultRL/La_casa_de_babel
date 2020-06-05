@@ -335,13 +335,12 @@ namespace MiniProjetA21
                     frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
                     form3.ShowDialog();
                 }
-                else
+
+                // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
+                else if (listeMot.GetType() != typeof(System.DBNull) && !completeON)
                 {
-                    if (!completeON) // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
-                    {
-                        frmPhrases_a_trous form2 = new frmPhrases_a_trous(ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
-                        form2.ShowDialog();
-                    }
+                    frmPhrases_a_trous form2 = new frmPhrases_a_trous(ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
+                    form2.ShowDialog();        
                 }
 
 
