@@ -101,6 +101,7 @@ namespace MiniProjetA21
             lblFleche.Visible = false;
             lblUserProg.Visible = false;
             lblUserExo.Visible = false;
+            progBar.Visible = false;
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -172,15 +173,28 @@ namespace MiniProjetA21
                     string commentUser = cmdComment.ExecuteScalar().ToString();
                     lblUserComment.Text = commentUser;
 
-                    string progression = @"select [numExo] from Exercices where [numLecon] = "
+                    string progression = @"select [codeExo] from Utilisateurs where [codeLeçon] = "
                                         + dr.GetInt32(1);
                     OleDbCommand cmdExo = new OleDbCommand();
                     cmdExo.Connection = connec;
                     cmdExo.CommandType = CommandType.Text;
                     cmdExo.CommandText = progression;
 
+                    //On affiche la progression de l'utilisateur
                     string exoUser = cmdExo.ExecuteScalar().ToString();
                     lblUserExo.Text = exoUser;
+
+                    string total = @"select count(*) from Exercices where [numCours] = '"
+                                        + dr.GetString(0) + "' and [numLecon] = " + dr.GetInt32(1) ;
+                    OleDbCommand cmdTotal = new OleDbCommand();
+                    cmdTotal.Connection = connec;
+                    cmdTotal.CommandType = CommandType.Text;
+                    cmdTotal.CommandText = total;
+
+                    string exoTotal = cmdTotal.ExecuteScalar().ToString();
+                    lblUserExo.Text = lblUserExo.Text + "/" + exoTotal;
+                    progBar.Value = Int32.Parse(exoUser);
+                    progBar.Maximum = Int32.Parse(exoTotal);
                 }
 
                 //On met à jour l'interface
@@ -190,6 +204,7 @@ namespace MiniProjetA21
                 lblFleche.Visible = true;
                 lblUserProg.Visible = true;
                 lblUserExo.Visible = true;
+                progBar.Visible = true;           
             }
 
             catch (InvalidOperationException)

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="frmCours.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCours.Designer.cs">
+      <DependentUpon>frmCours.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPhraseDesordre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -66,6 +72,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmCours.resx">
+      <DependentUpon>frmCours.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmPhraseDesordre.resx">
       <DependentUpon>frmPhraseDesordre.cs</DependentUpon>
     </EmbeddedResource>
