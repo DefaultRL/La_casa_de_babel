@@ -16,5 +16,13 @@ namespace MiniProjetA21
         {
             InitializeComponent();
         }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Voulez vous vraiment quitter ?\n", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (res == DialogResult.Yes)
+                Close();
+        }
     }
 }
