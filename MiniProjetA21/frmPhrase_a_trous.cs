@@ -139,7 +139,6 @@ namespace MiniProjetA21
             lblTrad.Text = traducPhrase;
             lblPhrase.Text = temp;
             lblPhrase.SendToBack();
-            MessageBox.Show(temp + "\n" + textePhrase);
         } // fin Form2_Loas
 
 
@@ -220,34 +219,38 @@ namespace MiniProjetA21
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            DataRow row = recap.NewRow();
-            row["Reussite"] = false;
-            row["numCours"] = numCours;
-            row["numLecon"] = numLecon;
-            row["numExo"] = numExo;
-            row["Reponse"] = reponse;
-            row["Corrige"] = corrige;
-            row["AffichSolution"] = affichSolution;
-            recap.Rows.Add(row);
-            tables.Tables["Exercices"].Select("[numLecon] = '" + numLecon.ToString() + "' and [numCours] = '" + numCours + "' and [numExo] = '" + (numExo + 1).ToString() + "'");
+            if (recap.Select("numCours = '" + numCours + "' and numLecon = '" + numLecon + "' and numExo = '" + numExo + "'").Length == 0)
+            {
+                DataRow row = recap.NewRow();
+                row["Reussite"] = false;
+                row["numCours"] = numCours;
+                row["numLecon"] = numLecon;
+                row["numExo"] = numExo;
+                row["Reponse"] = reponse;
+                row["Corrige"] = corrige;
+                row["AffichSolution"] = affichSolution;
+                recap.Rows.Add(row);
+            }
 
+            // on récupère la ligne concernant l'utilisateur courant
             DataRow ligneUtil = tables.Tables["Utilisateurs"].Select("[nomUtil] = '" + nomUtil + "'").FirstOrDefault();
+
             // on cherche si il existe un exercice apres celui ci dans ce cours et cette lecon
             DataRow[] tabRow = tables.Tables["Exercices"].Select("[numLecon] = '" + numLecon.ToString() + "' and [numCours] = '" + numCours + "' and [numExo] = '" + (numExo + 1).ToString() + "'");
             if(tabRow.Length == 0) // si l'exercice suivant n'existe pas
             {
                 tabRow = tables.Tables["Exercices"].Select("[numLecon] = '" + (numLecon + 1).ToString() + "' and [numCours] = '" + numCours + "' and [numExo] = '1'");
-                if (tabRow.Length == 0)
+                if (tabRow.Length == 0) // si la lecon suivante n'existe pas
                 {
-                    // fin du cours
+                    MessageBox.Show("Le cours est fini");
                 }
-                else
+                else // si la lecon suivante exite
                 {
                     ligneUtil["codeLecon"] = numLecon + 1;
                     ligneUtil["codeExo"] = 1;
                 }
             }
-            else
+            else // si l'exercice suivant existe
             {
                 ligneUtil["codeExo"] = numExo + 1;
             }
