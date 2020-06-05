@@ -343,6 +343,19 @@ namespace MiniProjetA21
                 bool completeON = (bool)row["completeON"];
                 object listeMot = row["listeMots"];
 
+                //On regarde si le codeCours est dans la table ConcerneMots
+                string filtreCours = "[numCours] =" + codeCours;
+                DataRow[] cours = ds.Tables["ConcerneMots"].Select(filtreCours);
+                bool estPresent = false;
+                if (cours.GetType() == typeof(System.DBNull))
+                {
+                    estPresent = false;
+                }
+                else 
+                {
+                    estPresent = true;
+                }
+                //---CONDITIONS DE LANCEMENTS DE FORMULAIRES---
                 // on regarde si listeMot est de type null
                 if (listeMot.GetType() == typeof(System.DBNull) && completeON == true)
                 {
@@ -357,6 +370,11 @@ namespace MiniProjetA21
                     form2.ShowDialog();        
                 }
 
+                else if(listeMot.GetType() == typeof(System.DBNull) && !completeON && estPresent == true)
+                {
+                    frmCours form3 = new frmCours(tables, codeCours, codeLecon, codeExo);
+                    form3.ShowDialog();
+                }
 
             }
 

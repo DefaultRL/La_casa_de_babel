@@ -34,6 +34,9 @@
             this.btnNext = new System.Windows.Forms.Button();
             this.lblVoc = new System.Windows.Forms.Label();
             this.btnQuitter = new System.Windows.Forms.Button();
+            this.lblLecon = new System.Windows.Forms.Label();
+            this.lblProg = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
             this.gbCours.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,10 +54,11 @@
             // gbCours
             // 
             this.gbCours.BackColor = System.Drawing.Color.Azure;
+            this.gbCours.Controls.Add(this.label1);
             this.gbCours.Controls.Add(this.btnQuitter);
             this.gbCours.Controls.Add(this.lblVoc);
             this.gbCours.Controls.Add(this.btnNext);
-            this.gbCours.Font = new System.Drawing.Font("Arial", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.gbCours.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.gbCours.Location = new System.Drawing.Point(12, 147);
             this.gbCours.Name = "gbCours";
             this.gbCours.Size = new System.Drawing.Size(1155, 467);
@@ -72,9 +76,9 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(992, 410);
+            this.btnNext.Location = new System.Drawing.Point(1007, 422);
             this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(157, 51);
+            this.btnNext.Size = new System.Drawing.Size(142, 39);
             this.btnNext.TabIndex = 0;
             this.btnNext.Text = "Suivant";
             this.btnNext.UseVisualStyleBackColor = true;
@@ -92,13 +96,42 @@
             // btnQuitter
             // 
             this.btnQuitter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitter.Location = new System.Drawing.Point(6, 410);
+            this.btnQuitter.Location = new System.Drawing.Point(6, 422);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(150, 51);
+            this.btnQuitter.Size = new System.Drawing.Size(131, 39);
             this.btnQuitter.TabIndex = 2;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.UseVisualStyleBackColor = true;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            // 
+            // lblLecon
+            // 
+            this.lblLecon.AutoSize = true;
+            this.lblLecon.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblLecon.Location = new System.Drawing.Point(14, 36);
+            this.lblLecon.Name = "lblLecon";
+            this.lblLecon.Size = new System.Drawing.Size(81, 23);
+            this.lblLecon.TabIndex = 4;
+            this.lblLecon.Text = "Leçon : ";
+            // 
+            // lblProg
+            // 
+            this.lblProg.AutoSize = true;
+            this.lblProg.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblProg.Location = new System.Drawing.Point(1015, 36);
+            this.lblProg.Name = "lblProg";
+            this.lblProg.Size = new System.Drawing.Size(42, 23);
+            this.lblProg.TabIndex = 5;
+            this.lblProg.Text = "N/A";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(123, 352);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(62, 23);
+            this.label1.TabIndex = 3;
+            this.label1.Text = "label1";
             // 
             // frmCours
             // 
@@ -106,12 +139,15 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1179, 626);
+            this.Controls.Add(this.lblProg);
+            this.Controls.Add(this.lblLecon);
             this.Controls.Add(this.progBar);
             this.Controls.Add(this.gbCours);
             this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Symbol", 8.25F);
             this.Name = "frmCours";
             this.Text = "Cours";
+            this.Load += new System.EventHandler(this.frmCours_Load);
             this.gbCours.ResumeLayout(false);
             this.gbCours.PerformLayout();
             this.ResumeLayout(false);
@@ -127,5 +163,8 @@
         private System.Windows.Forms.Button btnNext;
         private System.Windows.Forms.Label lblVoc;
         private System.Windows.Forms.Button btnQuitter;
+        private System.Windows.Forms.Label lblLecon;
+        private System.Windows.Forms.Label lblProg;
+        private System.Windows.Forms.Label label1;
     }
 }
