@@ -8,6 +8,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Data.OleDb;
+using System.Collections;
 
 namespace MiniProjetA21
 { 
@@ -26,9 +27,12 @@ namespace MiniProjetA21
         DataSet ds = new DataSet();
         DataTable tableRecap = new DataTable();
         string prenomNomUtil;
+        string[] administrateurs = { "Véronique Richard", "Murielle Torregrossa" };
 
         private void frmStart_Load(object sender, EventArgs e)
         {
+            btnAdmin.Hide();
+
             tableRecap.Columns.Add("Reussite", typeof(bool));
             tableRecap.Columns.Add("numCours", typeof(string));
             tableRecap.Columns.Add("numLecon", typeof(int));
@@ -233,6 +237,11 @@ namespace MiniProjetA21
                     connec.Close();
                 }
             }
+
+            if (administrateurs.Contains(prenomNomUtil))
+            {
+                btnAdmin.Show();
+            }
         }
 
         
@@ -347,5 +356,11 @@ namespace MiniProjetA21
             }
 
         }// fin btnNext_Click
+
+        private void btnAdmin_Click(object sender, EventArgs e)
+        {
+            frmAdmin form = new frmAdmin(ds, prenomNomUtil);
+            form.ShowDialog();
+        }
     }
 }
