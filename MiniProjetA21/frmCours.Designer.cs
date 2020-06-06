@@ -30,8 +30,8 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.gbCours = new System.Windows.Forms.GroupBox();
-            this.btnQuitter = new System.Windows.Forms.Button();
             this.lblVoc = new System.Windows.Forms.Label();
+            this.btnQuitter = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
             this.progBar = new System.Windows.Forms.ProgressBar();
             this.lblLecon = new System.Windows.Forms.Label();
@@ -43,7 +43,7 @@
             // 
             this.lblTitle.AutoSize = true;
             this.lblTitle.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblTitle.Location = new System.Drawing.Point(391, 20);
+            this.lblTitle.Location = new System.Drawing.Point(415, 21);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(363, 38);
@@ -62,6 +62,16 @@
             this.gbCours.TabStop = false;
             this.gbCours.Text = "Enoncé : ";
             // 
+            // lblVoc
+            // 
+            this.lblVoc.AutoSize = true;
+            this.lblVoc.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblVoc.Location = new System.Drawing.Point(473, 19);
+            this.lblVoc.Name = "lblVoc";
+            this.lblVoc.Size = new System.Drawing.Size(182, 32);
+            this.lblVoc.TabIndex = 1;
+            this.lblVoc.Text = "Vocabulaire";
+            // 
             // btnQuitter
             // 
             this.btnQuitter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -72,16 +82,6 @@
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.UseVisualStyleBackColor = true;
             this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
-            // 
-            // lblVoc
-            // 
-            this.lblVoc.AutoSize = true;
-            this.lblVoc.Font = new System.Drawing.Font("Arial Rounded MT Bold", 16.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVoc.Location = new System.Drawing.Point(473, 19);
-            this.lblVoc.Name = "lblVoc";
-            this.lblVoc.Size = new System.Drawing.Size(182, 32);
-            this.lblVoc.TabIndex = 1;
-            this.lblVoc.Text = "Vocabulaire";
             // 
             // btnNext
             // 

@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.gpbConnec = new System.Windows.Forms.GroupBox();
+            this.btnAdmin = new System.Windows.Forms.Button();
             this.progBar = new System.Windows.Forms.ProgressBar();
             this.lblUserExo = new System.Windows.Forms.Label();
             this.lblUserProg = new System.Windows.Forms.Label();
@@ -45,7 +46,6 @@
             this.cbUser = new System.Windows.Forms.ComboBox();
             this.lblConnec = new System.Windows.Forms.Label();
             this.erpErrors = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnAdmin = new System.Windows.Forms.Button();
             this.gpbConnec.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.erpErrors)).BeginInit();
             this.SuspendLayout();
@@ -53,10 +53,10 @@
             // lblTitle
             // 
             this.lblTitle.AutoSize = true;
-            this.lblTitle.Location = new System.Drawing.Point(402, 65);
+            this.lblTitle.Location = new System.Drawing.Point(421, 64);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(295, 32);
+            this.lblTitle.Size = new System.Drawing.Size(363, 38);
             this.lblTitle.TabIndex = 0;
             this.lblTitle.Text = "LA CASA DE BABBEL";
             // 
@@ -84,6 +84,16 @@
             this.gpbConnec.TabStop = false;
             this.gpbConnec.Text = "Bienvenue";
             // 
+            // btnAdmin
+            // 
+            this.btnAdmin.Location = new System.Drawing.Point(775, 350);
+            this.btnAdmin.Name = "btnAdmin";
+            this.btnAdmin.Size = new System.Drawing.Size(185, 52);
+            this.btnAdmin.TabIndex = 13;
+            this.btnAdmin.Text = "Administration";
+            this.btnAdmin.UseVisualStyleBackColor = true;
+            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
+            // 
             // progBar
             // 
             this.progBar.Location = new System.Drawing.Point(734, 177);
@@ -96,7 +106,7 @@
             this.lblUserExo.AutoSize = true;
             this.lblUserExo.Location = new System.Drawing.Point(962, 80);
             this.lblUserExo.Name = "lblUserExo";
-            this.lblUserExo.Size = new System.Drawing.Size(34, 18);
+            this.lblUserExo.Size = new System.Drawing.Size(42, 23);
             this.lblUserExo.TabIndex = 11;
             this.lblUserExo.Text = "N/A";
             // 
@@ -105,7 +115,7 @@
             this.lblUserProg.AutoSize = true;
             this.lblUserProg.Location = new System.Drawing.Point(730, 80);
             this.lblUserProg.Name = "lblUserProg";
-            this.lblUserProg.Size = new System.Drawing.Size(158, 18);
+            this.lblUserProg.Size = new System.Drawing.Size(200, 23);
             this.lblUserProg.TabIndex = 10;
             this.lblUserProg.Text = "Progression actuelle :";
             // 
@@ -114,7 +124,7 @@
             this.lblUserComment.AutoSize = true;
             this.lblUserComment.Location = new System.Drawing.Point(310, 289);
             this.lblUserComment.Name = "lblUserComment";
-            this.lblUserComment.Size = new System.Drawing.Size(34, 18);
+            this.lblUserComment.Size = new System.Drawing.Size(42, 23);
             this.lblUserComment.TabIndex = 9;
             this.lblUserComment.Text = "N/A";
             // 
@@ -123,7 +133,7 @@
             this.lblFleche.AutoSize = true;
             this.lblFleche.Location = new System.Drawing.Point(197, 289);
             this.lblFleche.Name = "lblFleche";
-            this.lblFleche.Size = new System.Drawing.Size(35, 18);
+            this.lblFleche.Size = new System.Drawing.Size(46, 23);
             this.lblFleche.TabIndex = 8;
             this.lblFleche.Text = ">>>";
             // 
@@ -132,7 +142,7 @@
             this.lblUserLecon.AutoSize = true;
             this.lblUserLecon.Location = new System.Drawing.Point(310, 232);
             this.lblUserLecon.Name = "lblUserLecon";
-            this.lblUserLecon.Size = new System.Drawing.Size(34, 18);
+            this.lblUserLecon.Size = new System.Drawing.Size(42, 23);
             this.lblUserLecon.TabIndex = 7;
             this.lblUserLecon.Text = "N/A";
             // 
@@ -141,7 +151,7 @@
             this.lblLeconActuelle.AutoSize = true;
             this.lblLeconActuelle.Location = new System.Drawing.Point(111, 232);
             this.lblLeconActuelle.Name = "lblLeconActuelle";
-            this.lblLeconActuelle.Size = new System.Drawing.Size(116, 18);
+            this.lblLeconActuelle.Size = new System.Drawing.Size(148, 23);
             this.lblLeconActuelle.TabIndex = 6;
             this.lblLeconActuelle.Text = "Leçon actuelle :";
             // 
@@ -150,7 +160,7 @@
             this.lblUserCours.AutoSize = true;
             this.lblUserCours.Location = new System.Drawing.Point(310, 177);
             this.lblUserCours.Name = "lblUserCours";
-            this.lblUserCours.Size = new System.Drawing.Size(34, 18);
+            this.lblUserCours.Size = new System.Drawing.Size(42, 23);
             this.lblUserCours.TabIndex = 5;
             this.lblUserCours.Text = "N/A";
             // 
@@ -159,7 +169,7 @@
             this.lblCoursActuel.AutoSize = true;
             this.lblCoursActuel.Location = new System.Drawing.Point(111, 177);
             this.lblCoursActuel.Name = "lblCoursActuel";
-            this.lblCoursActuel.Size = new System.Drawing.Size(103, 18);
+            this.lblCoursActuel.Size = new System.Drawing.Size(132, 23);
             this.lblCoursActuel.TabIndex = 4;
             this.lblCoursActuel.Text = "Cours actuel :";
             // 
@@ -189,7 +199,7 @@
             this.cbUser.FormattingEnabled = true;
             this.cbUser.Location = new System.Drawing.Point(314, 72);
             this.cbUser.Name = "cbUser";
-            this.cbUser.Size = new System.Drawing.Size(313, 26);
+            this.cbUser.Size = new System.Drawing.Size(313, 31);
             this.cbUser.TabIndex = 1;
             this.cbUser.SelectedIndexChanged += new System.EventHandler(this.cbUser_SelectedIndexChanged);
             // 
@@ -198,7 +208,7 @@
             this.lblConnec.AutoSize = true;
             this.lblConnec.Location = new System.Drawing.Point(111, 75);
             this.lblConnec.Name = "lblConnec";
-            this.lblConnec.Size = new System.Drawing.Size(127, 18);
+            this.lblConnec.Size = new System.Drawing.Size(161, 23);
             this.lblConnec.TabIndex = 0;
             this.lblConnec.Text = "Connectez-vous :";
             // 
@@ -206,19 +216,9 @@
             // 
             this.erpErrors.ContainerControl = this;
             // 
-            // btnAdmin
-            // 
-            this.btnAdmin.Location = new System.Drawing.Point(775, 350);
-            this.btnAdmin.Name = "btnAdmin";
-            this.btnAdmin.Size = new System.Drawing.Size(185, 52);
-            this.btnAdmin.TabIndex = 13;
-            this.btnAdmin.Text = "Administration";
-            this.btnAdmin.UseVisualStyleBackColor = true;
-            this.btnAdmin.Click += new System.EventHandler(this.btnAdmin_Click);
-            // 
             // frmStart
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 30F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1182, 606);
