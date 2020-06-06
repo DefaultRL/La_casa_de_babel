@@ -37,6 +37,7 @@ namespace MiniProjetA21
 
             lblUtilisateur.Text = UtilNP;
 
+            cboCours.Items.Clear();
             cboCours.DataSource = tables.Tables["Cours"];
             cboCours.DisplayMember = "titreCours";
             cboCours.ValueMember = "numCours";
