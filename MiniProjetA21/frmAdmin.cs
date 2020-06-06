@@ -225,5 +225,13 @@ namespace MiniProjetA21
                     break;
             }
         }
+
+        private void btnQuitter_Click(object sender, EventArgs e)
+        {
+            DialogResult res = MessageBox.Show("Voulez vous retourner au menu ?", "Attention", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+            if (res == DialogResult.Yes)
+                Close();
+        }
     }
 }

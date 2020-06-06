@@ -22,7 +22,7 @@ namespace MiniProjetA21
         //Definition chaine de connection à la base
         string chaine = @"Provider=Microsoft.Jet.OLEDB.4.0;Data Source = .\baseLangue.mdb";
         
-        //Initialisation de la connection
+        //Initialisation des variables globales
         OleDbConnection connec = new OleDbConnection();
         DataSet ds = new DataSet();
         DataSet tables = new DataSet();
@@ -343,35 +343,39 @@ namespace MiniProjetA21
                 bool completeON = (bool)row["completeON"];
                 object listeMot = row["listeMots"];
 
-                //On regarde si le codeCours est dans la table ConcerneMots
-                string filtreCours = "[numCours] =" + codeCours;
-                DataRow[] cours = ds.Tables["ConcerneMots"].Select(filtreCours);
+                // on vérifie que codeCours est présent dans la table ConcerneMot
+                string filtreCours = @"[numCours] ='" + codeCours + "'";
+                DataRow[] res = tables.Tables["ConcerneMots"].Select(filtreCours);
                 bool estPresent = false;
-                if (cours.GetType() == typeof(System.DBNull))
+                if(res.Length == 0)
                 {
                     estPresent = false;
                 }
-                else 
+                else
                 {
                     estPresent = true;
                 }
-                //---CONDITIONS DE LANCEMENTS DE FORMULAIRES---
-                // on regarde si listeMot est de type null
+
+
+                //---CONDITIONS DE LANCEMENTS DES FORMULAIRES EXERCICES---
+
+                // si listeMot est null et completeON est true, alors c'est une phrase desordre
                 if (listeMot.GetType() == typeof(System.DBNull) && completeON == true)
                 {
                     frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
                     form3.ShowDialog();
                 }
 
-                // si listeMot n'est pas nul et completeON false alors c'est une phrase a trous
+                // si listeMot n'est pas null et completeON false, alors c'est une phrase a trous
                 else if (listeMot.GetType() != typeof(System.DBNull) && !completeON)
                 {
                     frmPhrases_a_trous form2 = new frmPhrases_a_trous(ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
                     form2.ShowDialog();        
                 }
 
-                else if(listeMot.GetType() == typeof(System.DBNull) && !completeON && estPresent == true)
-                {
+                // si listMot est null, completON est false et estPresent est vrai, alors c'est du vocabulaire
+                else if(listeMot.GetType() == typeof(System.DBNull) && !completeON && estPresent)
+                {     
                     frmCours form3 = new frmCours(tables, codeCours, codeLecon, codeExo);
                     form3.ShowDialog();
                 }
