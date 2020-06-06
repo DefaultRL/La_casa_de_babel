@@ -328,60 +328,7 @@ namespace MiniProjetA21
 
             else
             {
-                // on recupere les informations courantes sur l'utilisateur
-                int codeLecon = -1;
-                int codeExo = -1;
-                string codeCours = "";
-                string nomUtil = prenomNomUtil.Split(' ')[1];
-
-                DataRow row = tables.Tables["Utilisateurs"].Select("nomUtil = '" + nomUtil + "'").FirstOrDefault();
-                codeLecon = (int)row["codeLeçon"];
-                codeExo = (int)row["codeExo"];
-                codeCours = row["codeCours"].ToString();
-
-                // on cherche les informations concernant l'exercice courant de l'utilisateur
-                row = tables.Tables["Exercices"].Select("numExo = '" + codeExo + "' and numCours = '" + codeCours + "' and numLecon = '" + codeLecon + "'").FirstOrDefault();
-
-                bool completeON = (bool)row["completeON"];
-                object listeMot = row["listeMots"];
-
-                // on vérifie que codeCours est présent dans la table ConcerneMot
-                string filtreCours = @"[numCours] ='" + codeCours + "'";
-                DataRow[] res = tables.Tables["ConcerneMots"].Select(filtreCours);
-                bool estPresent = false;
-                if(res.Length == 0)
-                {
-                    estPresent = false;
-                }
-                else
-                {
-                    estPresent = true;
-                }
-
-
-                //---CONDITIONS DE LANCEMENTS DES FORMULAIRES EXERCICES---
-
-                // si listeMot est null et completeON est true, alors c'est une phrase desordre
-                if (listeMot.GetType() == typeof(System.DBNull) && completeON == true)
-                {
-                    frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
-                    form3.ShowDialog();
-                }
-
-                // si listeMot n'est pas null et completeON false, alors c'est une phrase a trous
-                else if (listeMot.GetType() != typeof(System.DBNull) && !completeON)
-                {
-                    frmPhrases_a_trous form2 = new frmPhrases_a_trous(ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
-                    form2.ShowDialog();        
-                }
-
-                // si listMot est null, completON est false et estPresent est vrai, alors c'est du vocabulaire
-                else if(listeMot.GetType() == typeof(System.DBNull) && !completeON && estPresent)
-                {     
-                    frmCours form3 = new frmCours(tables, codeCours, codeLecon, codeExo);
-                    form3.ShowDialog();
-                }
-
+                Next_Exercice(prenomNomUtil.Split(' ')[1]);
             }
 
         }// fin btnNext_Click
@@ -390,6 +337,63 @@ namespace MiniProjetA21
         {
             frmAdmin form = new frmAdmin(tables, prenomNomUtil);
             form.ShowDialog();
+        }
+
+        public void Next_Exercice(string nomUtil)
+        {
+            // on recupere les informations courantes sur l'utilisateur
+            int codeLecon = -1;
+            int codeExo = -1;
+            string codeCours = "";
+            //string nomUtil = prenomNomUtil.Split(' ')[1];
+
+            DataRow row = tables.Tables["Utilisateurs"].Select("nomUtil = '" + nomUtil + "'").FirstOrDefault();
+            codeLecon = (int)row["codeLeçon"];
+            codeExo = (int)row["codeExo"];
+            codeCours = row["codeCours"].ToString();
+
+            // on cherche les informations concernant l'exercice courant de l'utilisateur
+            row = tables.Tables["Exercices"].Select("numExo = '" + codeExo + "' and numCours = '" + codeCours + "' and numLecon = '" + codeLecon + "'").FirstOrDefault();
+
+            bool completeON = (bool)row["completeON"];
+            object listeMot = row["listeMots"];
+
+            // on vérifie que codeCours est présent dans la table ConcerneMot
+            string filtreCours = @"[numCours] ='" + codeCours + "'";
+            DataRow[] res = tables.Tables["ConcerneMots"].Select(filtreCours);
+            bool estPresent = false;
+            if (res.Length == 0)
+            {
+                estPresent = false;
+            }
+            else
+            {
+                estPresent = true;
+            }
+
+
+            //---CONDITIONS DE LANCEMENTS DES FORMULAIRES EXERCICES---
+
+            // si listeMot est null et completeON est true, alors c'est une phrase desordre
+            if (listeMot.GetType() == typeof(System.DBNull) && completeON == true)
+            {
+                frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
+                form3.ShowDialog();
+            }
+
+            // si listeMot n'est pas null et completeON false, alors c'est une phrase a trous
+            else if (listeMot.GetType() != typeof(System.DBNull) && !completeON)
+            {
+                frmPhrases_a_trous form2 = new frmPhrases_a_trous(this, ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
+                form2.ShowDialog();
+            }
+
+            // si listMot est null, completON est false et estPresent est vrai, alors c'est du vocabulaire
+            else if (listeMot.GetType() == typeof(System.DBNull) && !completeON && estPresent)
+            {
+                frmCours form3 = new frmCours(tables, codeCours, codeLecon, codeExo);
+                form3.ShowDialog();
+            }
         }
     }
 }

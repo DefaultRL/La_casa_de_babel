@@ -29,11 +29,14 @@ namespace MiniProjetA21
         string reponse;
         string corrige = string.Empty;
 
+        frmStart formSTART;
+
 
 
         // constructeur
-        public frmPhrases_a_trous(ref DataSet ds, ref DataTable dt, string cours, int lecon, int exo, string util)
+        public frmPhrases_a_trous(frmStart frm, ref DataSet ds, ref DataTable dt, string cours, int lecon, int exo, string util)
         {
+            formSTART = frm;
             tables = ds;
             recap = dt;
             numCours = cours;
@@ -181,7 +184,7 @@ namespace MiniProjetA21
             {
                 // ajout exercice reussi
                 DataRow row = recap.NewRow();
-                row["Reussite"] = true;
+                row["Reussite"] = true & !affichSolution; // false si l'utilisateur a affiche la solution
                 row["numCours"] = numCours;
                 row["numLecon"] = numLecon;
                 row["numExo"] = numExo;
@@ -219,7 +222,7 @@ namespace MiniProjetA21
 
         private void btnNext_Click(object sender, EventArgs e)
         {
-            if (recap.Select("numCours = '" + numCours + "' and numLecon = '" + numLecon + "' and numExo = '" + numExo + "'").Length == 0)
+            if (recap.Select("numCours = '" + numCours + "' and numLecon = '" + numLecon + "' and numExo = '" + numExo + "'").Length == 0) // si les données n'ont pas encore ete saisi dans la table Recap
             {
                 DataRow row = recap.NewRow();
                 row["Reussite"] = false;
@@ -254,6 +257,10 @@ namespace MiniProjetA21
             {
                 ligneUtil["codeExo"] = numExo + 1;
             }
+
+            this.Hide();
+
+            formSTART.Next_Exercice(nomUtil); // lancement du nouvel exercice
         }
     }
 }
