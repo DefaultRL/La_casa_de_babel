@@ -69,7 +69,7 @@ namespace MiniProjetA21
                 mots[i] = ds.Tables["Mots"].Select(filtreOrigine).FirstOrDefault();
             }
 
-            int gauche = 100;
+            int gauche = 75;
 
             for(int i = 0; i < mots.Length; i++)
             {
@@ -94,13 +94,17 @@ namespace MiniProjetA21
 
                 //Images correspondantes 
                 PictureBox pb = new PictureBox();
-                Label pb = new Label();
                 pb.Tag = i;
                 pb.Left = gauche;
-                pb.Top = 350;
-                pb.Image =  Image.FromFile(mots[i][3].ToString());
+                pb.Top = 100;
+                pb.Image = Image.FromFile("./Images/"+mots[i][3].ToString());
+                pb.Size = new System.Drawing.Size(200, 200);
+                pb.SizeMode = PictureBoxSizeMode.StretchImage;
+                pb.BackColor = Color.White;
 
-                gauche += 300;
+                gbCours.Controls.Add(pb);
+
+                gauche += 275;
             }
         }
     }

@@ -52,14 +52,12 @@
             // 
             // gbCours
             // 
-            this.gbCours.BackColor = System.Drawing.Color.Azure;
-            this.gbCours.Controls.Add(this.btnQuitter);
+            this.gbCours.BackColor = System.Drawing.Color.LightGray;
             this.gbCours.Controls.Add(this.lblVoc);
-            this.gbCours.Controls.Add(this.btnNext);
             this.gbCours.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.gbCours.Location = new System.Drawing.Point(12, 147);
+            this.gbCours.Location = new System.Drawing.Point(18, 147);
             this.gbCours.Name = "gbCours";
-            this.gbCours.Size = new System.Drawing.Size(1155, 467);
+            this.gbCours.Size = new System.Drawing.Size(1149, 422);
             this.gbCours.TabIndex = 2;
             this.gbCours.TabStop = false;
             this.gbCours.Text = "Enoncé : ";
@@ -67,7 +65,7 @@
             // btnQuitter
             // 
             this.btnQuitter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitter.Location = new System.Drawing.Point(6, 422);
+            this.btnQuitter.Location = new System.Drawing.Point(12, 575);
             this.btnQuitter.Name = "btnQuitter";
             this.btnQuitter.Size = new System.Drawing.Size(131, 39);
             this.btnQuitter.TabIndex = 2;
@@ -88,7 +86,7 @@
             // btnNext
             // 
             this.btnNext.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(1007, 422);
+            this.btnNext.Location = new System.Drawing.Point(1025, 575);
             this.btnNext.Name = "btnNext";
             this.btnNext.Size = new System.Drawing.Size(142, 39);
             this.btnNext.TabIndex = 0;
@@ -128,8 +126,10 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1179, 626);
+            this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.lblProg);
             this.Controls.Add(this.lblLecon);
+            this.Controls.Add(this.btnNext);
             this.Controls.Add(this.progBar);
             this.Controls.Add(this.gbCours);
             this.Controls.Add(this.lblTitle);
