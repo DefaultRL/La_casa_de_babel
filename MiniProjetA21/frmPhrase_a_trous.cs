@@ -244,7 +244,7 @@ namespace MiniProjetA21
                 {
                     MessageBox.Show("Le cours est fini");
                 }
-                else // si la lecon suivante exite
+                else // si la lecon suivante existe
                 {
                     ligneUtil["codeLecon"] = numLecon + 1;
                     ligneUtil["codeExo"] = 1;

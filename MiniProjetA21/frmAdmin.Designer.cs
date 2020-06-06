@@ -55,7 +55,7 @@
             this.lblTitlePhrases_Trous.Location = new System.Drawing.Point(420, 35);
             this.lblTitlePhrases_Trous.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitlePhrases_Trous.Name = "lblTitlePhrases_Trous";
-            this.lblTitlePhrases_Trous.Size = new System.Drawing.Size(363, 38);
+            this.lblTitlePhrases_Trous.Size = new System.Drawing.Size(295, 32);
             this.lblTitlePhrases_Trous.TabIndex = 2;
             this.lblTitlePhrases_Trous.Text = "LA CASA DE BABBEL";
             // 
@@ -65,7 +65,7 @@
             this.lblUtilisateur.Font = new System.Drawing.Font("Arial", 14.25F);
             this.lblUtilisateur.Location = new System.Drawing.Point(12, 130);
             this.lblUtilisateur.Name = "lblUtilisateur";
-            this.lblUtilisateur.Size = new System.Drawing.Size(44, 27);
+            this.lblUtilisateur.Size = new System.Drawing.Size(33, 22);
             this.lblUtilisateur.TabIndex = 3;
             this.lblUtilisateur.Text = "util";
             // 
@@ -76,7 +76,7 @@
             this.cboCours.FormattingEnabled = true;
             this.cboCours.Location = new System.Drawing.Point(272, 159);
             this.cboCours.Name = "cboCours";
-            this.cboCours.Size = new System.Drawing.Size(226, 32);
+            this.cboCours.Size = new System.Drawing.Size(226, 28);
             this.cboCours.TabIndex = 4;
             this.cboCours.SelectionChangeCommitted += new System.EventHandler(this.cboCours_SelectionChangeCommitted);
             // 
@@ -86,7 +86,7 @@
             this.lblCours.Font = new System.Drawing.Font("Arial", 15.75F);
             this.lblCours.Location = new System.Drawing.Point(276, 128);
             this.lblCours.Name = "lblCours";
-            this.lblCours.Size = new System.Drawing.Size(88, 32);
+            this.lblCours.Size = new System.Drawing.Size(66, 24);
             this.lblCours.TabIndex = 5;
             this.lblCours.Text = "Cours";
             // 
@@ -96,7 +96,7 @@
             this.lblLecon.Font = new System.Drawing.Font("Arial", 15.75F);
             this.lblLecon.Location = new System.Drawing.Point(650, 128);
             this.lblLecon.Name = "lblLecon";
-            this.lblLecon.Size = new System.Drawing.Size(103, 32);
+            this.lblLecon.Size = new System.Drawing.Size(79, 24);
             this.lblLecon.TabIndex = 7;
             this.lblLecon.Text = "Leçons";
             // 
@@ -107,7 +107,7 @@
             this.cboLecons.FormattingEnabled = true;
             this.cboLecons.Location = new System.Drawing.Point(642, 159);
             this.cboLecons.Name = "cboLecons";
-            this.cboLecons.Size = new System.Drawing.Size(226, 32);
+            this.cboLecons.Size = new System.Drawing.Size(226, 28);
             this.cboLecons.TabIndex = 6;
             this.cboLecons.SelectionChangeCommitted += new System.EventHandler(this.cboLecons_SelectionChangeCommitted);
             // 
@@ -181,7 +181,7 @@
             this.lblPhraseSuiv.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic);
             this.lblPhraseSuiv.Location = new System.Drawing.Point(475, 256);
             this.lblPhraseSuiv.Name = "lblPhraseSuiv";
-            this.lblPhraseSuiv.Size = new System.Drawing.Size(131, 28);
+            this.lblPhraseSuiv.Size = new System.Drawing.Size(109, 23);
             this.lblPhraseSuiv.TabIndex = 5;
             this.lblPhraseSuiv.Text = "phraseSuiv";
             // 
@@ -191,7 +191,7 @@
             this.lblEnonSuiv.Font = new System.Drawing.Font("Arial", 14.25F);
             this.lblEnonSuiv.Location = new System.Drawing.Point(48, 256);
             this.lblEnonSuiv.Name = "lblEnonSuiv";
-            this.lblEnonSuiv.Size = new System.Drawing.Size(137, 27);
+            this.lblEnonSuiv.Size = new System.Drawing.Size(109, 22);
             this.lblEnonSuiv.TabIndex = 4;
             this.lblEnonSuiv.Text = "enonceSuiv";
             // 
@@ -201,7 +201,7 @@
             this.lblPhrase.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
             this.lblPhrase.Location = new System.Drawing.Point(475, 154);
             this.lblPhrase.Name = "lblPhrase";
-            this.lblPhrase.Size = new System.Drawing.Size(90, 28);
+            this.lblPhrase.Size = new System.Drawing.Size(75, 23);
             this.lblPhrase.TabIndex = 3;
             this.lblPhrase.Text = "phrase";
             // 
@@ -211,7 +211,7 @@
             this.lblEnon.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblEnon.Location = new System.Drawing.Point(48, 154);
             this.lblEnon.Name = "lblEnon";
-            this.lblEnon.Size = new System.Drawing.Size(97, 29);
+            this.lblEnon.Size = new System.Drawing.Size(79, 22);
             this.lblEnon.TabIndex = 2;
             this.lblEnon.Text = "enonce";
             // 
@@ -221,7 +221,7 @@
             this.lblPhrasePrec.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic);
             this.lblPhrasePrec.Location = new System.Drawing.Point(475, 52);
             this.lblPhrasePrec.Name = "lblPhrasePrec";
-            this.lblPhrasePrec.Size = new System.Drawing.Size(133, 28);
+            this.lblPhrasePrec.Size = new System.Drawing.Size(110, 23);
             this.lblPhrasePrec.TabIndex = 1;
             this.lblPhrasePrec.Text = "phrasePrec";
             // 
@@ -231,16 +231,16 @@
             this.lblEnonPrec.Font = new System.Drawing.Font("Arial", 14.25F);
             this.lblEnonPrec.Location = new System.Drawing.Point(48, 52);
             this.lblEnonPrec.Name = "lblEnonPrec";
-            this.lblEnonPrec.Size = new System.Drawing.Size(140, 27);
+            this.lblEnonPrec.Size = new System.Drawing.Size(113, 22);
             this.lblEnonPrec.TabIndex = 0;
             this.lblEnonPrec.Text = "enoncePrec";
             // 
             // btnQuitter
             // 
-            this.btnQuitter.Font = new System.Drawing.Font("Arial", 14.25F);
-            this.btnQuitter.Location = new System.Drawing.Point(17, 561);
+            this.btnQuitter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitter.Location = new System.Drawing.Point(12, 542);
             this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(106, 33);
+            this.btnQuitter.Size = new System.Drawing.Size(173, 52);
             this.btnQuitter.TabIndex = 13;
             this.btnQuitter.Text = "Quitter";
             this.btnQuitter.UseVisualStyleBackColor = true;
@@ -248,7 +248,7 @@
             // 
             // frmAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1182, 606);

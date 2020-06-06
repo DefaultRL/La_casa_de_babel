@@ -34,14 +34,6 @@ namespace MiniProjetA21
         {
             btnAdmin.Hide();
 
-            tableRecap.Columns.Add("Reussite", typeof(bool));
-            tableRecap.Columns.Add("numCours", typeof(string));
-            tableRecap.Columns.Add("numLecon", typeof(int));
-            tableRecap.Columns.Add("numExo", typeof(int));
-            tableRecap.Columns.Add("Reponse", typeof(string));
-            tableRecap.Columns.Add("Corrige", typeof(string));
-            tableRecap.Columns.Add("AffichSolution", typeof(bool));
-
             try
             {
                 //Connection avec la chaine
@@ -117,6 +109,15 @@ namespace MiniProjetA21
 
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
+            tableRecap.Clear();
+            tableRecap.Columns.Add("Reussite", typeof(bool));
+            tableRecap.Columns.Add("numCours", typeof(string));
+            tableRecap.Columns.Add("numLecon", typeof(int));
+            tableRecap.Columns.Add("numExo", typeof(int));
+            tableRecap.Columns.Add("Reponse", typeof(string));
+            tableRecap.Columns.Add("Corrige", typeof(string));
+            tableRecap.Columns.Add("AffichSolution", typeof(bool));
+
             OleDbConnection connexion = new OleDbConnection();
             connexion.ConnectionString = chaine;
 
@@ -276,6 +277,7 @@ namespace MiniProjetA21
             // try-catch pour remplir le DataSet tables a partir du schema obtenu ci-dessus
             try
             {
+                tables.Clear();
                 foreach (DataRow rw in schemaTable.Rows)
                 {
                     string temp = rw[2].ToString();
