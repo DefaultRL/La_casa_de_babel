@@ -104,6 +104,10 @@ namespace MiniProjetA21
 
                 gbCours.Controls.Add(pb);
 
+                ToolTip tt = new ToolTip();
+                tt.ShowAlways = true;
+                tt.SetToolTip(pb, mots[i][2].ToString());
+
                 gauche += 275;
             }
         }

@@ -46,7 +46,7 @@
             this.lblTitlePhrases_Trous.Location = new System.Drawing.Point(420, 35);
             this.lblTitlePhrases_Trous.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitlePhrases_Trous.Name = "lblTitlePhrases_Trous";
-            this.lblTitlePhrases_Trous.Size = new System.Drawing.Size(295, 32);
+            this.lblTitlePhrases_Trous.Size = new System.Drawing.Size(363, 38);
             this.lblTitlePhrases_Trous.TabIndex = 1;
             this.lblTitlePhrases_Trous.Text = "LA CASA DE BABBEL";
             // 
@@ -73,7 +73,7 @@
             this.lblTrad.Font = new System.Drawing.Font("Lucida Console", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTrad.Location = new System.Drawing.Point(131, 211);
             this.lblTrad.Name = "lblTrad";
-            this.lblTrad.Size = new System.Drawing.Size(39, 13);
+            this.lblTrad.Size = new System.Drawing.Size(48, 17);
             this.lblTrad.TabIndex = 9;
             this.lblTrad.Text = "trad";
             // 
@@ -103,7 +103,7 @@
             this.lblEnonce.Font = new System.Drawing.Font("Arial", 18F);
             this.lblEnonce.Location = new System.Drawing.Point(52, 70);
             this.lblEnonce.Name = "lblEnonce";
-            this.lblEnonce.Size = new System.Drawing.Size(366, 27);
+            this.lblEnonce.Size = new System.Drawing.Size(448, 35);
             this.lblEnonce.TabIndex = 5;
             this.lblEnonce.Text = "Complétez les mots manquants :";
             // 
@@ -113,7 +113,7 @@
             this.lblPhrase.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblPhrase.Location = new System.Drawing.Point(110, 165);
             this.lblPhrase.Name = "lblPhrase";
-            this.lblPhrase.Size = new System.Drawing.Size(68, 16);
+            this.lblPhrase.Size = new System.Drawing.Size(81, 20);
             this.lblPhrase.TabIndex = 6;
             this.lblPhrase.Text = "phrase";
             // 
@@ -139,10 +139,10 @@
             // 
             // frmPhrases_a_trous
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 30F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1182, 606);
+            this.ClientSize = new System.Drawing.Size(1188, 611);
             this.Controls.Add(this.gpbPhrases_Trous);
             this.Controls.Add(this.lblTitlePhrases_Trous);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Italic);
