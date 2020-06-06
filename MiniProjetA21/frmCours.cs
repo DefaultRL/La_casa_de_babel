@@ -61,19 +61,21 @@ namespace MiniProjetA21
 
             string filtreMots = @"[numMot]=" + numMot[0][3].ToString();
             DataRow[] mots = ds.Tables["Mots"].Select(filtreMots);
-            MessageBox.Show(mots[0][0].ToString());
-
+            MessageBox.Show(mots.Length.ToString());
             int gauche = 125;
             int haut = 350;
 
             for(int i = 0; i < mots.Length; i++)
             {
                 Label lbl = new Label();
+                lbl.Tag = i;
                 lbl.Left = gauche;
                 lbl.Top = haut;
                 lbl.Text = mots[i][2].ToString();
 
                 gauche += 120;
+
+                gbCours.Controls.Add(lbl);
             }
         }
     }

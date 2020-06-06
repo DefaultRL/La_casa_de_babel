@@ -31,11 +31,11 @@
             this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.gbDesordre = new System.Windows.Forms.GroupBox();
+            this.btnValide = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnSoluc = new System.Windows.Forms.Button();
             this.btnReset = new System.Windows.Forms.Button();
             this.lblTraducPhrase = new System.Windows.Forms.Label();
-            this.btnValide = new System.Windows.Forms.Button();
             this.erpValide = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbDesordre.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.erpValide)).BeginInit();
@@ -66,6 +66,16 @@
             this.gbDesordre.TabStop = false;
             this.gbDesordre.Text = "Remettez les éléments dans l\'ordre";
             // 
+            // btnValide
+            // 
+            this.btnValide.Location = new System.Drawing.Point(1022, 322);
+            this.btnValide.Name = "btnValide";
+            this.btnValide.Size = new System.Drawing.Size(131, 49);
+            this.btnValide.TabIndex = 5;
+            this.btnValide.Text = "Valider";
+            this.btnValide.UseVisualStyleBackColor = true;
+            this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
+            // 
             // btnQuitter
             // 
             this.btnQuitter.Location = new System.Drawing.Point(199, 322);
@@ -92,7 +102,7 @@
             this.btnReset.Name = "btnReset";
             this.btnReset.Size = new System.Drawing.Size(145, 49);
             this.btnReset.TabIndex = 1;
-            this.btnReset.Text = "Reset";
+            this.btnReset.Text = "Recommencer";
             this.btnReset.UseVisualStyleBackColor = true;
             this.btnReset.Click += new System.EventHandler(this.btnReset_Click);
             // 
@@ -104,16 +114,6 @@
             this.lblTraducPhrase.Size = new System.Drawing.Size(42, 23);
             this.lblTraducPhrase.TabIndex = 0;
             this.lblTraducPhrase.Text = "N/A";
-            // 
-            // btnValide
-            // 
-            this.btnValide.Location = new System.Drawing.Point(1022, 322);
-            this.btnValide.Name = "btnValide";
-            this.btnValide.Size = new System.Drawing.Size(131, 49);
-            this.btnValide.TabIndex = 5;
-            this.btnValide.Text = "Valider";
-            this.btnValide.UseVisualStyleBackColor = true;
-            this.btnValide.Click += new System.EventHandler(this.btnValide_Click);
             // 
             // erpValide
             // 

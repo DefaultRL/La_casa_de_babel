@@ -30,13 +30,12 @@
         {
             this.lblTitle = new System.Windows.Forms.Label();
             this.gbCours = new System.Windows.Forms.GroupBox();
-            this.progBar = new System.Windows.Forms.ProgressBar();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.lblVoc = new System.Windows.Forms.Label();
             this.btnQuitter = new System.Windows.Forms.Button();
+            this.lblVoc = new System.Windows.Forms.Label();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.progBar = new System.Windows.Forms.ProgressBar();
             this.lblLecon = new System.Windows.Forms.Label();
             this.lblProg = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
             this.gbCours.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -47,14 +46,13 @@
             this.lblTitle.Location = new System.Drawing.Point(391, 20);
             this.lblTitle.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitle.Name = "lblTitle";
-            this.lblTitle.Size = new System.Drawing.Size(373, 39);
+            this.lblTitle.Size = new System.Drawing.Size(363, 38);
             this.lblTitle.TabIndex = 1;
             this.lblTitle.Text = "LA CASA DE BABBEL";
             // 
             // gbCours
             // 
             this.gbCours.BackColor = System.Drawing.Color.Azure;
-            this.gbCours.Controls.Add(this.label1);
             this.gbCours.Controls.Add(this.btnQuitter);
             this.gbCours.Controls.Add(this.lblVoc);
             this.gbCours.Controls.Add(this.btnNext);
@@ -66,22 +64,16 @@
             this.gbCours.TabStop = false;
             this.gbCours.Text = "Enoncé : ";
             // 
-            // progBar
+            // btnQuitter
             // 
-            this.progBar.Location = new System.Drawing.Point(183, 80);
-            this.progBar.Name = "progBar";
-            this.progBar.Size = new System.Drawing.Size(813, 40);
-            this.progBar.TabIndex = 3;
-            // 
-            // btnNext
-            // 
-            this.btnNext.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNext.Location = new System.Drawing.Point(1007, 422);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(142, 39);
-            this.btnNext.TabIndex = 0;
-            this.btnNext.Text = "Suivant";
-            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnQuitter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnQuitter.Location = new System.Drawing.Point(6, 422);
+            this.btnQuitter.Name = "btnQuitter";
+            this.btnQuitter.Size = new System.Drawing.Size(131, 39);
+            this.btnQuitter.TabIndex = 2;
+            this.btnQuitter.Text = "Quitter";
+            this.btnQuitter.UseVisualStyleBackColor = true;
+            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
             // 
             // lblVoc
             // 
@@ -93,16 +85,22 @@
             this.lblVoc.TabIndex = 1;
             this.lblVoc.Text = "Vocabulaire";
             // 
-            // btnQuitter
+            // btnNext
             // 
-            this.btnQuitter.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnQuitter.Location = new System.Drawing.Point(6, 422);
-            this.btnQuitter.Name = "btnQuitter";
-            this.btnQuitter.Size = new System.Drawing.Size(131, 39);
-            this.btnQuitter.TabIndex = 2;
-            this.btnQuitter.Text = "Quitter";
-            this.btnQuitter.UseVisualStyleBackColor = true;
-            this.btnQuitter.Click += new System.EventHandler(this.btnQuitter_Click);
+            this.btnNext.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNext.Location = new System.Drawing.Point(1007, 422);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(142, 39);
+            this.btnNext.TabIndex = 0;
+            this.btnNext.Text = "Suivant";
+            this.btnNext.UseVisualStyleBackColor = true;
+            // 
+            // progBar
+            // 
+            this.progBar.Location = new System.Drawing.Point(183, 80);
+            this.progBar.Name = "progBar";
+            this.progBar.Size = new System.Drawing.Size(813, 40);
+            this.progBar.TabIndex = 3;
             // 
             // lblLecon
             // 
@@ -123,15 +121,6 @@
             this.lblProg.Size = new System.Drawing.Size(42, 23);
             this.lblProg.TabIndex = 5;
             this.lblProg.Text = "N/A";
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(123, 352);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(62, 23);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "label1";
             // 
             // frmCours
             // 
@@ -165,6 +154,5 @@
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Label lblLecon;
         private System.Windows.Forms.Label lblProg;
-        private System.Windows.Forms.Label label1;
     }
 }
