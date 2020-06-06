@@ -55,27 +55,52 @@ namespace MiniProjetA21
 
             lblProg.Text = exoCours[0][0].ToString() + "/" + total.Length.ToString();
 
+            //On récupère le numMot en fonction des données utilisateurs
             string filtreConcerneMot = @"[numCours]='" + numCours + "' and [numLecon]=" + numLecon +
                                 " and [numExo]= " + numExo;
             DataRow[] numMot = ds.Tables["ConcerneMots"].Select(filtreConcerneMot);
 
-            string filtreMots = @"[numMot]=" + numMot[0][3].ToString();
-            DataRow[] mots = ds.Tables["Mots"].Select(filtreMots);
-            MessageBox.Show(mots.Length.ToString());
-            int gauche = 125;
-            int haut = 350;
+            //On ajoute chaque mot correspondant au numMot de ConcerneMots
+            string filtreOrigine = "";
+            DataRow[] mots = new DataRow[numMot.Length];
+            for (int i = 0; i < numMot.Length; i++)
+            {
+                filtreOrigine = @"[numMot] =" + numMot[i][3];
+                mots[i] = ds.Tables["Mots"].Select(filtreOrigine).FirstOrDefault();
+            }
+
+            int gauche = 100;
 
             for(int i = 0; i < mots.Length; i++)
             {
-                Label lbl = new Label();
-                lbl.Tag = i;
-                lbl.Left = gauche;
-                lbl.Top = haut;
-                lbl.Text = mots[i][2].ToString();
+                //Labels origine
+                Label origine = new Label();
+                origine.Tag = i;
+                origine.Left = gauche;
+                origine.Top = 350;
+                origine.Text = mots[i][4].ToString();
 
-                gauche += 120;
+                gbCours.Controls.Add(origine);
 
-                gbCours.Controls.Add(lbl);
+                //Label mot 
+                Label mot = new Label();
+                mot.Tag = i;
+                mot.Left = gauche;
+                mot.Top = 300;
+                mot.Text = mots[i][1].ToString();
+                mot.ForeColor = Color.Red;
+
+                gbCours.Controls.Add(mot);
+
+                //Images correspondantes 
+                PictureBox pb = new PictureBox();
+                Label pb = new Label();
+                pb.Tag = i;
+                pb.Left = gauche;
+                pb.Top = 350;
+                pb.Image =  Image.FromFile(mots[i][3].ToString());
+
+                gauche += 300;
             }
         }
     }
