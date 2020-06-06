@@ -103,52 +103,61 @@
             // cboLecons
             // 
             this.cboLecons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cboLecons.Font = new System.Drawing.Font("Arial Rounded MT Bold", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cboLecons.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLecons.FormattingEnabled = true;
             this.cboLecons.Location = new System.Drawing.Point(642, 159);
             this.cboLecons.Name = "cboLecons";
-            this.cboLecons.Size = new System.Drawing.Size(226, 26);
+            this.cboLecons.Size = new System.Drawing.Size(226, 28);
             this.cboLecons.TabIndex = 6;
+            this.cboLecons.SelectionChangeCommitted += new System.EventHandler(this.cboLecons_SelectionChangeCommitted);
             // 
             // btnPremier
             // 
-            this.btnPremier.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPremier.Location = new System.Drawing.Point(281, 201);
+            this.btnPremier.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPremier.Location = new System.Drawing.Point(1083, 214);
             this.btnPremier.Name = "btnPremier";
-            this.btnPremier.Size = new System.Drawing.Size(30, 30);
+            this.btnPremier.Size = new System.Drawing.Size(45, 45);
             this.btnPremier.TabIndex = 8;
-            this.btnPremier.Text = "<<";
+            this.btnPremier.Tag = "1";
+            this.btnPremier.Text = "🡅";
             this.btnPremier.UseVisualStyleBackColor = true;
+            this.btnPremier.Click += new System.EventHandler(this.clickButton_ChgtExo);
             // 
             // btnPrecedent
             // 
-            this.btnPrecedent.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrecedent.Location = new System.Drawing.Point(319, 201);
+            this.btnPrecedent.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrecedent.Location = new System.Drawing.Point(1083, 288);
             this.btnPrecedent.Name = "btnPrecedent";
-            this.btnPrecedent.Size = new System.Drawing.Size(30, 30);
+            this.btnPrecedent.Size = new System.Drawing.Size(45, 45);
             this.btnPrecedent.TabIndex = 9;
-            this.btnPrecedent.Text = "<";
+            this.btnPrecedent.Tag = "2";
+            this.btnPrecedent.Text = " 🠹";
             this.btnPrecedent.UseVisualStyleBackColor = true;
+            this.btnPrecedent.Click += new System.EventHandler(this.clickButton_ChgtExo);
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(819, 201);
+            this.button1.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(1083, 464);
             this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(30, 30);
+            this.button1.Size = new System.Drawing.Size(45, 45);
             this.button1.TabIndex = 11;
-            this.button1.Text = ">>";
+            this.button1.Tag = "4";
+            this.button1.Text = "🡇";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.clickButton_ChgtExo);
             // 
             // button2
             // 
-            this.button2.Font = new System.Drawing.Font("Impact", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(781, 201);
+            this.button2.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button2.Location = new System.Drawing.Point(1083, 390);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(30, 30);
+            this.button2.Size = new System.Drawing.Size(45, 45);
             this.button2.TabIndex = 10;
-            this.button2.Text = ">";
+            this.button2.Tag = "3";
+            this.button2.Text = " 🠻";
             this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.clickButton_ChgtExo);
             // 
             // grbExercice
             // 
@@ -159,9 +168,9 @@
             this.grbExercice.Controls.Add(this.lblPhrasePrec);
             this.grbExercice.Controls.Add(this.lblEnonPrec);
             this.grbExercice.Font = new System.Drawing.Font("Arial", 12F);
-            this.grbExercice.Location = new System.Drawing.Point(68, 237);
+            this.grbExercice.Location = new System.Drawing.Point(68, 195);
             this.grbExercice.Name = "grbExercice";
-            this.grbExercice.Size = new System.Drawing.Size(1061, 258);
+            this.grbExercice.Size = new System.Drawing.Size(965, 334);
             this.grbExercice.TabIndex = 12;
             this.grbExercice.TabStop = false;
             this.grbExercice.Text = "Exercice";
@@ -170,7 +179,7 @@
             // 
             this.lblPhraseSuiv.AutoSize = true;
             this.lblPhraseSuiv.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic);
-            this.lblPhraseSuiv.Location = new System.Drawing.Point(475, 191);
+            this.lblPhraseSuiv.Location = new System.Drawing.Point(475, 256);
             this.lblPhraseSuiv.Name = "lblPhraseSuiv";
             this.lblPhraseSuiv.Size = new System.Drawing.Size(109, 23);
             this.lblPhraseSuiv.TabIndex = 5;
@@ -180,7 +189,7 @@
             // 
             this.lblEnonSuiv.AutoSize = true;
             this.lblEnonSuiv.Font = new System.Drawing.Font("Arial", 14.25F);
-            this.lblEnonSuiv.Location = new System.Drawing.Point(48, 191);
+            this.lblEnonSuiv.Location = new System.Drawing.Point(48, 256);
             this.lblEnonSuiv.Name = "lblEnonSuiv";
             this.lblEnonSuiv.Size = new System.Drawing.Size(109, 22);
             this.lblEnonSuiv.TabIndex = 4;
@@ -190,7 +199,7 @@
             // 
             this.lblPhrase.AutoSize = true;
             this.lblPhrase.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblPhrase.Location = new System.Drawing.Point(475, 123);
+            this.lblPhrase.Location = new System.Drawing.Point(475, 154);
             this.lblPhrase.Name = "lblPhrase";
             this.lblPhrase.Size = new System.Drawing.Size(75, 23);
             this.lblPhrase.TabIndex = 3;
@@ -200,7 +209,7 @@
             // 
             this.lblEnon.AutoSize = true;
             this.lblEnon.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold);
-            this.lblEnon.Location = new System.Drawing.Point(48, 123);
+            this.lblEnon.Location = new System.Drawing.Point(48, 154);
             this.lblEnon.Name = "lblEnon";
             this.lblEnon.Size = new System.Drawing.Size(79, 22);
             this.lblEnon.TabIndex = 2;
@@ -228,7 +237,7 @@
             // 
             // button3
             // 
-            this.button3.Font = new System.Drawing.Font("Arial", 14.25F);
+            this.button3.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button3.Location = new System.Drawing.Point(17, 561);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(106, 33);
