@@ -110,11 +110,11 @@ namespace MiniProjetA21
                     txbMot.Font = new System.Drawing.Font("Lucida Console", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
                     txbMot.Location = new System.Drawing.Point(location_txb, 162);
                     txbMot.Name = "txbMot_" + str;
-                    txbMot.Width = str.Length * 12;
+                    txbMot.Width = str.Length * 10;
                     txbMot.Tag = liste_motsManquants.IndexOf(str);
 
                     gpbPhrases_Trous.Controls.Add(txbMot);
-                    location_txb = txbMot.Width;
+                    location_txb += txbMot.Width;
 
                     // on remplace le mot manquant par des espaces dans le label
                     for (int i = 0; i < str.Length; i++)
