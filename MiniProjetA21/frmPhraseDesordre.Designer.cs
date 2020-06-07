@@ -31,6 +31,7 @@
             this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.gbDesordre = new System.Windows.Forms.GroupBox();
+            this.btnNext = new System.Windows.Forms.Button();
             this.btnValide = new System.Windows.Forms.Button();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnSoluc = new System.Windows.Forms.Button();
@@ -53,6 +54,7 @@
             // 
             // gbDesordre
             // 
+            this.gbDesordre.Controls.Add(this.btnNext);
             this.gbDesordre.Controls.Add(this.btnValide);
             this.gbDesordre.Controls.Add(this.btnQuitter);
             this.gbDesordre.Controls.Add(this.btnSoluc);
@@ -65,6 +67,16 @@
             this.gbDesordre.TabIndex = 1;
             this.gbDesordre.TabStop = false;
             this.gbDesordre.Text = "Remettez les éléments dans l\'ordre";
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(1022, 249);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(131, 55);
+            this.btnNext.TabIndex = 6;
+            this.btnNext.Text = "Exercice Suivant";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnValide
             // 
@@ -150,5 +162,6 @@
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Button btnValide;
         private System.Windows.Forms.ErrorProvider erpValide;
+        private System.Windows.Forms.Button btnNext;
     }
 }

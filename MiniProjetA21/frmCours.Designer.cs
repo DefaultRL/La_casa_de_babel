@@ -92,6 +92,7 @@
             this.btnNext.TabIndex = 0;
             this.btnNext.Text = "Suivant";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // progBar
             // 

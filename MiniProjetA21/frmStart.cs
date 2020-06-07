@@ -377,7 +377,7 @@ namespace MiniProjetA21
             // si listeMot est null et completeON est true, alors c'est une phrase desordre
             if (listeMot.GetType() == typeof(System.DBNull) && completeON == true)
             {
-                frmPhraseDesordre form3 = new frmPhraseDesordre(tables, codeCours, codeLecon, codeExo);
+                frmPhraseDesordre form3 = new frmPhraseDesordre(this, ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
                 form3.ShowDialog();
             }
 
@@ -391,7 +391,7 @@ namespace MiniProjetA21
             // si listMot est null, completON est false et estPresent est vrai, alors c'est du vocabulaire
             else if (listeMot.GetType() == typeof(System.DBNull) && !completeON && estPresent)
             {
-                frmCours form3 = new frmCours(tables, codeCours, codeLecon, codeExo);
+                frmCours form3 = new frmCours(this, ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
                 form3.ShowDialog();
             }
         }
