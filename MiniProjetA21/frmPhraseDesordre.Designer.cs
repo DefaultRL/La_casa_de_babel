@@ -77,6 +77,7 @@
             this.btnNext.Text = "Exercice Suivant";
             this.btnNext.UseVisualStyleBackColor = true;
             this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            this.btnNext.MouseHover += new System.EventHandler(this.btnNext_MouseHover);
             // 
             // btnValide
             // 
