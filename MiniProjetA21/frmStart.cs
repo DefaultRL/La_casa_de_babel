@@ -109,7 +109,7 @@ namespace MiniProjetA21
 
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)
         {
-            tableRecap.Clear();
+            tableRecap = new DataTable();
             tableRecap.Columns.Add("Reussite", typeof(bool));
             tableRecap.Columns.Add("numCours", typeof(string));
             tableRecap.Columns.Add("numLecon", typeof(int));
