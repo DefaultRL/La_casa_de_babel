@@ -103,8 +103,34 @@ namespace MiniProjetA21
 
         private void btnExit_Click(object sender, EventArgs e)
         {
-            //Fermeture du formulaire
-            Application.Exit();
+            if (prenomNomUtil == null || prenomNomUtil == "")
+            {
+                //Fermeture du formulaire
+                Application.Exit();
+            }
+            else
+            {
+                // mise a jour de la base de données
+                string nomUtil = prenomNomUtil.Split(' ')[1];
+                DataRow dr = tables.Tables["Utilisateurs"].Select("nomUtil = '" + nomUtil + "'").FirstOrDefault();
+
+                string delete = @"DELETE FROM Utilisateurs WHERE nomUtil = '" + nomUtil + "'";
+                string insert = @"INSERT INTO Utilisateurs VALUES ('" + dr["codeUtil"] + "','" + dr["nomUtil"] + "','" + dr["pnUtil"] + "','" + dr["mailUtil"] + "','" + dr["codeExo"] + "','" + dr["codeLeçon"] + "','" + dr["codeCours"] + "')";
+
+
+                OleDbConnection connexion = new OleDbConnection();
+                connexion.ConnectionString = chaine;
+
+                OleDbCommand commande = new OleDbCommand(delete, connexion);
+                connexion.Open();
+                commande.ExecuteNonQuery();
+                commande = new OleDbCommand(insert, connexion);
+                commande.ExecuteNonQuery();
+                connexion.Close();
+
+                //Fermeture du formulaire
+                Application.Exit();
+            }
         }
 
         private void cbUser_SelectedIndexChanged(object sender, EventArgs e)

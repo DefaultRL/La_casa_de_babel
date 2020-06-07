@@ -316,7 +316,8 @@ namespace MiniProjetA21
                 tabRow = ds.Tables["Exercices"].Select("[numLecon] = '" + (numLecon + 1).ToString() + "' and [numCours] = '" + numCours + "' and [numExo] = '1'");
                 if (tabRow.Length == 0) // si la lecon suivante n'existe pas
                 {
-                    MessageBox.Show("Le cours est fini");
+                    frmRecap frmR = new frmRecap(recap);
+                    frmR.ShowDialog();
                 }
                 else // si la lecon suivante existe
                 {
