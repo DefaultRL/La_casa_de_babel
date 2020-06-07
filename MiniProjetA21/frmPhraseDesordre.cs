@@ -140,6 +140,8 @@ namespace MiniProjetA21
             {
                 listMot.Add(tabMots[i]);
             }
+
+            btnNext.Visible = false;
         }
 
         //Evenements des boutons de déplacements gauche puis droite
@@ -241,6 +243,7 @@ namespace MiniProjetA21
         private void btnValide_Click(object sender, EventArgs e)
         {
             erpValide.Clear();
+            btnNext.Visible = true;
 
             //On récupère ce que l'utilisateur à choisis
             List<string> listCheck = new List<string>();

@@ -394,6 +394,12 @@ namespace MiniProjetA21
                 frmCours form3 = new frmCours(this, ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
                 form3.ShowDialog();
             }
+
+            else
+            {
+                frmOther form4 = new frmOther(this, ref tables, ref tableRecap, codeCours, codeLecon, codeExo, nomUtil);
+                form4.ShowDialog();
+            }
         }
     }
 }

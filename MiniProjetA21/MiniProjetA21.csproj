@@ -58,6 +58,12 @@
     <Compile Include="frmCours.Designer.cs">
       <DependentUpon>frmCours.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmOther.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmOther.Designer.cs">
+      <DependentUpon>frmOther.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmPhraseDesordre.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -83,6 +89,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmCours.resx">
       <DependentUpon>frmCours.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmOther.resx">
+      <DependentUpon>frmOther.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmPhraseDesordre.resx">
       <DependentUpon>frmPhraseDesordre.cs</DependentUpon>
