@@ -202,7 +202,7 @@ namespace MiniProjetA21
 
             foreach (Control droite in gbDesordre.Controls.OfType<TextBox>())
             {
-                if ((int)droite.Tag == here + 1 && (int)droite.Tag < listMot.Count - 1)
+                if ((int)droite.Tag == here + 1 && (int)droite.Tag < listMot.Count)
                 {
                     textTemp = courant.Text;
                     courant.Text = droite.Text;
@@ -274,7 +274,6 @@ namespace MiniProjetA21
                 {
                     tb.BackColor = Color.LightGreen;
                 }
-                MessageBox.Show("Bien joué !");
                 res = false;
             }     
         }
@@ -321,7 +320,7 @@ namespace MiniProjetA21
                 }
                 else // si la lecon suivante existe
                 {
-                    ligneUtil["codeLecon"] = numLecon + 1;
+                    ligneUtil["codeLeçon"] = numLecon + 1;
                     ligneUtil["codeExo"] = 1;
                 }
             }

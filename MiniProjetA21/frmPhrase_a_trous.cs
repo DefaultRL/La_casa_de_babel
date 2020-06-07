@@ -249,7 +249,7 @@ namespace MiniProjetA21
                 }
                 else // si la lecon suivante existe
                 {
-                    ligneUtil["codeLecon"] = numLecon + 1;
+                    ligneUtil["codeLeçon"] = numLecon + 1;
                     ligneUtil["codeExo"] = 1;
                 }
             }

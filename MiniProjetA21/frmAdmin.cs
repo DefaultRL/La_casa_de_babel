@@ -46,6 +46,7 @@ namespace MiniProjetA21
         
         private void cboCours_SelectionChangeCommitted(object sender, EventArgs e)
         {
+            
             ComboBox cbo = (ComboBox)sender;
             numCours = cbo.SelectedValue.ToString();
 
@@ -188,42 +189,58 @@ namespace MiniProjetA21
             Button btn = (Button)sender;
             int tag = int.Parse(btn.Tag.ToString());
 
-            switch (tag)
+            //On affiche un error provider si l'utilisateur click sur les boutons avec une comboBox vide
+            erpEmpty.Clear();
+
+            if (String.IsNullOrEmpty(cboCours.Text))
             {
-                case 1: // premier exercice
-                    if (numExo != 1) // on verifie que l'on est pas deja au premier exercice
-                    {
-                        numExo = 1;
-                        affichageExercices(numExo);
-                    }
-                    break;
+                erpEmpty.SetError(cboCours, "Choisissez un cours !");
+            }
 
-                case 2: // exercice precedent
-                    if (numExo != 1) // on verifie que l'on est pas deja au premier exercice
-                    {
-                        numExo--;
-                        affichageExercices(numExo);
-                    }
-                    break;
+            else if (String.IsNullOrEmpty(cboLecons.Text))
+            {
+                erpEmpty.SetError(cboLecons, "Choissisez une leçon !");
+            }
 
-                case 3: // exercice suivant
-                    if (numExo != nbExos) // on verifie que l'on est pas deja au dernier exercice
-                    {
-                        numExo++;
-                        affichageExercices(numExo);
-                    }
-                    break;
+            else {
 
-                case 4: // dernier exercice
-                    if (numExo != nbExos) // on verifie que l'on est pas deja au dernier exercice
-                    {
-                        numExo = nbExos;
-                        affichageExercices(numExo);
-                    }
-                    break;
+                switch (tag)
+                {
+                    case 1: // premier exercice
+                        if (numExo != 1) // on verifie que l'on est pas deja au premier exercice
+                        {
+                            numExo = 1;
+                            affichageExercices(numExo);
+                        }
+                        break;
 
-                default:
-                    break;
+                    case 2: // exercice precedent
+                        if (numExo != 1) // on verifie que l'on est pas deja au premier exercice
+                        {
+                            numExo--;
+                            affichageExercices(numExo);
+                        }
+                        break;
+
+                    case 3: // exercice suivant
+                        if (numExo != nbExos) // on verifie que l'on est pas deja au dernier exercice
+                        {
+                            numExo++;
+                            affichageExercices(numExo);
+                        }
+                        break;
+
+                    case 4: // dernier exercice
+                        if (numExo != nbExos) // on verifie que l'on est pas deja au dernier exercice
+                        {
+                            numExo = nbExos;
+                            affichageExercices(numExo);
+                        }
+                        break;
+
+                    default:
+                        break;
+                }
             }
         }
 

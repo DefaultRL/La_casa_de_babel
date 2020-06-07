@@ -118,6 +118,7 @@ namespace MiniProjetA21
                 {
                     erp.SetError(pb,"Aucune image disponible");
                     pb.Image = Image.FromFile("./Images/error.png");
+                    mot.Text += " = " + mots[i][2].ToString(); 
                 }
                 pb.Size = new System.Drawing.Size(200, 200);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
