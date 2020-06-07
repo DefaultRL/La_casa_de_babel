@@ -108,8 +108,9 @@ namespace MiniProjetA21
                 PictureBox pb = new PictureBox();
                 pb.Tag = i;
                 pb.Left = gauche;
-                pb.Top = 100;
+                pb.Top = 90;
 
+                //On affiche une image d'erreur et un error provider si l'image est null
                 try
                 {
                     pb.Image = Image.FromFile("./Images/" + mots[i][3].ToString());
@@ -120,12 +121,14 @@ namespace MiniProjetA21
                     pb.Image = Image.FromFile("./Images/error.png");
                     mot.Text += " = " + mots[i][2].ToString(); 
                 }
+
                 pb.Size = new System.Drawing.Size(200, 200);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.BackColor = Color.White;
 
                 gbCours.Controls.Add(pb);
 
+                //Affichage de la traduction sur l'image
                 ToolTip tt = new ToolTip();
                 tt.ShowAlways = true;
                 tt.SetToolTip(pb, mots[i][2].ToString());
