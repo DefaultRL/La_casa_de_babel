@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -108,7 +109,16 @@ namespace MiniProjetA21
                 pb.Tag = i;
                 pb.Left = gauche;
                 pb.Top = 100;
-                pb.Image = Image.FromFile("./Images/"+mots[i][3].ToString());
+
+                try
+                {
+                    pb.Image = Image.FromFile("./Images/" + mots[i][3].ToString());
+                }
+                catch (FileNotFoundException)
+                {
+                    erp.SetError(pb,"Aucune image disponible");
+                    pb.Image = Image.FromFile("./Images/error.png");
+                }
                 pb.Size = new System.Drawing.Size(200, 200);
                 pb.SizeMode = PictureBoxSizeMode.StretchImage;
                 pb.BackColor = Color.White;

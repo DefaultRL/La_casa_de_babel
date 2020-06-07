@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.lblTitle = new System.Windows.Forms.Label();
             this.gbCours = new System.Windows.Forms.GroupBox();
             this.lblVoc = new System.Windows.Forms.Label();
@@ -36,7 +37,9 @@
             this.progBar = new System.Windows.Forms.ProgressBar();
             this.lblLecon = new System.Windows.Forms.Label();
             this.lblProg = new System.Windows.Forms.Label();
+            this.erp = new System.Windows.Forms.ErrorProvider(this.components);
             this.gbCours.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).BeginInit();
             this.SuspendLayout();
             // 
             // lblTitle
@@ -121,6 +124,10 @@
             this.lblProg.TabIndex = 5;
             this.lblProg.Text = "N/A";
             // 
+            // erp
+            // 
+            this.erp.ContainerControl = this;
+            // 
             // frmCours
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 17F);
@@ -140,6 +147,7 @@
             this.Load += new System.EventHandler(this.frmCours_Load);
             this.gbCours.ResumeLayout(false);
             this.gbCours.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.erp)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -155,5 +163,6 @@
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Label lblLecon;
         private System.Windows.Forms.Label lblProg;
+        private System.Windows.Forms.ErrorProvider erp;
     }
 }
