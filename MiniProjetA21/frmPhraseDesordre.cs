@@ -331,5 +331,10 @@ namespace MiniProjetA21
 
             formSTART.Next_Exercice(nomUtil); // lancement du nouvel exercice
         }
+
+        private void btnNext_MouseHover(object sender, EventArgs e)
+        {
+            
+        }
     }  
 }
