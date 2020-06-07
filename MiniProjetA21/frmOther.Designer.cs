@@ -28,19 +28,22 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label2 = new System.Windows.Forms.Label();
+            this.lblTitle = new System.Windows.Forms.Label();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.btnNext = new System.Windows.Forms.Button();
+            this.lblDispo = new System.Windows.Forms.Label();
+            this.pbLogo = new System.Windows.Forms.PictureBox();
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).BeginInit();
             this.SuspendLayout();
             // 
-            // label2
+            // lblTitle
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(429, 46);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(324, 39);
-            this.label2.TabIndex = 1;
-            this.label2.Text = "La Casa de Babbel";
+            this.lblTitle.AutoSize = true;
+            this.lblTitle.Location = new System.Drawing.Point(429, 46);
+            this.lblTitle.Name = "lblTitle";
+            this.lblTitle.Size = new System.Drawing.Size(319, 38);
+            this.lblTitle.TabIndex = 1;
+            this.lblTitle.Text = "La Casa de Babbel";
             // 
             // btnQuitter
             // 
@@ -62,6 +65,24 @@
             this.btnNext.TabIndex = 3;
             this.btnNext.Text = "Suivant";
             this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // lblDispo
+            // 
+            this.lblDispo.AutoSize = true;
+            this.lblDispo.Location = new System.Drawing.Point(226, 173);
+            this.lblDispo.Name = "lblDispo";
+            this.lblDispo.Size = new System.Drawing.Size(723, 38);
+            this.lblDispo.TabIndex = 4;
+            this.lblDispo.Text = "Cette exercice n\'est pas encore disponible !";
+            // 
+            // pbLogo
+            // 
+            this.pbLogo.Location = new System.Drawing.Point(436, 253);
+            this.pbLogo.Name = "pbLogo";
+            this.pbLogo.Size = new System.Drawing.Size(312, 297);
+            this.pbLogo.TabIndex = 5;
+            this.pbLogo.TabStop = false;
             // 
             // frmOther
             // 
@@ -69,15 +90,18 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
             this.ClientSize = new System.Drawing.Size(1183, 618);
+            this.Controls.Add(this.pbLogo);
+            this.Controls.Add(this.lblDispo);
             this.Controls.Add(this.btnNext);
             this.Controls.Add(this.btnQuitter);
-            this.Controls.Add(this.label2);
+            this.Controls.Add(this.lblTitle);
             this.Font = new System.Drawing.Font("Arial Rounded MT Bold", 19.8F, System.Drawing.FontStyle.Italic, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.ForeColor = System.Drawing.SystemColors.ControlText;
             this.Margin = new System.Windows.Forms.Padding(8, 7, 8, 7);
             this.Name = "frmOther";
             this.Text = "frmOther";
             this.Load += new System.EventHandler(this.frmOther_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.pbLogo)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -85,8 +109,10 @@
 
         #endregion
 
-        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.Label lblTitle;
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.Button btnNext;
+        private System.Windows.Forms.Label lblDispo;
+        private System.Windows.Forms.PictureBox pbLogo;
     }
 }
