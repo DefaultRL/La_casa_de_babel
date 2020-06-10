@@ -228,8 +228,8 @@ namespace MiniProjetA21
 
                     string exoTotal = cmdTotal.ExecuteScalar().ToString();
                     lblUserExo.Text = lblUserExo.Text + "/" + exoTotal;
-                    progBar.Value = Int32.Parse(exoUser);
                     progBar.Maximum = Int32.Parse(exoTotal);
+                    progBar.Value = Int32.Parse(exoUser);
                 }
 
                 //On met à jour l'interface
@@ -254,11 +254,11 @@ namespace MiniProjetA21
                 MessageBox.Show("Erreur dans la requète SQL (Lecon/Cours)");
             }
 
-            catch (Exception erreur)
+            /*catch (Exception erreur)
             {
                 //Exception inconnue
                 MessageBox.Show("Autre erreur : " + erreur.GetType().ToString() + "(Lecon/Cours)");
-            }
+            }*/
 
             finally
             {

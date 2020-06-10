@@ -36,7 +36,6 @@
             this.lblLecon = new System.Windows.Forms.Label();
             this.cboLecons = new System.Windows.Forms.ComboBox();
             this.btnPremier = new System.Windows.Forms.Button();
-            this.btnPrecedent = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.grbExercice = new System.Windows.Forms.GroupBox();
@@ -48,6 +47,7 @@
             this.lblEnonPrec = new System.Windows.Forms.Label();
             this.btnQuitter = new System.Windows.Forms.Button();
             this.erpEmpty = new System.Windows.Forms.ErrorProvider(this.components);
+            this.btnPrecedent = new System.Windows.Forms.Button();
             this.grbExercice.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.erpEmpty)).BeginInit();
             this.SuspendLayout();
@@ -55,10 +55,10 @@
             // lblTitlePhrases_Trous
             // 
             this.lblTitlePhrases_Trous.AutoSize = true;
-            this.lblTitlePhrases_Trous.Location = new System.Drawing.Point(420, 35);
+            this.lblTitlePhrases_Trous.Location = new System.Drawing.Point(721, 31);
             this.lblTitlePhrases_Trous.Margin = new System.Windows.Forms.Padding(8, 0, 8, 0);
             this.lblTitlePhrases_Trous.Name = "lblTitlePhrases_Trous";
-            this.lblTitlePhrases_Trous.Size = new System.Drawing.Size(363, 38);
+            this.lblTitlePhrases_Trous.Size = new System.Drawing.Size(295, 32);
             this.lblTitlePhrases_Trous.TabIndex = 2;
             this.lblTitlePhrases_Trous.Text = "LA CASA DE BABBEL";
             // 
@@ -66,9 +66,9 @@
             // 
             this.lblUtilisateur.AutoSize = true;
             this.lblUtilisateur.Font = new System.Drawing.Font("Arial", 14.25F);
-            this.lblUtilisateur.Location = new System.Drawing.Point(12, 130);
+            this.lblUtilisateur.Location = new System.Drawing.Point(64, 146);
             this.lblUtilisateur.Name = "lblUtilisateur";
-            this.lblUtilisateur.Size = new System.Drawing.Size(44, 27);
+            this.lblUtilisateur.Size = new System.Drawing.Size(33, 22);
             this.lblUtilisateur.TabIndex = 3;
             this.lblUtilisateur.Text = "util";
             // 
@@ -77,9 +77,9 @@
             this.cboCours.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboCours.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboCours.FormattingEnabled = true;
-            this.cboCours.Location = new System.Drawing.Point(272, 159);
+            this.cboCours.Location = new System.Drawing.Point(563, 146);
             this.cboCours.Name = "cboCours";
-            this.cboCours.Size = new System.Drawing.Size(226, 32);
+            this.cboCours.Size = new System.Drawing.Size(226, 28);
             this.cboCours.TabIndex = 4;
             this.cboCours.SelectionChangeCommitted += new System.EventHandler(this.cboCours_SelectionChangeCommitted);
             // 
@@ -87,9 +87,9 @@
             // 
             this.lblCours.AutoSize = true;
             this.lblCours.Font = new System.Drawing.Font("Arial", 15.75F);
-            this.lblCours.Location = new System.Drawing.Point(276, 128);
+            this.lblCours.Location = new System.Drawing.Point(567, 115);
             this.lblCours.Name = "lblCours";
-            this.lblCours.Size = new System.Drawing.Size(88, 32);
+            this.lblCours.Size = new System.Drawing.Size(66, 24);
             this.lblCours.TabIndex = 5;
             this.lblCours.Text = "Cours";
             // 
@@ -97,9 +97,9 @@
             // 
             this.lblLecon.AutoSize = true;
             this.lblLecon.Font = new System.Drawing.Font("Arial", 15.75F);
-            this.lblLecon.Location = new System.Drawing.Point(650, 128);
+            this.lblLecon.Location = new System.Drawing.Point(941, 115);
             this.lblLecon.Name = "lblLecon";
-            this.lblLecon.Size = new System.Drawing.Size(103, 32);
+            this.lblLecon.Size = new System.Drawing.Size(79, 24);
             this.lblLecon.TabIndex = 7;
             this.lblLecon.Text = "Leçons";
             // 
@@ -108,16 +108,16 @@
             this.cboLecons.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cboLecons.Font = new System.Drawing.Font("Arial Narrow", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cboLecons.FormattingEnabled = true;
-            this.cboLecons.Location = new System.Drawing.Point(642, 159);
+            this.cboLecons.Location = new System.Drawing.Point(933, 146);
             this.cboLecons.Name = "cboLecons";
-            this.cboLecons.Size = new System.Drawing.Size(226, 32);
+            this.cboLecons.Size = new System.Drawing.Size(226, 28);
             this.cboLecons.TabIndex = 6;
             this.cboLecons.SelectionChangeCommitted += new System.EventHandler(this.cboLecons_SelectionChangeCommitted);
             // 
             // btnPremier
             // 
             this.btnPremier.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPremier.Location = new System.Drawing.Point(1083, 214);
+            this.btnPremier.Location = new System.Drawing.Point(1629, 214);
             this.btnPremier.Name = "btnPremier";
             this.btnPremier.Size = new System.Drawing.Size(45, 45);
             this.btnPremier.TabIndex = 8;
@@ -126,22 +126,10 @@
             this.btnPremier.UseVisualStyleBackColor = true;
             this.btnPremier.Click += new System.EventHandler(this.clickButton_ChgtExo);
             // 
-            // btnPrecedent
-            // 
-            this.btnPrecedent.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPrecedent.Location = new System.Drawing.Point(1083, 288);
-            this.btnPrecedent.Name = "btnPrecedent";
-            this.btnPrecedent.Size = new System.Drawing.Size(45, 45);
-            this.btnPrecedent.TabIndex = 9;
-            this.btnPrecedent.Tag = "2";
-            this.btnPrecedent.Text = " 🠹";
-            this.btnPrecedent.UseVisualStyleBackColor = true;
-            this.btnPrecedent.Click += new System.EventHandler(this.clickButton_ChgtExo);
-            // 
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(1083, 464);
+            this.button1.Location = new System.Drawing.Point(1629, 464);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(45, 45);
             this.button1.TabIndex = 11;
@@ -153,7 +141,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button2.Location = new System.Drawing.Point(1083, 390);
+            this.button2.Location = new System.Drawing.Point(1629, 390);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(45, 45);
             this.button2.TabIndex = 10;
@@ -173,7 +161,7 @@
             this.grbExercice.Font = new System.Drawing.Font("Arial", 12F);
             this.grbExercice.Location = new System.Drawing.Point(68, 195);
             this.grbExercice.Name = "grbExercice";
-            this.grbExercice.Size = new System.Drawing.Size(965, 334);
+            this.grbExercice.Size = new System.Drawing.Size(1542, 334);
             this.grbExercice.TabIndex = 12;
             this.grbExercice.TabStop = false;
             this.grbExercice.Text = "Exercice";
@@ -181,10 +169,10 @@
             // lblPhraseSuiv
             // 
             this.lblPhraseSuiv.AutoSize = true;
-            this.lblPhraseSuiv.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic);
-            this.lblPhraseSuiv.Location = new System.Drawing.Point(475, 256);
+            this.lblPhraseSuiv.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic);
+            this.lblPhraseSuiv.Location = new System.Drawing.Point(474, 258);
             this.lblPhraseSuiv.Name = "lblPhraseSuiv";
-            this.lblPhraseSuiv.Size = new System.Drawing.Size(131, 28);
+            this.lblPhraseSuiv.Size = new System.Drawing.Size(82, 17);
             this.lblPhraseSuiv.TabIndex = 5;
             this.lblPhraseSuiv.Text = "phraseSuiv";
             // 
@@ -194,17 +182,17 @@
             this.lblEnonSuiv.Font = new System.Drawing.Font("Arial", 14.25F);
             this.lblEnonSuiv.Location = new System.Drawing.Point(48, 256);
             this.lblEnonSuiv.Name = "lblEnonSuiv";
-            this.lblEnonSuiv.Size = new System.Drawing.Size(137, 27);
+            this.lblEnonSuiv.Size = new System.Drawing.Size(109, 22);
             this.lblEnonSuiv.TabIndex = 4;
             this.lblEnonSuiv.Text = "enonceSuiv";
             // 
             // lblPhrase
             // 
             this.lblPhrase.AutoSize = true;
-            this.lblPhrase.Font = new System.Drawing.Font("Arial", 14.25F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
-            this.lblPhrase.Location = new System.Drawing.Point(475, 154);
+            this.lblPhrase.Font = new System.Drawing.Font("Arial", 11F, ((System.Drawing.FontStyle)((System.Drawing.FontStyle.Bold | System.Drawing.FontStyle.Italic))));
+            this.lblPhrase.Location = new System.Drawing.Point(476, 157);
             this.lblPhrase.Name = "lblPhrase";
-            this.lblPhrase.Size = new System.Drawing.Size(90, 28);
+            this.lblPhrase.Size = new System.Drawing.Size(56, 17);
             this.lblPhrase.TabIndex = 3;
             this.lblPhrase.Text = "phrase";
             // 
@@ -214,17 +202,17 @@
             this.lblEnon.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Bold);
             this.lblEnon.Location = new System.Drawing.Point(48, 154);
             this.lblEnon.Name = "lblEnon";
-            this.lblEnon.Size = new System.Drawing.Size(97, 29);
+            this.lblEnon.Size = new System.Drawing.Size(79, 22);
             this.lblEnon.TabIndex = 2;
             this.lblEnon.Text = "enonce";
             // 
             // lblPhrasePrec
             // 
             this.lblPhrasePrec.AutoSize = true;
-            this.lblPhrasePrec.Font = new System.Drawing.Font("Arial", 14.25F, System.Drawing.FontStyle.Italic);
-            this.lblPhrasePrec.Location = new System.Drawing.Point(475, 52);
+            this.lblPhrasePrec.Font = new System.Drawing.Font("Arial", 11F, System.Drawing.FontStyle.Italic);
+            this.lblPhrasePrec.Location = new System.Drawing.Point(474, 54);
             this.lblPhrasePrec.Name = "lblPhrasePrec";
-            this.lblPhrasePrec.Size = new System.Drawing.Size(133, 28);
+            this.lblPhrasePrec.Size = new System.Drawing.Size(84, 17);
             this.lblPhrasePrec.TabIndex = 1;
             this.lblPhrasePrec.Text = "phrasePrec";
             // 
@@ -234,7 +222,7 @@
             this.lblEnonPrec.Font = new System.Drawing.Font("Arial", 14.25F);
             this.lblEnonPrec.Location = new System.Drawing.Point(48, 52);
             this.lblEnonPrec.Name = "lblEnonPrec";
-            this.lblEnonPrec.Size = new System.Drawing.Size(140, 27);
+            this.lblEnonPrec.Size = new System.Drawing.Size(113, 22);
             this.lblEnonPrec.TabIndex = 0;
             this.lblEnonPrec.Text = "enoncePrec";
             // 
@@ -253,12 +241,24 @@
             // 
             this.erpEmpty.ContainerControl = this;
             // 
+            // btnPrecedent
+            // 
+            this.btnPrecedent.Font = new System.Drawing.Font("Impact", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPrecedent.Location = new System.Drawing.Point(1629, 288);
+            this.btnPrecedent.Name = "btnPrecedent";
+            this.btnPrecedent.Size = new System.Drawing.Size(45, 45);
+            this.btnPrecedent.TabIndex = 9;
+            this.btnPrecedent.Tag = "2";
+            this.btnPrecedent.Text = " 🠹";
+            this.btnPrecedent.UseVisualStyleBackColor = true;
+            this.btnPrecedent.Click += new System.EventHandler(this.clickButton_ChgtExo);
+            // 
             // frmAdmin
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(21F, 38F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 30F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.SkyBlue;
-            this.ClientSize = new System.Drawing.Size(1182, 606);
+            this.ClientSize = new System.Drawing.Size(1684, 606);
             this.Controls.Add(this.btnQuitter);
             this.Controls.Add(this.grbExercice);
             this.Controls.Add(this.button1);
@@ -292,7 +292,6 @@
         private System.Windows.Forms.Label lblLecon;
         private System.Windows.Forms.ComboBox cboLecons;
         private System.Windows.Forms.Button btnPremier;
-        private System.Windows.Forms.Button btnPrecedent;
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.GroupBox grbExercice;
@@ -304,5 +303,6 @@
         private System.Windows.Forms.Label lblEnon;
         private System.Windows.Forms.Button btnQuitter;
         private System.Windows.Forms.ErrorProvider erpEmpty;
+        private System.Windows.Forms.Button btnPrecedent;
     }
 }
